@@ -1,0 +1,7 @@
+export const actionTypeNgDung = {
+    DANG_NHAP : 'DANG_NHAP',
+    DANG_KY : 'DANG_KY',
+    LAY_DANH_SACH_NGUOI_DUNG : 'LAY_DANH_SACH_NGUOI_DUNG',
+    THEM_NGUOI_DUNG : 'THEM_NGUOI_DUNG',
+    XOA_NGUOI_DUNG : 'XOA_NGUOI_DUNG'
+}
