@@ -1,0 +1,69 @@
+.login--page{
+    width: 100%;
+    height: 950px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: none;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::before{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: -webkit-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+        // background: -moz-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+        // background: -o-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+        // background: -ms-linear-gradient(left, rgba(0,168,255,0.5), rgba(185,0,255,0.5));
+    }
+    .login--content{
+        position: relative;
+        z-index: 1;
+        background-color: $color-white-0;
+        width: 400px;
+        height: 700px;
+        border-radius: 15px;
+      
+        .login--content__form{
+            width: 300px;
+            margin: 75px auto;
+            h3{
+                color: 	$color-purple-1;
+                font-weight: $fw-bold-1;
+                margin-bottom: 40px;
+            }
+            input{
+                margin-top: 20px;
+                height: 55px;
+                border: none;
+                border-radius: 10px;
+                background-color: transparent;
+                box-shadow: 0px 2px 5px 5px	$color-white-1 ;
+                &::placeholder{
+                    font-weight: $fw-bold-1;
+                }
+            }
+            button{
+                margin: 30px;
+                background-color: $color-purple-0;
+                padding: 10px 35px;
+                border-radius: 25px;
+                color: $color-white-0;
+                font-weight: $fw-bold-1;
+            }
+
+        }
+        .login--content__bottom{
+            position: absolute;
+            bottom : 0;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    }
+  
+}
