@@ -1,0 +1,253 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif; }
+
+.login--page {
+  width: 100%;
+  height: 950px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: none;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .login--page::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: -webkit-linear-gradient(left, rgba(0, 168, 255, 0.5), rgba(185, 0, 255, 0.5)); }
+  .login--page .login--content {
+    position: relative;
+    z-index: 1;
+    background-color: #FFFFFF;
+    width: 400px;
+    height: 700px;
+    border-radius: 15px; }
+    .login--page .login--content .login--content__form {
+      width: 300px;
+      margin: 75px auto; }
+      .login--page .login--content .login--content__form h3 {
+        color: #4b2354;
+        font-weight: 700;
+        margin-bottom: 40px; }
+      .login--page .login--content .login--content__form input {
+        margin-top: 20px;
+        height: 55px;
+        border: none;
+        border-radius: 10px;
+        background-color: transparent;
+        box-shadow: 0px 2px 5px 5px #f6f6f6; }
+        .login--page .login--content .login--content__form input::placeholder {
+          font-weight: 700; }
+      .login--page .login--content .login--content__form button {
+        margin: 30px;
+        background-color: #bd59d4;
+        padding: 10px 35px;
+        border-radius: 25px;
+        color: #FFFFFF;
+        font-weight: 700; }
+    .login--page .login--content .login--content__bottom {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+
+.header {
+  float: left;
+  width: 88%;
+  background-color: #E5E9EC; }
+  .header .header--navbar .header--navbar__icon {
+    width: 200px; }
+    .header .header--navbar .header--navbar__icon span {
+      margin-right: 10px;
+      padding: 5px 7px;
+      cursor: pointer;
+      border: 2px solid #30a3e8;
+      border-radius: 50%;
+      color: #30a3e8; }
+    .header .header--navbar .header--navbar__icon .icon--setting {
+      border: 2px solid #242424;
+      border-radius: 50%;
+      color: #616161;
+      background-color: #E5E9EC;
+      outline: none; }
+  .header .header--navbar a {
+    color: #333333;
+    text-decoration: none; }
+
+.sidebar {
+  width: 12%;
+  float: left;
+  color: #616161; }
+  .sidebar .sidebar--content .sidebar--content__admin img {
+    margin-top: 25px;
+    border: 5px solid #616161;
+    padding: 2px; }
+  .sidebar .sidebar--content .sidebar--menu {
+    margin-top: 20px; }
+    .sidebar .sidebar--content .sidebar--menu span {
+      font-size: 18px;
+      margin: 10px; }
+    .sidebar .sidebar--content .sidebar--menu ul {
+      list-style-type: none; }
+      .sidebar .sidebar--content .sidebar--menu ul li {
+        margin: 10px;
+        font-size: 15px; }
+        .sidebar .sidebar--content .sidebar--menu ul li a {
+          margin: 10px;
+          color: #3e3e3e;
+          text-decoration: none; }
+
+.admin--footer {
+  width: 88%;
+  float: right;
+  padding-left: 15px;
+  background-color: #E5E9EC;
+  display: flex;
+  justify-content: space-between; }
+  .admin--footer .admin--footer__content ul {
+    list-style: none;
+    margin-bottom: 0 !important; }
+    .admin--footer .admin--footer__content ul li {
+      display: inline;
+      margin-right: 10px; }
+
+.admin--content {
+  width: 88%;
+  height: 1674px;
+  float: left;
+  padding-left: 15px;
+  background-color: #E5E9EC; }
+  .admin--content .main--page__content {
+    margin: 50px 0; }
+    .admin--content .main--page__content .progress-card {
+      background-color: #FFFFFF;
+      border-radius: 10px; }
+      .admin--content .main--page__content .progress-card .card-box {
+        padding-bottom: 35px; }
+        .admin--content .main--page__content .progress-card .card-box h5 {
+          color: #616161; }
+        .admin--content .main--page__content .progress-card .card-box .card-box__icon {
+          color: #a39f9f; }
+      .admin--content .main--page__content .progress-card .chart {
+        clear: both;
+        margin-top: 20px; }
+    .admin--content .main--page__content .canvas-card {
+      background-color: #FFFFFF;
+      border-radius: 10px; }
+      .admin--content .main--page__content .canvas-card .card-box {
+        padding-bottom: 35px; }
+        .admin--content .main--page__content .canvas-card .card-box h5 {
+          color: #616161; }
+        .admin--content .main--page__content .canvas-card .card-box .card-box__icon {
+          color: #a39f9f; }
+      .admin--content .main--page__content .canvas-card .chart {
+        clear: both;
+        margin-top: 20px; }
+        .admin--content .main--page__content .canvas-card .chart .widget-chart-box {
+          float: left; }
+          .admin--content .main--page__content .canvas-card .chart .widget-chart-box #myCanvas {
+            position: relative; }
+          .admin--content .main--page__content .canvas-card .chart .widget-chart-box .myCanvas--number {
+            width: 44px;
+            height: 26px;
+            position: absolute;
+            vertical-align: middle;
+            margin-top: 38px;
+            margin-left: -115px;
+            border: 0px;
+            background: none;
+            font: bold 16px Arial;
+            text-align: center;
+            color: #f05050;
+            padding: 0px;
+            -webkit-appearance: none; }
+        .admin--content .main--page__content .canvas-card .chart .widget-detail-right h4 {
+          padding-top: 15px; }
+  .admin--content .main--page__film {
+    margin-top: 55px; }
+    .admin--content .main--page__film .top--film {
+      background-color: #FFFFFF;
+      padding: 30px;
+      border-radius: 10px;
+      height: 450px; }
+      .admin--content .main--page__film .top--film .top--film__image {
+        position: relative;
+        margin-top: -20px; }
+        .admin--content .main--page__film .top--film .top--film__image img {
+          position: absolute;
+          width: 490px;
+          height: 290px;
+          border-radius: 6px;
+          box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+          top: -50px;
+          transition: all 2s; }
+          .admin--content .main--page__film .top--film .top--film__image img:hover {
+            margin-top: -40px; }
+      .admin--content .main--page__film .top--film .top--film__content {
+        position: absolute;
+        bottom: 0px; }
+        .admin--content .main--page__film .top--film .top--film__content .card-text {
+          color: #a39f9f; }
+      .admin--content .main--page__film .top--film .top--film__rank i {
+        color: #d92e14; }
+  .admin--content .main--page__information {
+    margin-top: 15px; }
+    .admin--content .main--page__information .widget--user {
+      background-color: #FFFFFF;
+      padding: 30px;
+      border-radius: 10px; }
+      .admin--content .main--page__information .widget--user .infor--image {
+        float: left; }
+        .admin--content .main--page__information .widget--user .infor--image img {
+          margin-right: 15px;
+          border-radius: 50%;
+          width: 100px;
+          height: 100px; }
+      .admin--content .main--page__information .widget--user .infor-content {
+        float: left; }
+        .admin--content .main--page__information .widget--user .infor-content h6 {
+          font-weight: bold; }
+        .admin--content .main--page__information .widget--user .infor-content .infor-email {
+          font-size: 12px;
+          color: #a39f9f; }
+        .admin--content .main--page__information .widget--user .infor-content .infor-text {
+          color: #4b2354;
+          font-weight: bold; }
+  .admin--content .main--page__footer {
+    margin: 25px 0; }
+    .admin--content .main--page__footer .card-inbox, .admin--content .main--page__footer .card-projects {
+      background-color: #FFFFFF;
+      padding: 30px;
+      border-radius: 10px; }
+      .admin--content .main--page__footer .card-inbox .card-inbox__header, .admin--content .main--page__footer .card-projects .card-inbox__header {
+        margin-bottom: 75px; }
+      .admin--content .main--page__footer .card-inbox .inbox--widget, .admin--content .main--page__footer .card-projects .inbox--widget {
+        margin-top: 25px;
+        position: relative;
+        clear: both; }
+        .admin--content .main--page__footer .card-inbox .inbox--widget .inbox--item, .admin--content .main--page__footer .card-projects .inbox--widget .inbox--item {
+          border-bottom: 1px solid #E5E9EC; }
+          .admin--content .main--page__footer .card-inbox .inbox--widget .inbox--item .inbox--item__img, .admin--content .main--page__footer .card-projects .inbox--widget .inbox--item .inbox--item__img {
+            float: left; }
+            .admin--content .main--page__footer .card-inbox .inbox--widget .inbox--item .inbox--item__img img, .admin--content .main--page__footer .card-projects .inbox--widget .inbox--item .inbox--item__img img {
+              margin-right: 15px;
+              border-radius: 50%;
+              width: 50px;
+              height: 50px; }
+          .admin--content .main--page__footer .card-inbox .inbox--widget .inbox--item .inbox--item__text, .admin--content .main--page__footer .card-projects .inbox--widget .inbox--item .inbox--item__text {
+            color: #a39f9f; }
+          .admin--content .main--page__footer .card-inbox .inbox--widget .inbox--item .inbox--item__date, .admin--content .main--page__footer .card-projects .inbox--widget .inbox--item .inbox--item__date {
+            color: #a39f9f;
+            position: absolute;
+            right: 5px;
+            top: 3px; }
+
+/*# sourceMappingURL=index.css.map */

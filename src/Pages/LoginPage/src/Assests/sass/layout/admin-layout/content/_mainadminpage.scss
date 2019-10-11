@@ -1,0 +1,187 @@
+.admin--content{
+    width: 88%;
+    height: 1674px;
+    float: left;
+    padding-left: 15px;
+    background-color: $color-gray-2;
+
+    // CANVAS && PROGRESS BAR
+    .main--page__content{
+        margin: 50px 0;
+        .progress-card{
+            background-color: $color-white-0;
+            border-radius: 10px;
+            .card-box{
+                padding-bottom: 35px;
+                h5{
+                    color:  $color-gray-0;
+                }
+                .card-box__icon{
+                    color:  $color-gray-1;
+                }
+            }
+            .chart{
+                clear: both;
+                margin-top: 20px;
+            }
+        }
+
+        .canvas-card{
+            background-color: $color-white-0;
+            border-radius: 10px;
+            .card-box{
+                padding-bottom: 35px;
+                h5{
+                    color:  $color-gray-0;
+                }
+                .card-box__icon{
+                    color:  $color-gray-1;
+                }
+            }
+            .chart{
+                clear: both;
+                margin-top: 20px;
+                .widget-chart-box{
+                    float: left;
+                    #myCanvas{
+                        position: relative;
+                    }
+                 .myCanvas--number{
+                        width: 44px;
+                        height: 26px;
+                        position: absolute;
+                        vertical-align: middle;
+                        margin-top: 38px;
+                        margin-left: -115px;
+                        border: 0px;
+                        background: none;
+                        font: bold 16px Arial;
+                        text-align: center;
+                        color: rgb(240, 80, 80);
+                        padding: 0px;
+                        -webkit-appearance: none;
+                    }
+                }
+                .widget-detail-right{
+                   h4{
+                    padding-top: 15px;
+                   }
+                }
+            }
+        }
+    }
+
+    //AMIN__TOP_FILM
+    .main--page__film{
+        margin-top: 55px;
+        .top--film{
+            background-color: $color-white-0;
+            padding: 30px;
+            border-radius: 10px;
+            height: 450px;
+            .top--film__image{
+                position: relative;
+                margin-top: -20px;
+                img{
+                    position: absolute;
+                    width: 490px;
+                    height: 290px;
+                    border-radius: 6px;
+                    box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+                    top: -50px;
+                    transition: all 2s;
+                    &:hover{
+                        margin-top: -40px;
+                    }
+                }
+            }
+            .top--film__content{
+                position: absolute;
+                bottom: 0px;
+                .card-text{
+                    color: $color-gray-1;
+                }
+            }
+            .top--film__rank{
+                i{
+                    color: $color-red-0;
+                    
+                }
+            }
+        }
+    }
+
+
+    //ADMIN__INFORMATION
+    .main--page__information{
+        margin-top: 15px;
+        .widget--user{
+            background-color: $color-white-0;
+            padding: 30px;
+            border-radius: 10px;
+            .infor--image{
+                float: left;
+                img{
+                    margin-right: 15px;
+                    border-radius: 50%;
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+            .infor-content{
+                float: left;
+                h6{
+                    font-weight: $fw-bold;
+                }
+                .infor-email{
+                    font-size: $fs-0;
+                    color: $color-gray-1;
+                }
+                .infor-text{
+                    color: $color-purple-1;
+                    font-weight: $fw-bold;
+                }
+            }
+        }
+    }
+
+
+    // ADMIN__PAGE__FOOTER 
+    .main--page__footer{
+        margin: 25px 0;
+        .card-inbox , .card-projects{
+            background-color: $color-white-0;
+            padding: 30px;
+            border-radius: 10px;
+            .card-inbox__header{
+                margin-bottom: 75px;
+            }
+            .inbox--widget{
+                margin-top: 25px;
+                position: relative;
+                clear: both;
+                .inbox--item{
+                    border-bottom: 1px solid $color-gray-2;
+                    .inbox--item__img{
+                        float: left;
+                        img{
+                        margin-right: 15px;
+                        border-radius: 50%;
+                        width: 50px;
+                        height: 50px;
+                        }
+                    }
+                    .inbox--item__text{
+                        color: $color-gray-1;
+                    }
+                    .inbox--item__date{
+                        color: $color-gray-1;
+                        position: absolute;
+                        right: 5px;
+                        top: 3px
+                    }
+                }
+            }
+        }
+    }
+}
