@@ -70,7 +70,7 @@ class QuanLyNguoiDung extends Component {
         this.setState({
             nguoiDung: { ...this.state.nguoiDung, [name]: value }
         },()=>{
-            console.log(this.state.nguoiDung)
+            console.log('ngdungcansua',this.state.nguoiDung)
         })
 
     }
@@ -80,6 +80,8 @@ class QuanLyNguoiDung extends Component {
         const { name, value } = event.target;
 
         const errorMessage = this.validateInput(name, value);
+
+        this.state.hoanThanh = errorMessage === '' ? true : false;
 
         this.setState({
             errors: { ...this.state.errors, [name]: errorMessage }
@@ -111,6 +113,7 @@ class QuanLyNguoiDung extends Component {
                 <div className='admin--content__header'>
                     <h3 className='my-2'>THÊM NGƯỜI DÙNG</h3>
                     <p>** Tạo người dùng mới tại đây</p>
+                    <p>** Vui lòng thêm đầy đủ thông tin người dùng!</p>
                 </div>
 
                 <div className='admin--content__form'>
@@ -179,7 +182,7 @@ class QuanLyNguoiDung extends Component {
                     </div> */}
 
                         </div>
-                        <button type="submit" className="btn btn-primary">Đăng Ký</button>
+                        <button type="submit" className="btn btn-primary" disabled={!this.state.hoanThanh}>Đăng Ký</button>
 
                     </form>
                 </div>
