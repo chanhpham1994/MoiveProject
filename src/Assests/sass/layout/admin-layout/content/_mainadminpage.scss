@@ -1,9 +1,12 @@
 .admin--content{
     width: 88%;
-    height: 1674px;
     float: left;
     padding-left: 15px;
     background-color: $color-gray-2;
+
+    label{
+        font-weight: bold;
+    }
 
     // CANVAS && PROGRESS BAR
     .main--page__content{

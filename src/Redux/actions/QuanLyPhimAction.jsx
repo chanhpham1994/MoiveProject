@@ -1,6 +1,7 @@
 import {actionTypePhim} from '../constants/QuanLyPhimConstant';
 import {settings} from '../../Common/Config/Setting';
 import axios from 'axios';
+import swal from 'sweetalert2'
 
 export const layDanhSachPhim = () => {
     return dispatch => {
@@ -30,7 +31,7 @@ export const themPhim = (phim) => {
         axios({
             url : settings.domain + '/QuanLyPhim/ThemPhim',
             method : 'POST',
-            data: {...phim, maNhom : settings.groupID, ngayTao : '13/10/2019'},
+            data: {...phim, maNhom : settings.groupID , ngayTao : '10/10/2019'},
             headers:
             {
                 "Authorization": "Bearer " + localStorage.getItem(settings.token)
@@ -49,6 +50,11 @@ export const themPhim = (phim) => {
             })
             .then(res=>{
                 console.log(res.data);
+                swal.fire(
+                    'Thêm Phim Thành Công!',
+                    'Vui Lòng Nhấn OK!',
+                    'success'
+                )
             })
             .catch(err=>{
                 console.log(err.response.data)
@@ -60,3 +66,33 @@ export const themPhim = (phim) => {
     }
 }
 
+
+export const xoaPhim = (maPhim) => {
+    console.log(maPhim)
+    return dispatch => {
+        axios({
+            url: settings.domain + `/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+            method : 'DELETE',
+            data : maPhim,
+            headers:
+            {
+                "Authorization": "Bearer " + localStorage.getItem(settings.token)
+            }
+        })
+        .then(res=>{
+            console.log(res.data);
+            swal.fire(
+                'Xóa Phim Thành Công!',
+                'Vui Lòng Nhấn OK!',
+                'success'
+            )
+            dispatch({
+                type: actionTypePhim.XOA_PHIM,
+                maPhim : maPhim
+            })
+        })
+        .catch(err=>{
+            console.log(err.response.data)
+        })
+    }
+}

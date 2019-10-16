@@ -88,17 +88,17 @@ class QuanLyPhim extends Component {
 
         const { name, value, type } = event.target;
 
-        if(type !== 'file'){
+        if (type !== 'file') {
             this.setState({
                 phim: { ...this.state.phim, [name]: value }
-            },()=>{
+            }, () => {
                 console.log(this.state.phim)
             })
-        }else{
+        } else {
             console.log(event.target.files);
             this.setState({
                 phim: { ...this.state.phim, [name]: event.target.files[0] }
-            },()=>{
+            }, () => {
                 console.log(this.state.phim)
             })
         }
@@ -136,13 +136,18 @@ class QuanLyPhim extends Component {
     render() {
         return (
             <div>
-                <h3 className='text-center text-success my-2'>THÊM PHIM</h3>
+                <div className='admin--content__header'>
+                    <h3 className='my-2'>THÊM PHIM</h3>
+                    <p>** Tạo phim mới tại đây</p>
+                    <p>** Vui lòng thêm đầy đủ thông tin phim! (^.^)</p>
+                    <p>(*) Không được để trống</p>
+                </div>
                 <form onSubmit={this.handleSubmit} className='my-2'>
 
                     <div className='row'>
                         {/* Mã Phim */}
                         <div className="form-group col-6">
-                            <label htmlFor="inputAddress">Mã Phim</label>
+                            <label htmlFor="inputAddress">Mã Phim (*)</label>
                             <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='maPhim' value={this.state.phim.maPhim} id="inputAddress" placeholder="Mã Phim" />
                             {this.renderErrorMess(this.state.errors.maPhim)}
                         </div>
@@ -150,14 +155,14 @@ class QuanLyPhim extends Component {
 
                         {/* Tên Phim */}
                         <div className="form-group col-6">
-                            <label htmlFor="password">Tên Phim</label>
+                            <label htmlFor="password">Tên Phim (*)</label>
                             <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='tenPhim' value={this.state.phim.tenPhim} id="inputPassword4" placeholder="Tên Phim" />
                             {this.renderErrorMess(this.state.errors.tenPhim)}
                         </div>
 
                         {/* Bí Danh */}
                         <div className="form-group col-6">
-                            <label htmlFor="inputAddress">Bí Danh</label>
+                            <label htmlFor="inputAddress">Bí Danh (*)</label>
                             <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='biDanh' value={this.state.phim.biDanh} id="inputAddress" placeholder="Bí Danh" />
                             {this.renderErrorMess(this.state.errors.biDanh)}
                         </div>
@@ -165,7 +170,7 @@ class QuanLyPhim extends Component {
 
                         {/* Trailer*/}
                         <div className="form-group col-6">
-                            <label htmlFor="inputAddress">Trailer</label>
+                            <label htmlFor="inputAddress">Trailer (*)</label>
                             <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='trailer' value={this.state.phim.trailer} id="inputAddress" placeholder="Trailer" />
                             {this.renderErrorMess(this.state.errors.trailer)}
                         </div>
@@ -173,22 +178,22 @@ class QuanLyPhim extends Component {
 
                         {/* Hình Ảnh */}
                         <div className="form-group col-6">
-                            <label htmlFor="inputEmail4">Hình Ảnh</label>
+                            <label htmlFor="inputEmail4">Hình Ảnh (*)</label>
                             <input type="file" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='hinhAnh' id="inputEmail4" placeholder="Hình Ảnh" />
                             {this.renderErrorMess(this.state.errors.hinhAnh)}
                         </div>
 
                         {/*Ngày Khởi Chiếu */}
                         <div className="form-group col-6">
-                            <label htmlFor="inputEmail4">Ngày Khởi Chiếu</label>
-                            <input type="date" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='ngayKhoiChieu' value={this.state.phim.ngayKhoiChieu} id="inputEmail4" placeholder="Ngày Khởi Chiếu" />
+                            <label htmlFor="inputEmail4">Ngày Khởi Chiếu (*)</label>
+                            <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='ngayKhoiChieu' value={this.state.phim.ngayKhoiChieu} id="inputEmail4" placeholder="Ngày Khởi Chiếu" />
                             {this.renderErrorMess(this.state.errors.ngayKhoiChieu)}
                         </div>
 
 
                         {/*Đánh Giá */}
                         <div className="form-group col-2">
-                            <label htmlFor="inputEmail4">Đánh Giá</label>
+                            <label htmlFor="inputEmail4">Đánh Giá (*)</label>
                             <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='danhGia' value={this.state.phim.danhGia} id="inputEmail4" placeholder="Đánh Giá" />
                             {this.renderErrorMess(this.state.errors.danhGia)}
                         </div>
@@ -196,8 +201,8 @@ class QuanLyPhim extends Component {
 
                         {/* Mô Tả */}
                         <div className="form-group col-12">
-                            <label htmlFor="inputEmail4">Mô Tả</label>
-                            <textarea type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='moTa' value={this.state.phim.moTa} id="inputEmail4" placeholder="Mô Tả" />
+                            <label htmlFor="inputEmail4">Mô Tả (*)</label>
+                            <textarea type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='moTa' value={this.state.phim.moTa} id="inputEmail4" placeholder="Mô Tả"  style={{height:'200px'}} />
                             {this.renderErrorMess(this.state.errors.moTa)}
                         </div>
 

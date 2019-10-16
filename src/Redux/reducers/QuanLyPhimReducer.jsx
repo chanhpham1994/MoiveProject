@@ -20,7 +20,6 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-
         // LAY_DANH_SACH_NGUOI_DUNG
         case actionTypeNgDung.LAY_DANH_SACH_NGUOI_DUNG:
             state.mangNguoiDung = action.mangNguoiDung;
@@ -72,6 +71,20 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             state.mangDanhSachPhim = action.mangDanhSachPhim
             return { ...state }
 
+        //XOA_PHIM
+        case actionTypePhim.XOA_PHIM:
+            let mangPhimCapNhat = state.mangDanhSachPhim;
+
+            let indexPhim = mangPhimCapNhat.findIndex(phim => phim.maPhim === action.maPhim);
+
+            if(indexPhim !== -1){
+                mangPhimCapNhat.splice(indexPhim,1);
+            }
+
+            state.mangDanhSachPhim = mangPhimCapNhat;
+
+            return {...state};
+            
     }
     return {...state}
 }

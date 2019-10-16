@@ -71,7 +71,7 @@ export const themNguoiDung = (nguoiDung) => {
                     type: 'error',
                     title: 'Rất Tiếc!!',
                     text: err.response.data,
-                  })
+                })
                 console.log(err.response.data)
 
             })
@@ -137,8 +137,8 @@ export const xoaNguoiDung = (taiKhoanXoa) => {
 
 
 export const layThongTinNguoiDungSua = (nguoiDung) => {
-    return dispatch => {
 
+    return dispatch => {
         dispatch({
             type: actionTypeNgDung.LAY_THONG_TIN_NGUOI_DUNG_SUA,
             NguoiDungCanSua: nguoiDung
@@ -148,11 +148,12 @@ export const layThongTinNguoiDungSua = (nguoiDung) => {
 }
 
 export const capNhatThongTinNguoiDung = (nguoiDung) => {
+   
     return dispatch => {
         axios({
-            url: settings.domain + `/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+            url: settings.domain + '/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
             method: 'PUT',
-            data: nguoiDung,
+            data: { ...nguoiDung, maNhom: settings.groupID },
             headers:
             {
                 "Authorization": "Bearer " + localStorage.getItem(settings.token)
