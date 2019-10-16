@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { layDanhSachNguoiDung, timKiemNguoiDung, xoaNguoiDung ,layThongTinNguoiDungSua } from '../../../Redux/actions/QuanLyNguoiDungAction';
+import { layDanhSachNguoiDung, timKiemNguoiDung, xoaNguoiDung, layThongTinNguoiDungSua } from '../../../Redux/actions/QuanLyNguoiDungAction';
 import Modal from '../../../Component/AdminComponent/Modal';
+import Pagination from '../../../Component/Helper/Pagination'
 
 class TimKiemNguoiDung extends Component {
 
@@ -10,6 +11,8 @@ class TimKiemNguoiDung extends Component {
 
         this.state = {
             tuKhoa: '',
+            trangHienTai: [1],
+            soNgTrongTrang: [10]
         }
     }
 
@@ -23,8 +26,8 @@ class TimKiemNguoiDung extends Component {
 
 
 
-    renderDanhSachNguoiDung = () => {
-        let mangNguoiDung = this.props.mangNguoiDung
+    renderDanhSachNguoiDung = (mangNguoiDung) => {
+        // let mangNguoiDung = this.props.mangNguoiDung
         return mangNguoiDung.map((nguoiDung, index) => {
             return (
                 <tr key={index}>
@@ -70,6 +73,18 @@ class TimKiemNguoiDung extends Component {
 
     render() {
 
+        // Get current post
+        const indexOfLastPost = this.state.trangHienTai * this.state.soNgTrongTrang;
+        const indexOfFirstPost = indexOfLastPost - this.state.soNgTrongTrang;
+        const currentPost = this.props.mangNguoiDung.slice(indexOfFirstPost, indexOfLastPost);
+
+        //Change page
+        const paginate = (pageNumber) => {
+            this.setState({
+                trangHienTai: [pageNumber]
+            })
+        }
+
         return (
             <div>
                 {/* MODAL SUA THONG TIN KHACH HANG */}
@@ -88,7 +103,16 @@ class TimKiemNguoiDung extends Component {
                 </div>
 
                 {/* DANH SÁCH KHÁCH HÀNG */}
+
                 <h4>Danh Sách Người Dùng</h4>
+
+
+                {/* PAGINATION */}
+
+                <div>
+                    <Pagination soNgTrongTrang={this.state.soNgTrongTrang} tongSoNguoi={this.props.mangNguoiDung.length} paginate={paginate} />
+                </div>
+
                 <table className="table">
                     <thead>
                         <tr>
@@ -102,9 +126,12 @@ class TimKiemNguoiDung extends Component {
                     </thead>
 
                     <tbody>
-                        {this.renderDanhSachNguoiDung()}
+                        {this.renderDanhSachNguoiDung(currentPost)}
                     </tbody>
                 </table>
+
+
+
 
             </div>
         )
@@ -124,7 +151,7 @@ const mapDispatchToProps = (dispatch) => {
         layDanhSachNguoiDung: () => { dispatch(layDanhSachNguoiDung()) },
         timKiemNguoiDung: (tuKhoa) => { dispatch(timKiemNguoiDung(tuKhoa)) },
         xoaNguoiDung: (taiKhoanXoa) => { dispatch(xoaNguoiDung(taiKhoanXoa)) },
-        layThongTinNguoiDungSua: (nguoiDung) => {dispatch(layThongTinNguoiDungSua(nguoiDung))}
+        layThongTinNguoiDungSua: (nguoiDung) => { dispatch(layThongTinNguoiDungSua(nguoiDung)) }
     }
 }
 

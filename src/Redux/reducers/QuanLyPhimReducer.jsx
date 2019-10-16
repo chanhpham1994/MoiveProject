@@ -20,16 +20,17 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-
         // LAY_DANH_SACH_NGUOI_DUNG
         case actionTypeNgDung.LAY_DANH_SACH_NGUOI_DUNG:
             state.mangNguoiDung = action.mangNguoiDung;
             return { ...state }
 
+
         // TIM_KIEM_NGUOI_DUNG
         case actionTypeNgDung.TIM_KIEM_NGUOI_DUNG:
             state.mangNguoiDung = action.mangNguoiDungTimKiem;
             return { ...state }
+
 
         //XOA_NGUOI_DUNG
         case actionTypeNgDung.XOA_NGUOI_DUNG:
@@ -41,6 +42,7 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
                 mangThayThe.splice(index,1);
             }
             state.mangNguoiDung = mangThayThe;
+
             return {...state}
 
         //LAY_THONG_TIN_NGUOI_DUNG_SUA
@@ -49,7 +51,19 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             state.nguoiDungCanSua = action.NguoiDungCanSua;
             return {...state}
 
+
         //CAP_NHAT_THONG_TIN_NGUOI_DUNG
+        case actionTypeNgDung.CAP_NHAT_THONG_TIN_NGUOI_DUNG:
+            let mangCapNhat = [...state.mangNguoiDung];
+
+            let index2 = mangCapNhat.findIndex(ngDung => ngDung.taiKhoan === action.ngDungDaCapNhat.taiKhoan);
+
+            if(index2 !== -1){
+                mangCapNhat[index2] = action.ngDungDaCapNhat;
+            }
+            state.mangNguoiDung = mangCapNhat;
+
+            return {...state};
 
 
         //LAY_DANH_SACH_PHIM
@@ -57,9 +71,20 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             state.mangDanhSachPhim = action.mangDanhSachPhim
             return { ...state }
 
+        //XOA_PHIM
+        case actionTypePhim.XOA_PHIM:
+            let mangPhimCapNhat = state.mangDanhSachPhim;
 
+            let indexPhim = mangPhimCapNhat.findIndex(phim => phim.maPhim === action.maPhim);
 
-        default:
-            return state
+            if(indexPhim !== -1){
+                mangPhimCapNhat.splice(indexPhim,1);
+            }
+
+            state.mangDanhSachPhim = mangPhimCapNhat;
+
+            return {...state};
+            
     }
+    return {...state}
 }

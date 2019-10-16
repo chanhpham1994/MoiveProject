@@ -3,9 +3,9 @@ import './App.css';
 import { BrowserRouter, Switch, Route ,Redirect } from 'react-router-dom'
 import { AdminTemplate } from './Templates/AdminTemplate';
 import QuanLyNguoiDung from './Pages/AdminPages/QLND/QuanLyNguoiDung';
-import QuanLyPhim from './Pages/AdminPages/QuanLyPhim';
+import QuanLyPhim from './Pages/AdminPages/QLPHIM/QuanLyPhim';
 import TimKiemNguoiDung from './Pages/AdminPages/QLND/TimKiemNguoiDung';
-import DanhSachPhim from './Pages/AdminPages/DanhSachPhim';
+import DanhSachPhim from './Pages/AdminPages/QLPHIM/DanhSachPhim';
 import QuanLyLichChieu from './Pages/AdminPages/QuanLyLichChieu';
 import MainAdminPage from './Pages/AdminPages/MainAdminPage';
 import ThonTinAdmin from './Pages/AdminPages/ThonTinAdmin';
