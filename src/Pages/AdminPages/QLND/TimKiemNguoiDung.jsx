@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { layDanhSachNguoiDung, timKiemNguoiDung, xoaNguoiDung, layThongTinNguoiDungSua } from '../../../Redux/actions/QuanLyNguoiDungAction';
-import Modal from '../../../Component/AdminComponent/Modal';
+import ModalNguoiDung from '../../../Component/AdminComponent/ModalNguoiDung';
 import Pagination from '../../../Component/Helper/Pagination'
 
 class TimKiemNguoiDung extends Component {
@@ -88,14 +88,14 @@ class TimKiemNguoiDung extends Component {
         return (
             <div>
                 {/* MODAL SUA THONG TIN KHACH HANG */}
-                <Modal />
+                <ModalNguoiDung />
 
                 {/* TÌM KIẾM KHÁCH HÀNG */}
                 <div className='container'>
                     <form className="form-group my-2 my-lg-0 text-center" onKeyUp={this.handleSubmit}>
 
                         <div className=' row'>
-                            <input className="form-control mr-sm-2 col-12" type="search" onChange={this.handleChange} value={this.state.tuKhoa} placeholder="Vui Lòng Nhập Tên Khách Hàng" aria-label="Search" />
+                            <input className="form-control mr-sm-2 col-12" type="search" onChange={this.handleChange} value={this.state.tuKhoa} placeholder="Vui Lòng Nhập Tên Tài Khoản" aria-label="Search" />
 
                         </div>
 

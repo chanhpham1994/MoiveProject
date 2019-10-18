@@ -1,10 +1,12 @@
 import { actionTypePhim } from '../constants/QuanLyPhimConstant';
 import { actionTypeNgDung } from '../constants/QuanLyNguoiDungConstant';
+import {actionTypeLichChieu} from '../constants/QuanLyLichChieuRapConstant';
 
 const initialState = {
 
     mangNguoiDung: [],
     mangDanhSachPhim: [],
+    thongTinChiTietPhim:[],
     nguoiDungCanSua : {
         taiKhoan: 'minhchanh',
         matKhau: '321321',
@@ -13,6 +15,7 @@ const initialState = {
         email: 'chanhphamnguyen@gmail.com',
         maLoaiNguoiDung: 'QuanTri'
     },
+    thongTinLichChieu:[],
 
 }
 
@@ -71,8 +74,14 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             state.mangDanhSachPhim = action.mangDanhSachPhim
             return { ...state }
 
+        //LAY_THONG_TIN_CHI_TIET_PHIM
+        case actionTypePhim.LAY_THONG_TIN_PHIM:
+            state.thongTinChiTietPhim = action.thongTinChiTietPhim;
+            return {...state}
+
         //XOA_PHIM
         case actionTypePhim.XOA_PHIM:
+            alert('aaaaa');
             let mangPhimCapNhat = state.mangDanhSachPhim;
 
             let indexPhim = mangPhimCapNhat.findIndex(phim => phim.maPhim === action.maPhim);
@@ -84,6 +93,14 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             state.mangDanhSachPhim = mangPhimCapNhat;
 
             return {...state};
+
+
+        //LAY_THONG_TIN_LICH_CHIEU
+        case actionTypeLichChieu.LAY_THONG_TIN_LICH_CHIEU_PHIM:
+
+            state.thongTinLichChieu = action.thongTinLichChieu;
+
+            return {...state}
             
     }
     return {...state}

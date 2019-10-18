@@ -14,10 +14,29 @@ export const layDanhSachPhim = () => {
                 type : actionTypePhim.LAY_DANH_SACH_PHIM,
                 mangDanhSachPhim : res.data
             });
-            // console.log(res.data)
+            console.log(res.data)
         })
         .catch(err=>{
-            // console.log(err.response.data)
+            console.log(err.response.data)
+        })
+    }
+}
+
+export const layThongTinPhim = (maPhim) => {
+    return dispatch => {
+        axios({
+            url : settings.domain + `/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
+            method : 'GET'
+        })
+        .then(res=>{
+            dispatch({
+                type : actionTypePhim.LAY_THONG_TIN_PHIM,
+                thongTinChiTietPhim : res.data
+            });
+            console.log(res.data)
+        })
+        .catch(err=>{
+            console.log(err.response.data)
         })
     }
 }
@@ -68,7 +87,7 @@ export const themPhim = (phim) => {
 
 
 export const xoaPhim = (maPhim) => {
-    console.log(maPhim)
+    console.log('ma cua phim',maPhim)
     return dispatch => {
         axios({
             url: settings.domain + `/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
@@ -80,7 +99,6 @@ export const xoaPhim = (maPhim) => {
             }
         })
         .then(res=>{
-            console.log(res.data);
             swal.fire(
                 'Xóa Phim Thành Công!',
                 'Vui Lòng Nhấn OK!',
@@ -90,9 +108,12 @@ export const xoaPhim = (maPhim) => {
                 type: actionTypePhim.XOA_PHIM,
                 maPhim : maPhim
             })
+            console.log('ma cua phim',res.data);
         })
         .catch(err=>{
             console.log(err.response.data)
         })
     }
 }
+
+

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 
 export default class MainAdminPage extends Component {
 
@@ -18,10 +17,12 @@ export default class MainAdminPage extends Component {
         context.lineWidth = 5;
         context.strokeStyle = 'red';
         context.stroke();
+
     }
 
 
     render() {
+
         return (
             <div>
                 {/* <div className='admin--content__header'>
@@ -469,5 +470,8 @@ export default class MainAdminPage extends Component {
         )
     }
 }
+
+
+
 
 

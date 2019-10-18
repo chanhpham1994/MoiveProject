@@ -79,7 +79,7 @@ export default class AdminSideBar extends Component {
               <ul>
                 <li>
                   <i className="fa fa-calendar-plus"></i>
-                  <NavLink to='/themLichChieu'>  Thêm Lịch Chiếu  </NavLink>
+                  <NavLink to='/lichchieu'>  Thông Tin Lịch Chiếu  </NavLink>
                 </li>
 
               </ul>
@@ -93,7 +93,7 @@ export default class AdminSideBar extends Component {
               <ul>
                 <li>
                   <i className="fa fa-coins"></i>
-                  <NavLink to='/themLichChieu'>  Doanh Thu  </NavLink>
+                  <NavLink to='/'>  Doanh Thu  </NavLink>
                 </li>
 
               </ul>
