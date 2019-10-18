@@ -143,7 +143,6 @@ export const layThongTinNguoiDungSua = (nguoiDung) => {
             type: actionTypeNgDung.LAY_THONG_TIN_NGUOI_DUNG_SUA,
             NguoiDungCanSua: nguoiDung
         })
-        console.log(nguoiDung)
     }
 }
 

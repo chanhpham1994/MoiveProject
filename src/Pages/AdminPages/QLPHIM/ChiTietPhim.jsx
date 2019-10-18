@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { layThongTinPhim, xoaPhim } from '../../../Redux/actions/QuanLyPhimAction';
+import { layThongTinPhim, layThongTinPhimCapNhat, xoaPhim } from '../../../Redux/actions/QuanLyPhimAction';
 import { NavLink } from 'react-router-dom';
+import ModalPhim from '../../../Component/AdminComponent/ModalPhim';
 
 class ChiTietPhim extends Component {
 
@@ -52,8 +53,8 @@ class ChiTietPhim extends Component {
                     </div>
                 </div>
                 <button className='btn btn-success mr-2'><NavLink to='/danhSachPhim' className='text-white'>Trở Lại</NavLink></button>
-                <button className='btn btn-primary mr-2'>Sửa Phim</button>
-                <button className='btn btn-danger'>Xóa Phim</button>
+                <button className='btn btn-primary mr-2' onClick={() => layThongTinPhimCapNhat(thongTinChiTietPhim)} data-toggle="modal" data-target="#modelPhim">Sửa Phim</button>
+                <button className='btn btn-danger' onClick={() => xoaPhim(thongTinChiTietPhim.maPhim)}>Xóa Phim</button>
             </div>
         )
     }
@@ -76,13 +77,13 @@ class ChiTietPhim extends Component {
     }
 
     render() {
-        console.log(this.props.thongTinChiTietPhim.lichChieu);
+      
         return (
             <div>
                 {this.state.isLoading === 'true' ?
 
                     <div className='loading-page'>
-                      
+
                     </div>
                     :
                     <div>
@@ -105,6 +106,8 @@ class ChiTietPhim extends Component {
                                 {this.renderLichChieu()}
                             </tbody>
                         </table>
+
+                        <ModalPhim/>
                     </div>
                 }
             </div>
@@ -122,7 +125,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        layThongTinPhim: (maPhim) => { dispatch(layThongTinPhim(maPhim)) }
+        layThongTinPhim: (maPhim) => { dispatch(layThongTinPhim(maPhim)) },
+        layThongTinPhimCapNhat: (phim) => { dispatch(layThongTinPhimCapNhat(phim)) },
+        xoaPhim: (maPhim) => { dispatch(xoaPhim(maPhim)) }
     }
 }
 
