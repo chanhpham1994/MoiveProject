@@ -13,6 +13,12 @@
         margin-right: 0;
     }
 
+    .pagination{
+        .page-item{
+            cursor: pointer;
+        }
+    }
+
     .loading-page{
         background-color: white;
         height: 1500px;

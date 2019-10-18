@@ -21,7 +21,7 @@ function App() {
       <BrowserRouter>
         <Switch>
 
-          {/* <Route exact path='/login' component={Login}/> */}
+          <Route exact path='/login' component={Login}/>
 
           <AdminTemplate exact path='/' Component={MainAdminPage} /> 
           <AdminTemplate exact path='/thongTinAD' Component={ThonTinAdmin} />

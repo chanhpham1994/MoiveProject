@@ -87,7 +87,7 @@ export const themPhim = (phim) => {
 
 
 export const xoaPhim = (maPhim) => {
-    console.log('ma cua phim',maPhim)
+    console.log('ma cua phim',maPhim);
     return dispatch => {
         axios({
             url: settings.domain + `/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
@@ -116,4 +116,45 @@ export const xoaPhim = (maPhim) => {
     }
 }
 
+export const layThongTinPhimCapNhat = (phim) => {
+// console.log("TCL: layThongTinPhimCapNhat -> phim", phim)
+
+    return dispatch => {
+        dispatch({
+            type: actionTypePhim.LAY_THONG_TIN_PHIM_CAP_NHAT,
+            phimCanSua: phim
+        })
+    }
+}
+
+
+export const capNhatThongTinPhim = (phim) => {
+   
+    return dispatch => {
+        axios({
+            url: settings.domain + '/QuanLyPhim/CapNhatPhim',
+            method: 'PUT',
+            data: { ...phim, maNhom: settings.groupID },
+            headers:
+            {
+                "Authorization": "Bearer " + localStorage.getItem(settings.token)
+            }
+        })
+            .then(res => {
+                swal.fire(
+                    'Cập Nhật Phim Thành Công!',
+                    'Vui Lòng Nhấn OK!',
+                    'success'
+                )
+                dispatch({
+                    type: actionTypePhim.CAP_NHAT_THONG_TIN_PHIM,
+                    phimCapNhat: phim,
+                })
+                console.log('phim', res.data)
+            })
+            .catch(err => {
+                console.log(err.response.data)
+            })
+    }
+}
 

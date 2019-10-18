@@ -130,6 +130,8 @@
     font-weight: bold; }
   .admin--content .row {
     margin-right: 0; }
+  .admin--content .pagination .page-item {
+    cursor: pointer; }
   .admin--content .loading-page {
     background-color: white;
     height: 1500px; }
