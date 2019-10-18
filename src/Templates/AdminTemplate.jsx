@@ -21,8 +21,8 @@ const AdminLayout = ({ ...props }) => {
 
 export const AdminTemplate = ({ Component, ...props }) => {
     return <Route {...props} render={(propsComponent) => {
-        return <AdminLayout {...propsComponent}>
-            <Component />
+        return <AdminLayout >
+            <Component {...propsComponent}/>
         </AdminLayout>
     }}>
     </Route>

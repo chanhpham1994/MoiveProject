@@ -5,10 +5,11 @@ import { AdminTemplate } from './Templates/AdminTemplate';
 import QuanLyNguoiDung from './Pages/AdminPages/QLND/QuanLyNguoiDung';
 import QuanLyPhim from './Pages/AdminPages/QLPHIM/QuanLyPhim';
 import TimKiemNguoiDung from './Pages/AdminPages/QLND/TimKiemNguoiDung';
-import DanhSachPhim from './Pages/AdminPages/QLPHIM/DanhSachPhim';
-import QuanLyLichChieu from './Pages/AdminPages/QuanLyLichChieu';
+import ChiTietPhim from './Pages/AdminPages/QLPHIM/ChiTietPhim';
+import QuanLyLichChieu from './Pages/AdminPages/QLRAP/QuanLyLichChieu';
 import MainAdminPage from './Pages/AdminPages/MainAdminPage';
 import ThonTinAdmin from './Pages/AdminPages/ThonTinAdmin';
+import DanhSachPhim from './Pages/AdminPages/QLPHIM/DanhSachPhim';
 import Login from './Pages/LoginPage/Login';
 // import Auth from './Component/AdminComponent/Auth';
 
@@ -29,9 +30,12 @@ function App() {
           <AdminTemplate exact path='/timkiemND' Component={TimKiemNguoiDung} />
 
           <AdminTemplate exact path='/quanlyPhim' Component={QuanLyPhim} />
-          <AdminTemplate exact path='/timkiemND' Component={TimKiemNguoiDung} />
           <AdminTemplate exact path='/danhSachPhim' Component={DanhSachPhim} />
-          <AdminTemplate exact path='/themLichChieu' Component={QuanLyLichChieu} />
+          <AdminTemplate exact path='/chitietphim/:maPhim' Component={ChiTietPhim} />
+
+
+          <AdminTemplate exact path='/lichchieu' Component={QuanLyLichChieu}/>
+
 
         </Switch>
       </BrowserRouter>
