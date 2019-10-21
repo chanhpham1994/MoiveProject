@@ -61,6 +61,7 @@ export const themPhim = (phim) => {
             let frm = new FormData();
             frm.append('file',file);
             frm.append('tenPhim',phim.tenPhim);
+            frm.append('maNhom',settings.groupID);
 
             axios({
                 url : settings.domain + 'QuanLyPhim/UploadHinhAnhPhim',
