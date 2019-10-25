@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { capNhatThongTinNguoiDung } from '../../Redux/actions/QuanLyPhimAction';
+import { capNhatThongTinPhim } from '../../Redux/actions/QuanLyPhimAction';
 
 class ModalPhim extends Component {
     constructor(props) {
@@ -8,7 +8,6 @@ class ModalPhim extends Component {
 
         this.state = {
             phim: {
-                lichChieu:{},
                 maPhim: '',
                 tenPhim: '',
                 biDanh: '',
@@ -126,7 +125,7 @@ class ModalPhim extends Component {
 
         event.preventDefault();
 
-        this.props.themPhim(this.state.phim);
+        this.props.capNhatThongTinPhim(this.state.phim)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -153,7 +152,6 @@ class ModalPhim extends Component {
                             </div>
 
                             <div className="modal-body">
-
                                 <div className="container-fluid">
                                     <form onSubmit={this.handleSubmit} className='my-2'>
                                         <div className='row'>
@@ -189,11 +187,11 @@ class ModalPhim extends Component {
 
 
                                             {/* Hình Ảnh */}
-                                            <div className="form-group col-6">
+                                            {/* <div className="form-group col-6">
                                                 <label htmlFor="inputEmail4">Hình Ảnh (*)</label>
-                                                <input type="file" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='hinhAnh' value={this.state.phim.hinhAnh} id="inputEmail4" placeholder="Hình Ảnh" />
+                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='hinhAnh' value={this.state.phim.hinhAnh} id="inputEmail4" placeholder="Hình Ảnh" />
                                                 {this.renderErrorMess(this.state.errors.hinhAnh)}
-                                            </div>
+                                            </div> */}
 
                                             {/*Ngày Khởi Chiếu */}
                                             <div className="form-group col-6">
@@ -218,13 +216,13 @@ class ModalPhim extends Component {
                                                 {this.renderErrorMess(this.state.errors.moTa)}
                                             </div>
                                         </div>
+                                        <button type="submit" className="btn btn-primary">Cập Nhật</button>
                                     </form>
                                 </div>
 
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                <button type="button" className="btn btn-primary">Cập Nhật</button>
                             </div>
                         </div>
                     </div>
@@ -241,8 +239,14 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        capNhatThongTinPhim : (phim) => {dispatch(capNhatThongTinPhim(phim))}
+    }
+}
 
-export default connect(mapStateToProps, null)(ModalPhim)
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalPhim)
 
 
 

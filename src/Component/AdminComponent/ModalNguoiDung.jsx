@@ -138,7 +138,7 @@ class ModalNguoiDung extends Component {
                                             {/* Tài Khoản */}
                                             <div className="form-group col-4 ">
                                                 <label htmlFor="inputAddress">Tài khoản</label>
-                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='taiKhoan' value={this.state.nguoiDung.taiKhoan} id="inputAddress" placeholder="Tài khoản" />
+                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='taiKhoan' value={this.state.nguoiDung.taiKhoan} id="inputAddress" placeholder="Tài khoản" disabled/>
                                                 {this.renderErrorMess(this.state.errors.taiKhoan)}
                                             </div>
 

@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import React, { Component, Fragment } from 'react';
+import { Route } from 'react-router-dom';
 
-import AdminHeader from '../Component/AdminComponent/AdminHeader'
-import AdminSideBar from '../Component/AdminComponent/AdminSideBar'
-import AdminFooter from '../Component/AdminComponent/AdminFooter'
-import AdminContent from '../Component/AdminComponent/AdminContent'
+import AdminHeader from '../Component/AdminComponent/AdminHeader';
+import AdminSideBar from '../Component/AdminComponent/AdminSideBar';
+import AdminFooter from '../Component/AdminComponent/AdminFooter';
+import AdminContent from '../Component/AdminComponent/AdminContent';
 
 
 const AdminLayout = ({ ...props }) => {

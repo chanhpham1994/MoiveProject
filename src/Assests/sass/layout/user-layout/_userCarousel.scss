@@ -1,0 +1,10 @@
+.user--carousel{
+    position: relative;
+    .user--slider__img{
+        position: absolute;
+        transform: translate(-50%,-50%);
+        left: 50%;
+        bottom: -4.5%;
+
+    }
+}

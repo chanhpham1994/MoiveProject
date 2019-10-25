@@ -13,7 +13,7 @@ export default class AdminHeader extends Component {
                         <i className="fa fa-arrow-left" data-toggle="tooltip" data-placement="bottom" title="Về Trang Phim"></i>
                     </a> */}
 
-                    <NavLink to='/' >
+                    <NavLink to='/admin' >
                         ADMIN-PAGE
                     </NavLink>
 

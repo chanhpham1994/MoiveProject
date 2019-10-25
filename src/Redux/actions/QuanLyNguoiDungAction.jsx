@@ -147,7 +147,7 @@ export const layThongTinNguoiDungSua = (nguoiDung) => {
 }
 
 export const capNhatThongTinNguoiDung = (nguoiDung) => {
-   
+  
     return dispatch => {
         axios({
             url: settings.domain + '/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
