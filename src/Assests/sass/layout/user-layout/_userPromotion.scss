@@ -1,0 +1,24 @@
+.user--promotion{
+    padding: 55px 0;
+    h3{
+        text-align: center;
+        color: $color-green-1;
+    }
+    img{
+        width: 540px;
+        height: 245px;
+    }
+    .slick-prev,.slick-next{
+        display: none !important;
+    }
+    .slick-dots{
+        li{
+            button{
+                &::before{
+                    color: $color-green-1;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}

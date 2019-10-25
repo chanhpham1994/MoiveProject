@@ -88,7 +88,7 @@ export const themPhim = (phim) => {
 
 
 export const xoaPhim = (maPhim) => {
-    console.log('ma cua phim',maPhim);
+    // console.log('ma cua phim',maPhim);
     return dispatch => {
         axios({
             url: settings.domain + `/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
@@ -109,16 +109,15 @@ export const xoaPhim = (maPhim) => {
                 type: actionTypePhim.XOA_PHIM,
                 maPhim : maPhim
             })
-            console.log('ma cua phim',res.data);
+            // console.log('ma cua phim',res.data);
         })
         .catch(err=>{
-            console.log(err.response.data)
+            // console.log(err.response.data)
         })
     }
 }
 
 export const layThongTinPhimCapNhat = (phim) => {
-// console.log("TCL: layThongTinPhimCapNhat -> phim", phim)
 
     return dispatch => {
         dispatch({

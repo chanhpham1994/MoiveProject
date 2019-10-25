@@ -1,0 +1,21 @@
+.user--slider{
+    width: 100%;
+    z-index: -1;
+    .slick-slider{
+        padding: 25px 50px;
+        .slick-prev{
+            position: absolute;
+            left: 1%;
+        }
+        .slick-next{
+            position: absolute;
+            right: 1%;
+        }
+    }
+    h4{
+        color: $color-green-1;
+        text-align: center;
+        padding-top: 45px;
+    }
+
+}

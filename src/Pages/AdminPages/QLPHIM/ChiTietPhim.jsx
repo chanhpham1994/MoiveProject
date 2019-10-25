@@ -52,9 +52,9 @@ class ChiTietPhim extends Component {
                         <p>Đánh Giá : {thongTinChiTietPhim.danhGia}</p>
                     </div>
                 </div>
-                <button className='btn btn-success mr-2'><NavLink to='/danhSachPhim' className='text-white'>Trở Lại</NavLink></button>
-                <button className='btn btn-primary mr-2' onClick={() => layThongTinPhimCapNhat(thongTinChiTietPhim)} data-toggle="modal" data-target="#modelPhim">Sửa Phim</button>
-                <button className='btn btn-danger' onClick={() => xoaPhim(thongTinChiTietPhim.maPhim)}>Xóa Phim</button>
+                <NavLink to='/danhSachPhim' className='text-white'><button className='btn btn-success mr-2'>Trở Lại</button></NavLink>
+                <button className='btn btn-primary mr-2' onClick={() => this.props.layThongTinPhimCapNhat(thongTinChiTietPhim)} data-toggle="modal" data-target="#modelPhim">Sửa Phim</button>
+                <button className='btn btn-danger' onClick={() => this.props.xoaPhim(thongTinChiTietPhim.maPhim)}>Xóa Phim</button>
             </div>
         )
     }
@@ -80,6 +80,7 @@ class ChiTietPhim extends Component {
       
         return (
             <div>
+                {/* sau khi click xuát hiện màn hình chờ 3s */}
                 {this.state.isLoading === 'true' ?
 
                     <div className='loading-page'>
@@ -107,6 +108,7 @@ class ChiTietPhim extends Component {
                             </tbody>
                         </table>
 
+                        {/* modal sửa phim */}
                         <ModalPhim/>
                     </div>
                 }

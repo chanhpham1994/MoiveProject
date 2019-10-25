@@ -55,7 +55,7 @@ class QuanLyNguoiDung extends Component {
             if (!value) {
                 errorMessage = 'Email không được để trống';
             } else if (!/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(value)) {
-                errorMessage = 'Email khong dung dinh dang';
+                errorMessage = 'Email không đúng định dạng';
             }
         }
 

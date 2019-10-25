@@ -16,7 +16,6 @@ const initialState = {
         maLoaiNguoiDung: 'QuanTri'
     },
     phimCanSua: {
-        lichChieu:{},
         maPhim: '1314',
         tenPhim: 'michan',
         biDanh: 'michan',
@@ -110,17 +109,23 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
         //LAY_THONG_TIN_PHIM_CAP_NHAT:---
         case actionTypePhim.LAY_THONG_TIN_PHIM_CAP_NHAT:
 
-            state.phimCanSua = action.phimCanSua;
+            let phimCanSua = action.phimCanSua;
+
+            delete phimCanSua.lichChieu;
+
+            state.phimCanSua = phimCanSua;
+
             console.log("TCL: QuanLyPhimReducer ->  state.phimCanSua", state.phimCanSua)
 
             return { ...state }
+
 
         //CAP_NHAT_THONG_TIN_PHIM
         case actionTypePhim.CAP_NHAT_THONG_TIN_PHIM:
 
             let mangPhim = [...state.mangDanhSachPhim]
 
-            let index3 = mangCapNhat.findIndex(phim => phim.maPhim === action.phim.maPhim);
+            let index3 = mangCapNhat.findIndex(phim => phim.maPhim === action.phimCapNhat.maPhim);
 
             if (index3 !== -1) {
                 mangPhim[index3] = action.phim;
