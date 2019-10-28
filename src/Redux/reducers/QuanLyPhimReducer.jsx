@@ -111,7 +111,14 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
 
             let phimCanSua = action.phimCanSua;
 
+            //làm trắng thông tin hình ảnh
+            phimCanSua.hinhAnh = null;
+            phimCanSua.ngayKhoiChieu = '';
+
+
+            //xóa lịch chiếu
             delete phimCanSua.lichChieu;
+
 
             state.phimCanSua = phimCanSua;
 

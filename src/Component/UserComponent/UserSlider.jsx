@@ -21,7 +21,7 @@ class UserSlider extends Component {
                     <img className="card-img-top" src={phim.hinhAnh} width={150} height={250} alt='' />
                     <div className="card-body">
                         <h6 className="card-title text-white">Mã Phim : {phim.maPhim}</h6>
-                        <NavLink to={`/chitietphim/${phim.maPhim}`} className='btn btn-success px-4' style={{width:'100%'}}> <i class="fa fa-ticket-alt"></i> MUA VÉ</NavLink>
+                        <NavLink to={`/userchitietphim/${phim.maPhim}`} className='btn btn-success px-4' style={{width:'100%'}}> <i class="fa fa-ticket-alt"></i> MUA VÉ</NavLink>
                     </div>
                 </div>
             )
@@ -43,8 +43,6 @@ class UserSlider extends Component {
 
                 <h4>Phim Đang Chiếu</h4>
                 
-                  
-
 
                 <Slider {...settings}>
 

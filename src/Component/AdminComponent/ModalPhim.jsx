@@ -28,7 +28,6 @@ class ModalPhim extends Component {
                 danhGia: ''
             },
 
-
         }
     }
 
@@ -138,6 +137,7 @@ class ModalPhim extends Component {
     render() {
 
         console.log('phim Can Sua' , this.props.phimCanSua)
+
         return (
             <div>
 
@@ -187,11 +187,11 @@ class ModalPhim extends Component {
 
 
                                             {/* Hình Ảnh */}
-                                            {/* <div className="form-group col-6">
+                                            <div className="form-group col-6">
                                                 <label htmlFor="inputEmail4">Hình Ảnh (*)</label>
-                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='hinhAnh' value={this.state.phim.hinhAnh} id="inputEmail4" placeholder="Hình Ảnh" />
+                                                <input type="file" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='hinhAnh' id="inputEmail4"  placeholder="Hình Ảnh" />
                                                 {this.renderErrorMess(this.state.errors.hinhAnh)}
-                                            </div> */}
+                                            </div>
 
                                             {/*Ngày Khởi Chiếu */}
                                             <div className="form-group col-6">

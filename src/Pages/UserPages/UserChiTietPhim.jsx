@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { layThongTinPhim, layThongTinPhimCapNhat } from '../../Redux/actions/QuanLyPhimAction';
+import BackGroundIMG from '../../Assests/images/movie-details-bg.jpg';
+import { NavLink } from 'react-router-dom';
+import Slider from "react-slick";
 
 class UserChiTietPhim extends Component {
 
@@ -17,22 +20,28 @@ class UserChiTietPhim extends Component {
         let { thongTinChiTietPhim } = this.props;
 
         return (
-            <div className='ml-3'>
-                <div className='row'>
-                    <div className='col-2'>
-                        <img src={thongTinChiTietPhim.hinhAnh} width={250} height={300} alt="" />
-                    </div>
-                    <div className='col-8'>
-                        <p>Mã Phim : {thongTinChiTietPhim.maPhim}</p>
-                        <p>Tên Phim : {thongTinChiTietPhim.tenPhim}</p>
-                        <p>Bí Danh : {thongTinChiTietPhim.biDanh}</p>
-                        <p>Trailer : {thongTinChiTietPhim.trailer}</p>
-                        <p>Mô tả : {thongTinChiTietPhim.moTa}</p>
-                        <p>Ngày Khởi Chiếu : {thongTinChiTietPhim.ngayKhoiChieu}</p>
-                        <p>Đánh Giá : {thongTinChiTietPhim.danhGia}</p>
-                    </div>
+
+            <div className='row'>
+                <div className='col-4'>
+                    <h4><NavLink to='/' className="text-white">Trang Chủ</NavLink> | {thongTinChiTietPhim.tenPhim}</h4>
+                    <img src={thongTinChiTietPhim.hinhAnh} width={350} height={500} alt="" />
+                </div>
+                <div className='col-8'>
+                    <h4>{thongTinChiTietPhim.tenPhim}</h4>
+                    <p>{thongTinChiTietPhim.moTa}</p>
+                    <p>Mã Phim : {thongTinChiTietPhim.maPhim}</p>
+
+                    <p>Bí Danh : {thongTinChiTietPhim.biDanh}</p>
+                    <p>Trailer : {thongTinChiTietPhim.trailer}</p>
+
+                    <p>Ngày Khởi Chiếu : {thongTinChiTietPhim.ngayKhoiChieu}</p>
+                    <p>Đánh Giá : {thongTinChiTietPhim.danhGia}</p>
+
+                    <button className="btn btn-success mr-2">Xem Trailer</button>
+                    <button className="btn btn-success"> Mua Vé Ngay</button>
                 </div>
             </div>
+
         )
     }
 
@@ -43,40 +52,64 @@ class UserChiTietPhim extends Component {
         return lichChieu && lichChieu.map((lichChieu, index) => {
             return (
                 <tr key={index}>
-                    <td>{lichChieu.maLichChieu}</td>
-                    <td>{lichChieu.maRap}</td>
+                    {/* <td>{lichChieu.maLichChieu}</td>
+                    <td>{lichChieu.maRap}</td> */}
                     <td>{lichChieu.ngayChieuGioChieu}</td>
-                    <td>{lichChieu.giaVe}</td>
-                    <td>{lichChieu.thoiLuong}</td>
+                    {/* <td>{lichChieu.giaVe}</td>
+                    <td>{lichChieu.thoiLuong}</td> */}
+                    {/* <button onClick={() => this.renderDanhSachRap(lichChieu.maRap)}>Chon</button> */}
                 </tr>
             )
         })
     }
 
+    renderDanhSachRap = (maRap) => {
+
+        let { lichChieu } = this.props.thongTinChiTietPhim;
+
+        let index = lichChieu.findIndex(rap => lichChieu.maRap === maRap)
+        console.log("TCL: UserChiTietPhim -> renderDanhSachRap -> index", index)
+        
+        
+
+        // let { thongTinRap } = this.props.thongTinChiTietPhim.lichChieu[index].thongTinRap;
+
+        // return (
+        //     <div className="card text-left">
+        //         <img className="card-img-top" src="holder.js/100px180/" alt />
+        //         <div className="card-body">
+        //             <h4 className="card-title">Title</h4>
+        //             <p className="card-text">Body</p>
+        //         </div>
+        //     </div>
+        // )
+
+    }
+
 
     render() {
+
+        let settings = {
+            dots: false,
+            infinite: true,
+            slidesToShow: 10,
+            slidesToScroll: 1,
+        };
+
         return (
-            <div>
-                <div>
-                    <h4> Chi Tiết Phim : {this.props.match.params.maPhim}</h4>
-                    <div>
-                        {this.renderDanhSachPhim()}
-                    </div>
-                    <h4>Lịch Chiếu</h4>
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Mã Lịch Chiếu</th>
-                                <th>Mã Rạp</th>
-                                <th>Ngày Giờ Chiếu</th>
-                                <th>Giá Vé</th>
-                                <th>Thời Lượng</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.renderLichChieu()}
-                        </tbody>
-                    </table>
+            <div className="user--chitietphim" style={{ backgroundImage: `url(${BackGroundIMG})` }} >
+
+                <div className="container">
+                    {this.renderDanhSachPhim()}
+
+                    <h4 className="mt-2">Lịch Chiếu</h4>
+
+
+                    <Slider {...settings}>
+
+                        {this.renderLichChieu()}
+
+                    </Slider>
 
                 </div>
 

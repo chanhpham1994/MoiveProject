@@ -29,7 +29,7 @@ function App() {
 
           <HomeTemplate exact path='/' Component={HomePage} />
 
-          <HomeTemplate exact path='/chitietphim/:maPhim' Component={UserChiTietPhim}/>
+          <HomeTemplate exact path='/userchitietphim/:maPhim' Component={UserChiTietPhim}/>
 
 
           <Route exact path='/login' component={Login} />
