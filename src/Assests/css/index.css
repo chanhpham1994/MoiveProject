@@ -436,5 +436,11 @@
       font-size: 12px; }
       .user--footer__address p img {
         margin-right: 10px; } }
+.user--chitietphim {
+  padding: 50px 0;
+  color: white;
+  background-repeat: none;
+  background-position: center center;
+  background-size: cover; }
 
 /*# sourceMappingURL=index.css.map */
