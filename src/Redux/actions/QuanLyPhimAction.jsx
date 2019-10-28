@@ -128,6 +128,7 @@ export const layThongTinPhimCapNhat = (phim) => {
 }
 
 
+
 export const capNhatThongTinPhim = (phim) => {
 
     let file = phim.hinhAnh;
