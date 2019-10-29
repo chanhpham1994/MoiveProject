@@ -111,7 +111,7 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
 
             let phimCanSua = action.phimCanSua;
 
-            //làm trắng thông tin hình ảnh
+            //làm trắng thông tin 
             phimCanSua.hinhAnh = null;
             phimCanSua.ngayKhoiChieu = '';
 
@@ -144,11 +144,11 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
 
 
         //LAY_THONG_TIN_LICH_CHIEU
-        case actionTypeLichChieu.LAY_THONG_TIN_LICH_CHIEU_PHIM:
+        // case actionTypeLichChieu.LAY_THONG_TIN_LICH_CHIEU_PHIM:
 
-            state.thongTinLichChieu = action.thongTinLichChieu;
+        //     state.thongTinLichChieu = action.thongTinLichChieu;
 
-            return { ...state }
+        //     return { ...state }
 
 
 
