@@ -178,6 +178,25 @@ export const capNhatThongTinNguoiDung = (nguoiDung) => {
 }
 
 
+export const datGhe = (thongTinGhe,index) => {
+    
+    return dispatch => {
+        dispatch({
+            type: actionTypeNgDung.DAT_GHE,
+            thongTinGhe: thongTinGhe,
+            index: index
+        })
+    }
+}
 
 
+export const huyDat = (index) => {
+    
+    return dispatch => {
+        dispatch({
+            type: actionTypeNgDung.HUY_DAT,
+            index: index,
+        })
+    }
+}
 

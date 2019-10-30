@@ -442,5 +442,73 @@
   background-repeat: none;
   background-position: center center;
   background-size: cover; }
+  .user--chitietphim .user--chitietphim__lichChieu .lichChieu {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid #42af33; }
+  .user--chitietphim .user--chitietphim__lichChieu .user--chitietphim__muave a {
+    color: #FFFFFF;
+    text-decoration: none; }
+  .user--chitietphim .user--chitietphim__ngayChieu {
+    padding: 0 105px; }
+  .user--chitietphim .dsRap {
+    text-align: center;
+    box-shadow: 3px 5px 21px 0px #050c11; }
+    .user--chitietphim .dsRap .dsRap--tenRap {
+      margin-top: 50px;
+      padding: 60px 0;
+      background-color: #11202b;
+      font-size: 24px;
+      cursor: pointer; }
+    .user--chitietphim .dsRap .dsRap--vitri {
+      background-color: #42af33;
+      padding: 5px 0;
+      cursor: pointer; }
+
+.user--datve {
+  background-color: #111111;
+  padding: 55px 0;
+  color: #FFFFFF; }
+  .user--datve .user--datve__header {
+    background-color: #6ab034; }
+    .user--datve .user--datve__header ul {
+      list-style: none;
+      padding: 10px 10px;
+      display: flex;
+      justify-content: space-between; }
+      .user--datve .user--datve__header ul li {
+        color: #FFFFFF;
+        font-size: 12px; }
+  .user--datve .user--datve__chitietphim__content img {
+    margin-right: 25px; }
+  .user--datve .user--datve__chitietphim__content .thongtinchitiet h4 {
+    color: #6ab034; }
+  .user--datve .user--datve__chonghe h3 {
+    padding: 25px 0;
+    color: #6ab034; }
+  .user--datve .user--datve__chonghe .user--datve__chuthich {
+    text-align: center;
+    padding: 15px 0; }
+    .user--datve .user--datve__chonghe .user--datve__chuthich span i {
+      padding: 0 15px;
+      font-size: 20px; }
+  .user--datve .user--datve__chonghe .user--datve__ghe {
+    background-color: #14252d;
+    padding: 25px 15px; }
+    .user--datve .user--datve__chonghe .user--datve__ghe .vitri--manhinh {
+      text-align: center;
+      background-color: #333333;
+      padding: 10px 0;
+      margin-bottom: 15px; }
+    .user--datve .user--datve__chonghe .user--datve__ghe .ghe--ngoi {
+      width: 50px;
+      height: 50px; }
+  .user--datve .user--datve__chonghe .user--huydatve {
+    margin-left: 5px;
+    color: red;
+    cursor: pointer; }
+  .user--datve .user--datve__chonghe .user--datve__tinhtien {
+    border-top: 1px solid #6ab034;
+    padding: 15px 0; }
 
 /*# sourceMappingURL=index.css.map */

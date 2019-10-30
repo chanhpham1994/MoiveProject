@@ -1,0 +1,68 @@
+.user--datve{
+    background-color: $color-black-2;
+    padding: 55px 0;
+    color: $color-white-0;
+    .user--datve__header{
+        background-color:$color-green-1;
+        ul{
+            list-style: none;
+            padding: 10px 10px;
+            display: flex;
+            justify-content: space-between;
+            li{
+                color: $color-white-0;
+                font-size: $fs-0;
+            }
+        }
+    }
+    .user--datve__chitietphim__content{
+        img{
+            margin-right: 25px;
+        }
+        .thongtinchitiet{
+            h4{
+                color:$color-green-1;
+            }
+        }
+    }
+    .user--datve__chonghe{
+        h3{
+            padding: 25px 0;
+            color:$color-green-1;
+        }
+        .user--datve__chuthich{
+            text-align: center;
+            padding: 15px 0;
+            span{
+                i{
+                    padding: 0 15px;
+                    font-size: 20px;
+                }
+            }
+        }
+        .user--datve__ghe{
+            background-color: $color-blue-5;
+            padding: 25px 15px;
+            .vitri--manhinh{
+                text-align: center;
+                background-color: $color-black-0;
+                padding: 10px 0;
+                margin-bottom: 15px;
+            }
+            .ghe--ngoi{
+                width: 50px;
+                height: 50px;
+            }
+            
+        }
+        .user--huydatve{
+            margin-left: 5px;
+            color: red;
+            cursor: pointer;
+        }
+        .user--datve__tinhtien{
+            border-top: 1px solid $color-green-1;
+            padding: 15px 0;
+        }
+    }
+}

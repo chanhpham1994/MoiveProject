@@ -4,4 +4,39 @@
     background-repeat: none;
     background-position: center center;
     background-size: cover;
+
+    .user--chitietphim__lichChieu{
+        
+        .lichChieu{
+            text-align: center;
+            padding: 10px 0;
+            border-bottom: 2px solid $color-green-2 ;
+        }
+        .user--chitietphim__muave{
+            a{
+                color: $color-white-0;
+                text-decoration: none;
+
+            }
+        }
+    }
+    .user--chitietphim__ngayChieu{
+        padding: 0 105px;
+    }
+    .dsRap{
+        text-align: center;
+        box-shadow: 3px 5px 21px 0px rgba(5, 12, 17, 1);
+        .dsRap--tenRap{
+            margin-top: 50px;
+            padding: 60px 0;
+            background-color: $color-black-3;
+            font-size: $fs-2;
+            cursor: pointer;
+        }
+        .dsRap--vitri{
+            background-color:$color-green-2 ;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+    }
 }

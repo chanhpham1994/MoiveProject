@@ -17,6 +17,7 @@ import Login from './Pages/LoginPage/Login';
 import { HomeTemplate } from './Templates/HomeTemplate.';
 import HomePage from './Pages/UserPages/HomePage';
 import UserChiTietPhim from './Pages/UserPages/UserChiTietPhim';
+import UserDatVe from './Pages/UserPages/UserDatVe';
 // import Auth from './Component/AdminComponent/Auth';
 
 
@@ -30,6 +31,8 @@ function App() {
           <HomeTemplate exact path='/' Component={HomePage} />
 
           <HomeTemplate exact path='/userchitietphim/:maPhim' Component={UserChiTietPhim}/>
+
+          <HomeTemplate exact path='/datve/:maLichChieu' Component={UserDatVe}/>
 
 
           <Route exact path='/login' component={Login} />

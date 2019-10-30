@@ -17,10 +17,10 @@ export default class UserFooter extends Component {
                             <div className="col-4 col-md-4">
                                 <h4>GIỚI THIỆU</h4>
                                 <ul>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Về Chúng Tôi</li>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Thoả Thuận Sử Dụng</li>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Quy Chế Hoạt Động</li>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Chính Sách Bảo Mật</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Về Chúng Tôi</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Thoả Thuận Sử Dụng</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Quy Chế Hoạt Động</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Chính Sách Bảo Mật</li>
                                     <li>
                                         <img src={require('../../Assests/images/Bo-Cong-Thuong-3.png')} alt="" />
                                     </li>
@@ -29,19 +29,19 @@ export default class UserFooter extends Component {
                             <div className="col-4 col-md-4">
                                 <h4>GÓC ĐIỆN ẢNH</h4>
                                 <ul>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Thể Loại Phim</li>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Bình Luận Phim</li>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Blog Điện Ảnh</li>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Phim Hay Tháng</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Thể Loại Phim</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Bình Luận Phim</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Blog Điện Ảnh</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Phim Hay Tháng</li>
                                 </ul>
                             </div>
                             <div className="col-4 col-md-4">
                                 <h4>HỖ TRỢ</h4>
                                 <ul>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Góp Ý</li>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Sale & Services</li>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Rạp / Giá Vé</li>
-                                    <li><i class="fa fa-angle-double-right icon"></i>Tuyển Dụng</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Góp Ý</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Sale & Services</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Rạp / Giá Vé</li>
+                                    <li><i className="fa fa-angle-double-right icon"></i>Tuyển Dụng</li>
                                 </ul>
                             </div>
 
