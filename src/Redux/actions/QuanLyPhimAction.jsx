@@ -132,14 +132,14 @@ export const layThongTinPhimCapNhat = (phim) => {
 export const capNhatThongTinPhim = (phim) => {
 
     let file = phim.hinhAnh;
-
+    
     if (file === null) {
-
+        console.log(file);
         return dispatch => {
 
             axios({
                 url: settings.domain + '/QuanLyPhim/CapNhatPhim',
-                method: 'PUT',
+                method: 'POST',
                 data: { ...phim, maNhom: settings.groupID},
                 headers:
                 {
@@ -152,20 +152,18 @@ export const capNhatThongTinPhim = (phim) => {
                         'Vui Lòng Nhấn OK!',
                         'success'
                     )
-                    dispatch({
-                        type: actionTypePhim.CAP_NHAT_THONG_TIN_PHIM,
-                        phimCapNhat: phim,
-                    })
-                    console.log('phim', res.data)
+                    // dispatch({
+                    //     type: actionTypePhim.CAP_NHAT_THONG_TIN_PHIM,
+                    //     phimCapNhat: phim,
+                    // })
+                    // console.log('phim', res.data)
                 })
                 .catch(err => {
                     console.log(err.response.data)
                 })
         }
     }
-
     else {
-        
         phim.hinhAnh = file.name;
 
         return dispatch => {
@@ -186,7 +184,7 @@ export const capNhatThongTinPhim = (phim) => {
                     frm.append('maNhom', settings.groupID);
 
                     axios({
-                        url: settings.domain + 'QuanLyPhim/UploadHinhAnhPhim',
+                        url: settings.domain + '/QuanLyPhim/UploadHinhAnhPhim',
                         method: 'POST',
                         data: frm
                     })
@@ -197,10 +195,10 @@ export const capNhatThongTinPhim = (phim) => {
                                 'Vui Lòng Nhấn OK!',
                                 'success'
                             )
-                            dispatch({
-                                type: actionTypePhim.CAP_NHAT_THONG_TIN_PHIM,
-                                phimCapNhat: phim,
-                            })
+                            // dispatch({
+                            //     type: actionTypePhim.CAP_NHAT_THONG_TIN_PHIM,
+                            //     phimCapNhat: phim,
+                            // })
                         })
                         .catch(err => {
                             console.log(err.response.data)
@@ -213,3 +211,41 @@ export const capNhatThongTinPhim = (phim) => {
     }
 }
 
+
+
+export const layThongTinRap = (ngayChieuGioChieu) => {
+
+    return dispatch => {
+        dispatch({
+            type: actionTypePhim.LAY_THONG_TIN_RAP,
+            ngayChieuGioChieu: ngayChieuGioChieu
+        })
+    }
+}
+
+
+
+export const layDanhSachPhongVe = (maLichChieu) => {
+
+    return dispatch => {
+        axios({
+            url: settings.domain + `/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
+            method: "GET",
+            headers:
+            {
+                "Authorization": "Bearer " + localStorage.getItem(settings.token)
+            }
+        })
+        .then(res=>{
+            console.log(res.data);
+            dispatch({
+                type: actionTypePhim.LAY_DANH_SACH_PHONG_VE,
+                danhSachPhongVe: res.data
+            });
+        })
+        .catch(err=>{
+            console.log(err.response.data)
+        })
+    }
+
+}

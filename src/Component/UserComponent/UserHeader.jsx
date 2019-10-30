@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import UserPromotion from './UserPromotion'
+import React, { Component } from 'react';
+import UserPromotion from './UserPromotion';
+import {NavLink} from 'react-router-dom';
 
 export default class UserHeader extends Component {
     render() {
@@ -64,9 +65,9 @@ export default class UserHeader extends Component {
                 </nav>
 
                  {/* LOGO RAP */}
-                 <div className="user--header__logo">
-                        <img className='rounded-circle' src={require('../../Assests/images/BHDStar_Logo_Tron.png')} alt="logo" />
-                    </div>
+                <div className="user--header__logo">
+                     <NavLink to='/'><img className='rounded-circle' src={require('../../Assests/images/BHDStar_Logo_Tron.png')} alt="logo" /></NavLink>   
+                </div>
 
                     <div className="user--header__line">
                         <img src={require('../../Assests/images/line-header1.png')} alt="" />
