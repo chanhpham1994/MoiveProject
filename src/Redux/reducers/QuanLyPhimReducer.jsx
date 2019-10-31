@@ -26,7 +26,8 @@ const initialState = {
         danhGia: 'michan',
         maNhom: 'GP15'
     },
-    thongTinRap:[],
+    thongTinKHDangNhap: '',
+    thongTinRap: [],
     danhSachPhongVe: {},
     danhSachGheDaDat: [],
     tongTien: 0,
@@ -37,6 +38,23 @@ const initialState = {
 export const QuanLyPhimReducer = (state = initialState, action) => {
 
     switch (action.type) {
+
+        //DANG_NHAP:
+        case actionTypeNgDung.DANG_NHAP:
+
+            state.thongTinKHDangNhap = action.thongTinNguoiDung;
+            
+
+            return { ...state }
+
+        //DANG_NHAP:
+        case actionTypeNgDung.DANG_XUAT:
+
+            alert('Đã Đăng Xuất!!!');
+
+            state.thongTinKHDangNhap = '';
+          
+            return { ...state }
 
         // LAY_DANH_SACH_NGUOI_DUNG
         case actionTypeNgDung.LAY_DANH_SACH_NGUOI_DUNG:
@@ -158,54 +176,54 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
 
         //LAY_THONG_TIN_RAP
         case actionTypePhim.LAY_THONG_TIN_RAP:
-        
-        //lấy danh sách mảng chứa rạp theo ngayChieuGioChieu
-        let mangRap = state.thongTinChiTietPhim.lichChieu.filter(rap => rap.ngayChieuGioChieu === action.ngayChieuGioChieu);
-        console.log("TCL: QuanLyPhimReducer -> mangRap", mangRap)
 
-        state.thongTinRap = mangRap;
+            //lấy danh sách mảng chứa rạp theo ngayChieuGioChieu
+            let mangRap = state.thongTinChiTietPhim.lichChieu.filter(rap => rap.ngayChieuGioChieu === action.ngayChieuGioChieu);
+            console.log("TCL: QuanLyPhimReducer -> mangRap", mangRap)
 
-        return {...state}
+            state.thongTinRap = mangRap;
+
+            return { ...state }
 
         //LAY_DANH_SACH_PHONG_VE
         case actionTypePhim.LAY_DANH_SACH_PHONG_VE:
-        
-        state.danhSachPhongVe = action.danhSachPhongVe;
 
-        return {...state}
+            state.danhSachPhongVe = action.danhSachPhongVe;
+
+            return { ...state }
 
         //DAT_GHE
         case actionTypeNgDung.DAT_GHE:
 
-        let mangGhe = state.danhSachGheDaDat;
+            let mangGhe = state.danhSachGheDaDat;
 
-        let index5 = mangGhe.findIndex((ghe,index) => ghe.tenGhe === action.thongTinGhe.tenGhe)
- 
-        if(index5 === -1){
-            mangGhe = [...state.danhSachGheDaDat,action.thongTinGhe]
-            state.tongTien += action.thongTinGhe.giaVe
-        }else{
-            
-        }
+            let index5 = mangGhe.findIndex((ghe, index) => ghe.tenGhe === action.thongTinGhe.tenGhe)
 
-        // mangGhe.filter((ghe,index) => index !== action.index)
-        
-        state.danhSachGheDaDat = mangGhe;
+            if (index5 === -1) {
+                mangGhe = [...state.danhSachGheDaDat, action.thongTinGhe]
+                state.tongTien += action.thongTinGhe.giaVe
+            } else {
 
-        return {...state}
+            }
+
+            // mangGhe.filter((ghe,index) => index !== action.index)
+
+            state.danhSachGheDaDat = mangGhe;
+
+            return { ...state }
 
         //HUY_DAT
         case actionTypeNgDung.HUY_DAT:
 
-        let mangGheCN = state.danhSachGheDaDat;
+            let mangGheCN = state.danhSachGheDaDat;
 
-        let index6 = mangGheCN.findIndex((ghe,index) => index === action.index)
+            let index6 = mangGheCN.findIndex((ghe, index) => index === action.index)
 
-        state.danhSachGheDaDat = [...mangGheCN].filter((ghe,index) => index !== index6)
+            state.danhSachGheDaDat = [...mangGheCN].filter((ghe, index) => index !== index6)
 
-        state.tongTien -= mangGheCN[index6].giaVe
+            state.tongTien -= mangGheCN[index6].giaVe
 
-        return {...state}
+            return { ...state }
 
     }
 

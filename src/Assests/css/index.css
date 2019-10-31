@@ -279,6 +279,23 @@
       cursor: pointer; }
   .user--header .user--header__navbar .user--header__detail {
     padding: 0 50px; }
+  .user--header .user--header__TTKH {
+    margin: 0;
+    list-style: none; }
+    .user--header .user--header__TTKH li a {
+      color: #6ab034;
+      font-size: 12px;
+      cursor: pointer; }
+      .user--header .user--header__TTKH li a:hover {
+        color: #6ab034; }
+    .user--header .user--header__TTKH .user--header__TTKH__menu {
+      top: 45px;
+      left: -22px;
+      color: #FFFFFF;
+      background-color: #111111; }
+      .user--header .user--header__TTKH .user--header__TTKH__menu a:hover {
+        background-color: #111111;
+        cursor: pointer; }
   .user--header .user--header__logo {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -305,7 +322,7 @@
     .user--header .user--header__icon img {
       width: 100px;
       height: 100px; }
-  .user--header button {
+  .user--header .button--login {
     margin-left: 18px; }
 
 @media screen and (min-width: 992px) and (max-width: 1220px) {
@@ -507,8 +524,22 @@
     margin-left: 5px;
     color: red;
     cursor: pointer; }
+  .user--datve .user--datve__chonghe .user--datve__time {
+    font-size: 55px; }
   .user--datve .user--datve__chonghe .user--datve__tinhtien {
     border-top: 1px solid #6ab034;
     padding: 15px 0; }
+
+.user--timeup {
+  background-color: #242424;
+  text-align: center;
+  padding: 150px 0; }
+  .user--timeup h1 {
+    color: #42af33; }
+  .user--timeup h3 {
+    color: #FFFFFF; }
+  .user--timeup button {
+    padding: 5px 35px;
+    margin-top: 25px; }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import Countdown from 'react-countdown-now';
 import { connect } from 'react-redux';
 import { layDanhSachPhongVe } from '../../Redux/actions/QuanLyPhimAction';
 import { datGhe, huyDat } from '../../Redux/actions/QuanLyNguoiDungAction';
+import UserTimeUp from '../../Component/UserComponent/UserTimeUp';
 
 class UserDatVe extends Component {
 
@@ -10,6 +12,7 @@ class UserDatVe extends Component {
 
         this.state = {
             thongTinPhim: {},
+            timeUp: false,
         }
     }
 
@@ -26,12 +29,19 @@ class UserDatVe extends Component {
     componentWillReceiveProps(nextProps) {
         this.setState({
             thongTinPhim: { ...nextProps.danhSachPhongVe.thongTinPhim },
-
         })
     }
 
 
-    // Hiển thị chi tiết phim 
+    //Set thời gian hiển thị 
+    setTimeOut = setTimeout(function () {
+        this.setState({
+            timeUp: true
+        })
+    }.bind(this), 3200000);
+
+
+    // Hiển thị chi tiết phim UserTimeUp
     rednerChiTietPhim = () => {
 
         let { thongTinPhim } = this.state;
@@ -101,78 +111,100 @@ class UserDatVe extends Component {
         })
     }
 
+
+
+    //Render thoi gian con lai cua khach
+    renderTime = ({ minutes, seconds }) => {
+        return <span>{minutes}:{seconds}</span>;
+    }
+
     render() {
 
-        console.log("TCL: mapStateToProps -> danhSachGheDaDat", this.props.danhSachGheDaDat)
-
         return (
-            <div className="user--datve">
+            <div>
 
-                {/* Ma lich chieu : {this.props.match.params.maLichChieu} */}
-                <div className="container">
-                    <div className="user--datve__header">
-                        <ul>
-                            <li>1.Chọn Vé</li>
-                            <li>2.Chọn Ghế</li>
-                            <li>3.Chọn Đồ Ăn</li>
-                            <li>4.Xác Nhận</li>
-                            <li>5.Đặt Vé Thành Công</li>
-                        </ul>
-                    </div>
+                {!this.state.timeUp ?
 
-                    {/* RENDER CHITIETPHIM */}
-                    <div className="user--datve__chitietphim">
+                    <div className="user--datve">
 
-                        {this.rednerChiTietPhim()}
+                        {/* Ma lich chieu : {this.props.match.params.maLichChieu} */}
+                        <div className="container">
+                            <div className="user--datve__header">
+                                <ul>
+                                    <li>1.Chọn Vé</li>
+                                    <li>2.Chọn Ghế</li>
+                                    <li>3.Chọn Đồ Ăn</li>
+                                    <li>4.Xác Nhận</li>
+                                    <li>5.Đặt Vé Thành Công</li>
+                                </ul>
+                            </div>
 
-                    </div>
+                            {/* RENDER CHITIETPHIM */}
+                            <div className="user--datve__chitietphim">
 
-                    <div style={{ clear: 'both' }}>
-                    </div>
+                                {this.rednerChiTietPhim()}
+
+                            </div>
+
+                            <div style={{ clear: 'both' }}>
+                            </div>
 
 
-                    {/* RENDER GHE NGOI */}
+                            {/* RENDER GHE NGOI */}
 
-                    <div className="user--datve__chonghe">
-                        <h3>Chọn Ghế</h3>
-                        <div className="user--datve__chuthich">
-                            <span>
-                                <i className="fa fa-square text-success"></i>
-                                Ghế Đang Chọn
+                            <div className="user--datve__chonghe">
+
+                                {/* //??????????? */}
+                                <span >Thời Gian Còn lại :</span>
+                                {/* <span className="user--datve__time">
+                                    <Countdown date={Date.now() + 300000} renderer={this.renderTime} />
+                                </span> */}
+
+                                <h3>Chọn Ghế</h3>
+                                <div className="user--datve__chuthich">
+                                    <span>
+                                        <i className="fa fa-square text-success"></i>
+                                        Ghế Đang Chọn
                             <i className="fa fa-square text-secondary"></i>
-                                Ghế Trống
+                                        Ghế Trống
                             <i className="fa fa-square text-danger"></i>
-                                Ghế Đã Bán
+                                        Ghế Đã Bán
                             </span>
-                        </div>
-                        <div className='row'>
-                            <div className='user--datve__ghe col-8 row'>
-                                <div className="vitri--manhinh col-12">
-                                    <p>SCREEN</p>
                                 </div>
+                                <div className='row'>
+                                    <div className='user--datve__ghe col-8 row'>
+                                        <div className="vitri--manhinh col-12">
+                                            <p>SCREEN</p>
+                                        </div>
 
-                                {this.renderGheNgoi()}
-                            </div>
+                                        {this.renderGheNgoi()}
+                                    </div>
 
 
-                            <div className='col-4 pl-5'>
+                                    <div className='col-4 pl-5'>
 
-                                {/* RENDER THOI GIAN CON LAI  VS  DANH SACH GHE DA DAT */}
-                                <h3>Giỏ Hàng Của Bạn</h3>
-                                {this.renderGheDaChon()}
+                                        {/* RENDER THOI GIAN CON LAI  VS  DANH SACH GHE DA DAT */}
+                                        <h3>Giỏ Hàng Của Bạn</h3>
 
-                                <div className="user--datve__tinhtien">
-                                    <p>Tổng Tiền : {this.props.tongTien} VND</p>
+
+                                        {this.renderGheDaChon()}
+
+                                        <div className="user--datve__tinhtien">
+                                            <p>Tổng Tiền : {this.props.tongTien} VND</p>
+                                        </div>
+
+                                        <button className="btn btn-success">Đặt Vé</button>
+
+                                    </div>
                                 </div>
-
-                                <button className="btn btn-success">Đặt Vé</button>
-
                             </div>
                         </div>
                     </div>
 
+                    :
 
-                </div>
+                    // Render Het Thoi Gian Chon Ghe
+                    <UserTimeUp />}
 
             </div>
         )

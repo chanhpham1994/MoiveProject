@@ -10,7 +10,7 @@ class ChiTietPhim extends Component {
         super(props)
 
         this.state = {
-            isLoading: 'true'
+            isLoading: true
         }
     }
 
@@ -27,7 +27,7 @@ class ChiTietPhim extends Component {
     //Render giao diện sau 3 giây
     setTimeOut = setTimeout(function () {
         this.setState({
-            isLoading: 'false'
+            isLoading: false
         })
     }.bind(this), 3000);
 
@@ -81,7 +81,7 @@ class ChiTietPhim extends Component {
         return (
             <div>
                 {/* sau khi click xuát hiện màn hình chờ 3s */}
-                {this.state.isLoading === 'true' ?
+                {this.state.isLoading ?
 
                     <div className='loading-page'>
 

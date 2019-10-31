@@ -17,6 +17,16 @@ export const dangNhap = (thongTinNguoiDung) => {
                 localStorage.setItem(settings.token, res.data.accessToken);
 
                 console.log(res.data.accessToken)
+                console.log(res.data)
+
+                swal.fire(
+                    'Đăng Nhập Thành Công!',
+                    'success'
+                )
+                dispatch({
+                    type: actionTypeNgDung.DANG_NHAP,
+                    thongTinNguoiDung: res.data
+                })
             })
             .catch(err => {
                 swal.fire(
@@ -24,6 +34,14 @@ export const dangNhap = (thongTinNguoiDung) => {
                 );
                 console.log(err.response.data)
             })
+    }
+}
+
+export const dangXuat = () => {
+    return dispatch => {
+        dispatch({
+           type : actionTypeNgDung.DANG_XUAT
+        })
     }
 }
 
