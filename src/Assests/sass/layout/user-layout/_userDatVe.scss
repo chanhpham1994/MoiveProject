@@ -60,9 +60,30 @@
             color: red;
             cursor: pointer;
         }
+        .user--datve__time{
+            font-size: $fs-5;
+        }
         .user--datve__tinhtien{
             border-top: 1px solid $color-green-1;
             padding: 15px 0;
         }
+    }
+}
+
+//USER--TIMEUP
+
+.user--timeup{
+    background-color:$color-black-1 ;
+    text-align: center;
+    padding: 150px 0;
+    h1{
+        color:$color-green-2;
+    }
+    h3{
+        color: $color-white-0;
+    }
+    button{
+        padding: 5px 35px;
+        margin-top: 25px;
     }
 }

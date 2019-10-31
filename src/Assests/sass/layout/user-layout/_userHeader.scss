@@ -28,7 +28,35 @@
         .user--header__detail{
             padding: 0 50px;
         }
-       
+    }
+
+    //Hiển Thị Thông Tin KH
+    .user--header__TTKH{
+        margin: 0;
+        list-style: none;
+            li{ 
+                a{
+                    color: $color-green-1;
+                    font-size: 12px;
+                    cursor: pointer;
+                    &:hover{
+                        color: $color-green-1;
+                    }
+                }
+            }
+        
+        .user--header__TTKH__menu{
+            top: 45px;
+            left: -22px;
+            color: $color-white-0;
+            background-color: $color-black-2;
+            a{
+                &:hover{
+                    background-color: $color-black-2;
+                    cursor: pointer;
+                }
+            }
+        }
     }
 
     .user--header__logo{
@@ -64,7 +92,7 @@
            
         }
     }
-    button{
+    .button--login{
         margin-left: 18px;
     }
 }

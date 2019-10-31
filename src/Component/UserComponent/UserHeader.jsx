@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import UserPromotion from './UserPromotion';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import UserLogin from './UserLogin';
+import { connect } from 'react-redux';
+import { dangXuat } from '../../Redux/actions/QuanLyNguoiDungAction';
 
-export default class UserHeader extends Component {
+class UserHeader extends Component {
+
     render() {
+
+        let {thongTinKHDangNhap} = this.props;
+
         return (
             <header className='user--header'>
 
@@ -37,7 +44,7 @@ export default class UserHeader extends Component {
 
                         <ul className="user--header__navbar navbar-nav ml-auto">
                             <li className="nav-item active">
-                            <a className="nav-link user--header__detail"><i className="fa fa-phone-volume"></i><span className="text-white"> 1900 2099</span></a>
+                                <a className="nav-link user--header__detail"><i className="fa fa-phone-volume"></i><span className="text-white"> 1900 2099</span></a>
                             </li>
                         </ul>
                     </div>
@@ -46,12 +53,12 @@ export default class UserHeader extends Component {
 
                         <ul className="user--header__navbar navbar-nav mr-auto">
                             <li className="nav-item active">
-                            <a className="nav-link user--header__detail">VN | EN<span className="sr-only">(current)</span></a>
+                                <a className="nav-link user--header__detail">VN | EN<span className="sr-only">(current)</span></a>
                             </li>
                         </ul>
 
                         <ul className="user--header__navbar navbar-nav ml-auto">
-                           
+
                             <li className="nav-item active">
                                 <a className="nav-link">BHD STAR MEMBER<span className="sr-only">(current)</span></a>
                             </li>
@@ -60,26 +67,65 @@ export default class UserHeader extends Component {
                             </li>
                         </ul>
 
-                        <button className='btn btn-success'>Đăng Nhập</button>
+                        {thongTinKHDangNhap === '' ?
+
+
+                            //HIỂN THỊ NÚT ĐĂNG NHẬP
+                            <button className='btn btn-success button--login' data-toggle="modal" data-target="#modelLogin">Đăng Nhập</button> :
+                            
+                            //HIỂN THỊ THÔNG TIN KHÁCH HÀNG SAU KHI ĐĂNG NHẬP
+                            <ul className="user--header__TTKH">
+                                <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Hello! {thongTinKHDangNhap.taiKhoan}
+                                </a>
+                                    <div className="dropdown-menu user--header__TTKH__menu" aria-labelledby="navbarDropdown">
+
+                                        <NavLink className="dropdown-item" to="./userinfo"> Thông Tin Khách Hàng</NavLink> 
+
+                                        <a className="dropdown-item text-danger" onClick={() => this.props.dangXuat()} >Đăng Xuất</a>
+
+                                    </div>
+                                </li>
+                            </ul>
+
+                        }
                     </div>
                 </nav>
 
-                 {/* LOGO RAP */}
+
+                {/* LOGIN/LOGUP MODAL */}
+                <UserLogin />
+
+                {/* LOGO RAP */}
                 <div className="user--header__logo">
-                     <NavLink to='/'><img className='rounded-circle' src={require('../../Assests/images/BHDStar_Logo_Tron.png')} alt="logo" /></NavLink>   
+                    <NavLink to='/'><img className='rounded-circle' src={require('../../Assests/images/BHDStar_Logo_Tron.png')} alt="logo" /></NavLink>
                 </div>
 
-                    <div className="user--header__line">
-                        <img src={require('../../Assests/images/line-header1.png')} alt="" />
-                    </div>
+                <div className="user--header__line">
+                    <img src={require('../../Assests/images/line-header1.png')} alt="" />
+                </div>
 
                 {/* ICON PHU */}
                 <div className='user--header__icon'>
-                        <img src={require('../../Assests/images/ngaiheo.png')} alt=""/>
-                        <img src={require('../../Assests/images/madai.png')} alt=""/>
+                    <img src={require('../../Assests/images/ngaiheo.png')} alt="" />
+                    <img src={require('../../Assests/images/madai.png')} alt="" />
                 </div>
 
             </header>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        thongTinKHDangNhap: state.QuanLyPhimReducer.thongTinKHDangNhap
+    }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    dangXuat: () => { dispatch(dangXuat()) }
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserHeader)

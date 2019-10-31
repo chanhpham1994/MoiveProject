@@ -18,6 +18,7 @@ import { HomeTemplate } from './Templates/HomeTemplate.';
 import HomePage from './Pages/UserPages/HomePage';
 import UserChiTietPhim from './Pages/UserPages/UserChiTietPhim';
 import UserDatVe from './Pages/UserPages/UserDatVe';
+import UserInformation from './Component/UserComponent/UserInformation';
 // import Auth from './Component/AdminComponent/Auth';
 
 
@@ -29,6 +30,8 @@ function App() {
         <Switch>
 
           <HomeTemplate exact path='/' Component={HomePage} />
+
+          <HomeTemplate exact path='/userinfo' Component={UserInformation}/>
 
           <HomeTemplate exact path='/userchitietphim/:maPhim' Component={UserChiTietPhim}/>
 
