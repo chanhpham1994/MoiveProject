@@ -37,10 +37,78 @@ export const dangNhap = (thongTinNguoiDung) => {
     }
 }
 
+
+export const dangKy = (thongTinNguoiDung) => {
+
+    return dispatch => {
+        axios({
+            url: settings.domain + '/QuanLyNguoiDung/DangKy',
+            method: 'POST',
+            data: {...thongTinNguoiDung, maNhom: settings.groupID}
+        })
+            .then(res => {
+                console.log(res.data)
+                swal.fire(
+                    'Đăng Ký Thành Công!',
+                    'success'
+                )
+            })
+            .catch(err => {
+                swal.fire(
+                    'Thông báo', err.response.data, 'error'
+                );
+                console.log(err.response.data)
+            })
+    }
+}
+
+
+
 export const dangXuat = () => {
     return dispatch => {
         dispatch({
            type : actionTypeNgDung.DANG_XUAT
+        })
+    }
+}
+
+
+export const datVe = (thongTinDatVe) => {
+    return dispatch => {
+        axios({
+            url: settings.domain + '/QuanLyDatVe/DatVe',
+            method : 'POST',
+            data: thongTinDatVe,
+            headers:
+            {
+                "Authorization": "Bearer " + localStorage.getItem(settings.token)
+            }
+        })
+        .then(res=>{
+            console.log(res.data)
+        })
+        .catch(err=>{
+            console.log(err.response.data)
+        })
+    }
+}
+
+export const lichSuDatVe = (taiKhoan) => {
+    return dispatch => {
+        axios({
+            url: settings.domain + '/QuanLyNguoiDung/ThongTinTaiKhoan',
+            method: 'POST',
+            data: {...taiKhoan,maNhom: settings.groupID},
+            headers:
+            {
+                "Authorization": "Bearer " + localStorage.getItem(settings.token)
+            }
+        })
+        .then(res=>{
+            console.log(res.data)
+        })
+        .catch(err=>{
+            console.log(err.response.data)
         })
     }
 }
@@ -70,7 +138,7 @@ export const themNguoiDung = (nguoiDung) => {
         axios({
             url: settings.domain + '/QuanLyNguoiDung/ThemNguoiDung',
             method: 'POST',
-            data: { ...nguoiDung, maNhom: settings.groupID },
+            data: { ...nguoiDung, maNhom: settings.groupID , maLoaiNguoiDung: 'KhachHang' },
             headers:
             {
                 "Authorization": "Bearer " + localStorage.getItem(settings.token)

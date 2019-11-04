@@ -189,7 +189,7 @@ class ModalNguoiDung extends Component {
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Đóng</button>
 
-                                            <button type="submit" className="btn btn-primary">Cập Nhật</button>
+                                            <button type="submit" className="btn btn-primary"disabled={!this.state.hoanThanh}>Cập Nhật</button>
                                         </div>
 
                                     </form>

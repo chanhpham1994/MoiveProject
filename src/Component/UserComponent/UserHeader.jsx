@@ -81,7 +81,7 @@ class UserHeader extends Component {
                                 </a>
                                     <div className="dropdown-menu user--header__TTKH__menu" aria-labelledby="navbarDropdown">
 
-                                        <NavLink className="dropdown-item" to="./userinfo"> Thông Tin Khách Hàng</NavLink> 
+                                        <NavLink className="dropdown-item" to="/userinfo"> Thông Tin Khách Hàng</NavLink> 
 
                                         <a className="dropdown-item text-danger" onClick={() => this.props.dangXuat()} >Đăng Xuất</a>
 

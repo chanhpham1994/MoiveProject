@@ -1,0 +1,22 @@
+.user--information{
+    width: 100%;
+    min-height: 800px;
+    
+   
+    h3{
+        color: $color-white-0; 
+        padding: 15px 0;
+    }
+    .user--information__pannel{
+        img{
+            width: 100%;
+            margin-top: 75px;
+        }
+    }
+    .user--information__content{
+        color: $color-white-0; 
+        h4{
+            padding: 15px 0;
+        }
+    }
+}

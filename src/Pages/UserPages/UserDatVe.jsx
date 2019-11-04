@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Countdown from 'react-countdown-now';
 import { connect } from 'react-redux';
 import { layDanhSachPhongVe } from '../../Redux/actions/QuanLyPhimAction';
-import { datGhe, huyDat } from '../../Redux/actions/QuanLyNguoiDungAction';
+import { datGhe, huyDat, datVe } from '../../Redux/actions/QuanLyNguoiDungAction';
 import UserTimeUp from '../../Component/UserComponent/UserTimeUp';
 
 class UserDatVe extends Component {
@@ -13,6 +13,16 @@ class UserDatVe extends Component {
         this.state = {
             thongTinPhim: {},
             timeUp: false,
+            thongTinDatVe: {
+                "maLichChieu": this.props.match.params.maLichChieu,
+                "danhSachVe": [
+                    {
+                        "maGhe": 0,
+                        "giaVe": 0
+                    }
+                ],
+                "taiKhoanNguoiDung": this.props.thongTinKHDangNhap.taiKhoan
+            }
         }
     }
 
@@ -29,16 +39,26 @@ class UserDatVe extends Component {
     componentWillReceiveProps(nextProps) {
         this.setState({
             thongTinPhim: { ...nextProps.danhSachPhongVe.thongTinPhim },
+            thongTinDatVe: {
+                "maLichChieu": this.props.match.params.maLichChieu,
+                "danhSachVe": [ ...nextProps.danhSachGheDaDat
+                    // {
+                    //     "maGhe": 0,
+                    //     "giaVe": 0
+                    // }
+                ],
+                "taiKhoanNguoiDung": nextProps.thongTinKHDangNhap.taiKhoan
+            }
         })
     }
 
 
     //Set thời gian hiển thị 
-    setTimeOut = setTimeout(function () {
-        this.setState({
-            timeUp: true
-        })
-    }.bind(this), 3200000);
+    // setTimeOut = setTimeout(function () {
+    //     this.setState({
+    //         timeUp: true
+    //     })
+    // }.bind(this), 3200000);
 
 
     // Hiển thị chi tiết phim UserTimeUp
@@ -85,7 +105,10 @@ class UserDatVe extends Component {
                 return (
                     //indexOf tim kiem ghe dang dc chon
                     <div className="col-1 pl-1 py-1" key={index}>
-                        <button className={danhSachGheDaDat.indexOf(ghe) !== -1 ? 'btn btn-success ghe--ngoi' : 'btn btn-secondary ghe--ngoi'} onClick={() => this.props.datGhe(ghe)}>{ghe.tenGhe}</button>
+                        <button className={danhSachGheDaDat.indexOf(ghe) !== -1 ? 'btn btn-success ghe--ngoi' : 'btn btn-secondary ghe--ngoi'} onClick={() => this.props.datGhe(ghe)}>
+                            {/* IN RA DANH SACH GHE VIP */}
+                            {ghe.loaiGhe === 'Thuong' ? ghe.tenGhe : ghe.loaiGhe}
+                        </button>
                     </div>
 
                 )
@@ -119,6 +142,9 @@ class UserDatVe extends Component {
     }
 
     render() {
+
+        console.log('thonTinDatVe', this.state.thongTinDatVe)
+        console.log('danhSachGheDaDat',this.props.danhSachGheDaDat)
 
         return (
             <div>
@@ -193,7 +219,7 @@ class UserDatVe extends Component {
                                             <p>Tổng Tiền : {this.props.tongTien} VND</p>
                                         </div>
 
-                                        <button className="btn btn-success">Đặt Vé</button>
+                                        <button className="btn btn-success" disabled={this.props.thongTinKHDangNhap.taiKhoan === undefined} onClick={()=>{this.props.datVe(this.state.thongTinDatVe)}} >Đặt Vé</button>
 
                                     </div>
                                 </div>
@@ -216,7 +242,8 @@ const mapStateToProps = (State) => {
     return {
         danhSachPhongVe: State.QuanLyPhimReducer.danhSachPhongVe,
         danhSachGheDaDat: State.QuanLyPhimReducer.danhSachGheDaDat,
-        tongTien: State.QuanLyPhimReducer.tongTien
+        tongTien: State.QuanLyPhimReducer.tongTien,
+        thongTinKHDangNhap: State.QuanLyPhimReducer.thongTinKHDangNhap
     }
 }
 
@@ -225,6 +252,7 @@ const mapDispatchToProps = (Dispatch) => {
         layDanhSachPhongVe: (maLichChieu) => { Dispatch(layDanhSachPhongVe(maLichChieu)) },
         datGhe: (thongTinGhe) => { Dispatch(datGhe(thongTinGhe)) },
         huyDat: (index) => { Dispatch(huyDat(index)) },
+        datVe: (thongTinDatVe) => { Dispatch(datVe(thongTinDatVe)) }
     }
 }
 

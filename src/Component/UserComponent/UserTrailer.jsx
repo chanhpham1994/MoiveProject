@@ -14,7 +14,7 @@ export default class UserTrailer extends Component {
 
                     <div className="modal-content">
 
-                            <iframe width={1100} height={720} src={trailer} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width={1100} height={720} src={trailer} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             
                     </div>
                 </div>
