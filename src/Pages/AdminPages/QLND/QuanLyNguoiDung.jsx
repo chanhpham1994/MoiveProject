@@ -23,7 +23,8 @@ class QuanLyNguoiDung extends Component {
                 soDt: '',
                 email: '',
                 maLoaiNguoiDung: ''
-            }
+            },
+            hoanThanh : false,
         }
     }
 
@@ -106,7 +107,7 @@ class QuanLyNguoiDung extends Component {
 
 
     render() {
-        // console.log("TCL: QuanLyNguoiDung -> handleSubmit -> this.state.nguoiDung", this.state.nguoiDung)
+   
         return (
 
             <div>

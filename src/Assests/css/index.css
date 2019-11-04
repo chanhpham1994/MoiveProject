@@ -511,7 +511,8 @@
       font-size: 20px; }
   .user--datve .user--datve__chonghe .user--datve__ghe {
     background-color: #14252d;
-    padding: 25px 15px; }
+    padding: 25px 15px;
+    max-height: 580px; }
     .user--datve .user--datve__chonghe .user--datve__ghe .vitri--manhinh {
       text-align: center;
       background-color: #333333;
@@ -541,5 +542,19 @@
   .user--timeup button {
     padding: 5px 35px;
     margin-top: 25px; }
+
+.user--information {
+  width: 100%;
+  min-height: 800px; }
+  .user--information h3 {
+    color: #FFFFFF;
+    padding: 15px 0; }
+  .user--information .user--information__pannel img {
+    width: 100%;
+    margin-top: 75px; }
+  .user--information .user--information__content {
+    color: #FFFFFF; }
+    .user--information .user--information__content h4 {
+      padding: 15px 0; }
 
 /*# sourceMappingURL=index.css.map */
