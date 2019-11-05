@@ -9,7 +9,7 @@ class UserHeader extends Component {
 
     render() {
 
-        let {thongTinKHDangNhap} = this.props;
+        let { thongTinKHDangNhap } = this.props;
 
         return (
             <header className='user--header'>
@@ -21,14 +21,14 @@ class UserHeader extends Component {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-                        <ul className="user--header__navbar navbar-nav mr-auto ">
+                        <ul className="user--header__navbar navbar-nav mr-auto">
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Menu
                                 </a>
                                 <div className="dropdown-menu user--header__menu" aria-labelledby="navbarDropdown">
                                     <a className="dropdown-item" >Lịch Chiếu</a>
-                                    <a className="dropdown-item" >Hệ Thống Rạp</a>
+                                    <NavLink to='/rap' className="dropdown-item" >Hệ Thống Rạp</NavLink>
                                     <a className="dropdown-item" >Khuyến Mãi / Sự Kiện</a>
                                     <a className="dropdown-item" >Tuyển Dụng</a>
                                     <a className="dropdown-item" >Rạp Đặc Biệt</a>
@@ -38,26 +38,36 @@ class UserHeader extends Component {
                                 <a className="nav-link">Lịch Chiếu</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link">Mua Vé Theo Rạp</a>
-                            </li>
-                        </ul>
-
-                        <ul className="user--header__navbar navbar-nav ml-auto">
-                            <li className="nav-item active">
-                                <a className="nav-link user--header__detail"><i className="fa fa-phone-volume"></i><span className="text-white"> 1900 2099</span></a>
+                                <NavLink to="/rap" className="nav-link">Mua Vé Theo Rạp</NavLink>
                             </li>
                         </ul>
                     </div>
 
+                    {/* LANGUAGE */}
+                    <div className="user--header__language">
+                        <a className="">VN | EN<span className="sr-only">(current)</span></a>
+                    </div>
+
+                    {/* LOGO RAP */}
+                    <div className="user--header__logo">
+                        <NavLink to='/'><img className='rounded-circle' src={require('../../Assests/images/BHDStar_Logo_Tron.png')} alt="logo" /></NavLink>
+                    </div>
+
+                    {/* HOTLINE */}
+                    <div className="user--header__hotline">
+                        <a className=""><i className="fa fa-phone-volume"></i><span> 1900 2099</span></a>
+                    </div>
+
+
+                    <div className="user--header__line">
+                        <img src={require('../../Assests/images/line-header1.png')} alt="" />
+                    </div>
+
+
+                    {/* RIGHT_NAVBAR */}
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-                        <ul className="user--header__navbar navbar-nav mr-auto">
-                            <li className="nav-item active">
-                                <a className="nav-link user--header__detail">VN | EN<span className="sr-only">(current)</span></a>
-                            </li>
-                        </ul>
-
-                        <ul className="user--header__navbar navbar-nav ml-auto">
+                        <ul className= "user--header__TTKH  navbar-nav ml-auto">
 
                             <li className="nav-item active">
                                 <a className="nav-link">BHD STAR MEMBER<span className="sr-only">(current)</span></a>
@@ -65,46 +75,35 @@ class UserHeader extends Component {
                             <li className="nav-item">
                                 <a className="nav-link">GÓP Ý</a>
                             </li>
-                        </ul>
 
-                        {thongTinKHDangNhap === '' ?
+                            {/* Thông tin đăng nhập rỗng hiển thị nút đăng nhập */}
+                            {thongTinKHDangNhap === '' ?
 
+                                //HIỂN THỊ NÚT ĐĂNG NHẬP
+                                <button className='btn btn-success button--login' data-toggle="modal" data-target="#modelLogin">Đăng Nhập</button> :
 
-                            //HIỂN THỊ NÚT ĐĂNG NHẬP
-                            <button className='btn btn-success button--login' data-toggle="modal" data-target="#modelLogin">Đăng Nhập</button> :
-                            
-                            //HIỂN THỊ THÔNG TIN KHÁCH HÀNG SAU KHI ĐĂNG NHẬP
-                            <ul className="user--header__TTKH">
+                                //HIỂN THỊ THÔNG TIN KHÁCH HÀNG SAU KHI ĐĂNG NHẬP
+
                                 <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Hello! {thongTinKHDangNhap.taiKhoan}
-                                </a>
+                                    <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Hello! {thongTinKHDangNhap.taiKhoan}
+                                    </a>
+
                                     <div className="dropdown-menu user--header__TTKH__menu" aria-labelledby="navbarDropdown">
 
-                                        <NavLink className="dropdown-item" to="/userinfo"> Thông Tin Khách Hàng</NavLink> 
+                                        <NavLink className="dropdown-item" to="/userinfo">Thông Tin Khách Hàng</NavLink>
 
                                         <a className="dropdown-item text-danger" onClick={() => this.props.dangXuat()} >Đăng Xuất</a>
 
                                     </div>
                                 </li>
-                            </ul>
-
-                        }
+                            }
+                        </ul>
                     </div>
                 </nav>
 
-
                 {/* LOGIN/LOGUP MODAL */}
                 <UserLogin />
-
-                {/* LOGO RAP */}
-                <div className="user--header__logo">
-                    <NavLink to='/'><img className='rounded-circle' src={require('../../Assests/images/BHDStar_Logo_Tron.png')} alt="logo" /></NavLink>
-                </div>
-
-                <div className="user--header__line">
-                    <img src={require('../../Assests/images/line-header1.png')} alt="" />
-                </div>
 
                 {/* ICON PHU */}
                 <div className='user--header__icon'>

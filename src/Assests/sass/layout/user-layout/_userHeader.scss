@@ -24,40 +24,69 @@
                 }
             }
         }
-        //Canh giữa cho LOGO
-        .user--header__detail{
-            padding: 0 50px;
-        }
     }
 
     //Hiển Thị Thông Tin KH
     .user--header__TTKH{
         margin: 0;
-        list-style: none;
             li{ 
                 a{
                     color: $color-green-1;
-                    font-size: 12px;
+                    font-size: 20px;
                     cursor: pointer;
                     &:hover{
                         color: $color-green-1;
                     }
                 }
-            }
-        
-        .user--header__TTKH__menu{
-            top: 45px;
-            left: -22px;
-            color: $color-white-0;
-            background-color: $color-black-2;
-            a{
-                &:hover{
+                .user--header__TTKH__menu{
+                    position: fixed;
+                    left: 88%;
+                    top: 57px;
+                    // left: -21%;
+                    // top: 49px;
+                    color: $color-white-0;
                     background-color: $color-black-2;
-                    cursor: pointer;
+                    a{
+                        background-color: $color-black-2;
+                        &:hover{
+                            background-color: $color-black-2;
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
+ 
+        }
+    
+
+    .user--header__language{
+        position: absolute;
+        top: 19px;
+        right: 50%;
+        margin-right: 96px;
+        z-index: 55;
+        color: white;
+        cursor: pointer;
+    }
+
+    .user--header__hotline{
+        position: absolute;
+        top: 15px;
+        left: 55%;
+        margin-right: 96px;
+        z-index: 55;
+        color: $color-white-0;
+        font-size: 20px;
+        transition: all 1s;
+        i{
+            font-size: 25px;
+        }
+        &:hover{
+            color: $color-green-1;
+            cursor: pointer;
         }
     }
+
 
     .user--header__logo{
         position: absolute;

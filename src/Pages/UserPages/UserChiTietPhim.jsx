@@ -6,8 +6,18 @@ import { NavLink } from 'react-router-dom';
 import Slider from "react-slick";
 import UserTrailer from '../../Component/UserComponent/UserTrailer';
 import UserTheaterLocation from '../../Component/UserComponent/UserTheaterLocation';
+import LoadingComponent from '../../Component/LoadingComponent/LoadingComponent';
 
 class UserChiTietPhim extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            isLoading: true
+        }
+    }
+
 
     componentDidMount = () => {
 
@@ -89,6 +99,16 @@ class UserChiTietPhim extends Component {
     }
 
 
+    //Set Thời Gian Màn Hình Chờ
+    setTimeOut = setTimeout(() => {
+
+        this.setState({
+            isLoading: false
+        })
+
+    }, 4000);
+
+
     render() {
 
         let settings = {
@@ -98,42 +118,53 @@ class UserChiTietPhim extends Component {
             slidesToScroll: 5,
         };
 
-        let {thongTinChiTietPhim} = this.props;
+        let { thongTinChiTietPhim } = this.props;
 
         return (
-            <div className="user--chitietphim" style={{ backgroundImage: `url(${BackGroundIMG})` }} >
 
-                <div className="container user--chitietphim__lichChieu">
+            <div>
 
-                    {this.renderDanhSachPhim()}
+                {this.state.isLoading ?
 
-                    <UserTrailer trailer={thongTinChiTietPhim.trailer}/>
+                    <LoadingComponent/>
 
-                    <h4 className="mt-2 lichChieu" id="lichChieu">Lịch Chiếu</h4>
+                    :
 
+                    <div className="user--chitietphim" style={{ backgroundImage: `url(${BackGroundIMG})` }} >
 
-                </div>
+                        <div className="container user--chitietphim__lichChieu">
 
-                <div className="container user--chitietphim__ngayChieu">
-                    <Slider {...settings}>
+                            {this.renderDanhSachPhim()}
 
-                        {this.renderLichChieu()}
+                            <UserTrailer trailer={thongTinChiTietPhim.trailer} />
 
-                    </Slider>
-                </div>
+                            <h4 className="mt-2 lichChieu" id="lichChieu">Lịch Chiếu</h4>
 
 
-                <div className="container">
-                    <div className="row">
-                        <div className='col-3'>
-                            {this.renderDanhSachRap()}
-                            <UserTheaterLocation/>
                         </div>
-                        <div className="col-9">
 
+                        <div className="container user--chitietphim__ngayChieu">
+                            <Slider {...settings}>
+
+                                {this.renderLichChieu()}
+
+                            </Slider>
+                        </div>
+
+
+                        <div className="container">
+                            <div className="row">
+                                <div className='col-3'>
+                                    {this.renderDanhSachRap()}
+                                    <UserTheaterLocation />
+                                </div>
+                                <div className="col-9">
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
 
             </div>
         )

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { layDanhSachPhongVe } from '../../Redux/actions/QuanLyPhimAction';
 import { datGhe, huyDat, datVe } from '../../Redux/actions/QuanLyNguoiDungAction';
 import UserTimeUp from '../../Component/UserComponent/UserTimeUp';
+import LoadingComponent from '../../Component/LoadingComponent/LoadingComponent';
 
 class UserDatVe extends Component {
 
@@ -22,7 +23,8 @@ class UserDatVe extends Component {
                     }
                 ],
                 "taiKhoanNguoiDung": this.props.thongTinKHDangNhap.taiKhoan
-            }
+            },
+            isLoading: true
         }
     }
 
@@ -41,7 +43,7 @@ class UserDatVe extends Component {
             thongTinPhim: { ...nextProps.danhSachPhongVe.thongTinPhim },
             thongTinDatVe: {
                 "maLichChieu": this.props.match.params.maLichChieu,
-                "danhSachVe": [ ...nextProps.danhSachGheDaDat
+                "danhSachVe": [...nextProps.danhSachGheDaDat
                     // {
                     //     "maGhe": 0,
                     //     "giaVe": 0
@@ -53,12 +55,13 @@ class UserDatVe extends Component {
     }
 
 
-    //Set thời gian hiển thị 
-    // setTimeOut = setTimeout(function () {
-    //     this.setState({
-    //         timeUp: true
-    //     })
-    // }.bind(this), 3200000);
+    // Set thời gian hiển thị
+    setTimeOut = setTimeout(()=>{
+        this.setState({
+            // timeUp: true,
+            isLoading: false
+        })
+    }, 4000);
 
 
     // Hiển thị chi tiết phim UserTimeUp
@@ -104,6 +107,7 @@ class UserDatVe extends Component {
 
                 return (
                     //indexOf tim kiem ghe dang dc chon
+                    // ghế được chọn => màu xanh lá // chưa được chọn màu xám
                     <div className="col-1 pl-1 py-1" key={index}>
                         <button className={danhSachGheDaDat.indexOf(ghe) !== -1 ? 'btn btn-success ghe--ngoi' : 'btn btn-secondary ghe--ngoi'} onClick={() => this.props.datGhe(ghe)}>
                             {/* IN RA DANH SACH GHE VIP */}
@@ -144,93 +148,120 @@ class UserDatVe extends Component {
     render() {
 
         console.log('thonTinDatVe', this.state.thongTinDatVe)
-        console.log('danhSachGheDaDat',this.props.danhSachGheDaDat)
+        console.log('danhSachGheDaDat', this.props.danhSachGheDaDat)
 
         return (
             <div>
 
-                {!this.state.timeUp ?
+                {this.state.isLoading ?
 
-                    <div className="user--datve">
-
-                        {/* Ma lich chieu : {this.props.match.params.maLichChieu} */}
-                        <div className="container">
-                            <div className="user--datve__header">
-                                <ul>
-                                    <li>1.Chọn Vé</li>
-                                    <li>2.Chọn Ghế</li>
-                                    <li>3.Chọn Đồ Ăn</li>
-                                    <li>4.Xác Nhận</li>
-                                    <li>5.Đặt Vé Thành Công</li>
-                                </ul>
-                            </div>
-
-                            {/* RENDER CHITIETPHIM */}
-                            <div className="user--datve__chitietphim">
-
-                                {this.rednerChiTietPhim()}
-
-                            </div>
-
-                            <div style={{ clear: 'both' }}>
-                            </div>
-
-
-                            {/* RENDER GHE NGOI */}
-
-                            <div className="user--datve__chonghe">
-
-                                {/* //??????????? */}
-                                <span >Thời Gian Còn lại :</span>
-                                {/* <span className="user--datve__time">
-                                    <Countdown date={Date.now() + 300000} renderer={this.renderTime} />
-                                </span> */}
-
-                                <h3>Chọn Ghế</h3>
-                                <div className="user--datve__chuthich">
-                                    <span>
-                                        <i className="fa fa-square text-success"></i>
-                                        Ghế Đang Chọn
-                            <i className="fa fa-square text-secondary"></i>
-                                        Ghế Trống
-                            <i className="fa fa-square text-danger"></i>
-                                        Ghế Đã Bán
-                            </span>
-                                </div>
-                                <div className='row'>
-                                    <div className='user--datve__ghe col-8 row'>
-                                        <div className="vitri--manhinh col-12">
-                                            <p>SCREEN</p>
-                                        </div>
-
-                                        {this.renderGheNgoi()}
-                                    </div>
-
-
-                                    <div className='col-4 pl-5'>
-
-                                        {/* RENDER THOI GIAN CON LAI  VS  DANH SACH GHE DA DAT */}
-                                        <h3>Giỏ Hàng Của Bạn</h3>
-
-
-                                        {this.renderGheDaChon()}
-
-                                        <div className="user--datve__tinhtien">
-                                            <p>Tổng Tiền : {this.props.tongTien} VND</p>
-                                        </div>
-
-                                        <button className="btn btn-success" disabled={this.props.thongTinKHDangNhap.taiKhoan === undefined} onClick={()=>{this.props.datVe(this.state.thongTinDatVe)}} >Đặt Vé</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <LoadingComponent/>
 
                     :
 
-                    // Render Het Thoi Gian Chon Ghe
-                    <UserTimeUp />}
+                    <div>
+
+
+                        {!this.state.timeUp ?
+
+                            <div className="user--datve">
+
+                                {/* Ma lich chieu : {this.props.match.params.maLichChieu} */}
+                                <div className="container">
+                                    <div className="user--datve__header">
+                                        <ul>
+                                            <li>1.Chọn Vé</li>
+                                            <li>2.Chọn Ghế</li>
+                                            <li>3.Chọn Đồ Ăn</li>
+                                            <li>4.Xác Nhận</li>
+                                            <li>5.Đặt Vé Thành Công</li>
+                                        </ul>
+                                    </div>
+
+                                    {/* RENDER CHITIETPHIM */}
+                                    <div className="user--datve__chitietphim">
+
+                                        {this.rednerChiTietPhim()}
+
+                                    </div>
+
+                                    <div style={{ clear: 'both' }}>
+                                    </div>
+
+
+                                    {/* RENDER GHE NGOI */}
+
+                                    <div className="user--datve__chonghe">
+
+                                        {/* //??????????? */}
+                                        <span >Thời Gian Còn lại :</span>
+                                        {/* <span className="user--datve__time">
+                                    <Countdown date={Date.now() + 300000} renderer={this.renderTime} />
+                                </span> */}
+
+                                        <h3>Chọn Ghế</h3>
+                                        <div className="user--datve__chuthich">
+                                            <span>
+                                                <i className="fa fa-square text-success"></i>
+                                                Ghế Đang Chọn
+                            <i className="fa fa-square text-secondary"></i>
+                                                Ghế Trống
+                            <i className="fa fa-square text-danger"></i>
+                                                Ghế Đã Bán
+                            </span>
+                                        </div>
+                                        <div className='row'>
+                                            <div className='user--datve__ghe col-8 row'>
+                                                <div className="vitri--manhinh col-12">
+                                                    <p>SCREEN</p>
+                                                </div>
+
+                                                {this.renderGheNgoi()}
+                                            </div>
+
+
+                                            <div className='col-4 pl-5'>
+
+                                                {/* RENDER THOI GIAN CON LAI  VS  DANH SACH GHE DA DAT */}
+                                                <h3>Giỏ Hàng Của Bạn</h3>
+
+
+                                                {this.renderGheDaChon()}
+
+                                                <div className="user--datve__tinhtien">
+                                                    <p>Tổng Tiền : {this.props.tongTien} VND</p>
+                                                </div>
+
+                                                {/* Không cho người dùng đặt vé khi chưa đăng nhập */}
+                                                {
+                                                    this.props.thongTinKHDangNhap.taiKhoan === undefined ?
+
+                                                        <div>
+                                                            <h4>Vui Lòng Đăng Nhập Trước Khi Đặt Vé!! Xin Cảm Ơn</h4>
+                                                            <button className="btn btn-success" disabled onClick={() => { this.props.datVe(this.state.thongTinDatVe) }} >Đặt Vé</button>
+                                                        </div>
+                                                        :
+                                                        // Không cho người dùng đặt vé khi chưa chọn ghế
+
+                                                        <button className="btn btn-success" disabled={this.props.danhSachGheDaDat == ''} onClick={() => { this.props.datVe(this.state.thongTinDatVe) }} >Đặt Vé</button>
+                                                }
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            :
+
+                            // Render Het Thoi Gian Chon Ghe
+                            <UserTimeUp />}
+
+                    </div>
+
+                }
 
             </div>
         )

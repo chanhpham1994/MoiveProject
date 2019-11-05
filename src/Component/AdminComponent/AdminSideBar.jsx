@@ -93,7 +93,7 @@ export default class AdminSideBar extends Component {
               <ul>
                 <li>
                   <i className="fa fa-coins"></i>
-                  <NavLink to='/'>  Doanh Thu  </NavLink>
+                  <a >  Doanh Thu  </a>
                 </li>
 
               </ul>

@@ -1,0 +1,39 @@
+.user--heThongRap{
+    padding: 150px 0;
+
+    .user--heThongRap__content{
+        border: 1px solid black;
+        
+        .user--heThongRap__dsachHeThong{
+            border-right: 1px solid gray;
+            .logo{
+                text-align: center;
+                padding: 15px 0;
+                margin: 25px 0;
+                border-bottom: 0.5px solid $color-gray-2;
+                cursor: pointer;
+            }
+        }
+        .user--heThongRap__dsachRap{
+            border-right: 1px solid gray;
+            overflow: scroll;
+            max-height: 658px;
+            .rapChiTiet{
+                text-align: center;
+                padding: 15px 0;
+                margin: 25px 0;
+                border-bottom: 0.5px solid $color-gray-2;
+                cursor: pointer;
+                .text{
+                    color: $color-green-2;
+                    font-weight: $fw-bold-1;
+                }
+            }
+        }
+        .user--heThongRap__lichChieu{
+            overflow: scroll;
+            max-height: 658px;
+        }
+    }
+    
+}

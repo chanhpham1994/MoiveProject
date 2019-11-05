@@ -4,6 +4,7 @@ export const actionTypeNgDung = {
     DANG_KY : 'DANG_KY',
     DAT_GHE: 'DAT_GHE',
     HUY_DAT: 'HUY_DAT',
+    LICH_SU_DAT_VE : 'LICH_SU_DAT_VE',
     
     LAY_DANH_SACH_NGUOI_DUNG : 'LAY_DANH_SACH_NGUOI_DUNG',
     THEM_NGUOI_DUNG : 'THEM_NGUOI_DUNG',

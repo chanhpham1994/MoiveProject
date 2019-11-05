@@ -1,0 +1,21 @@
+.loading-page{
+    height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 100px;
+        height: 100px;
+        animation-name: icon;
+        animation-duration: 4s;
+    }
+}
+
+
+@keyframes icon {
+    0%   {transform: rotate(-15deg);opacity: 1;}
+    25%  {transform: rotate(15deg);opacity: 0.8;}
+    50%  {transform: rotate(-15deg);opacity: 0.6;}
+    75%  {transform: rotate(15deg);opacity: 0.4;}
+    100% {transform: rotate(-15deg);opacity: 0.2;}
+  }
