@@ -19,6 +19,7 @@ import HomePage from './Pages/UserPages/HomePage';
 import UserChiTietPhim from './Pages/UserPages/UserChiTietPhim';
 import UserDatVe from './Pages/UserPages/UserDatVe';
 import UserInformation from './Component/UserComponent/UserInformation';
+import UserRap from './Pages/UserPages/UserRap';
 // import Auth from './Component/AdminComponent/Auth';
 
 
@@ -34,6 +35,8 @@ function App() {
           <HomeTemplate exact path='/userinfo' Component={UserInformation}/>
 
           <HomeTemplate exact path='/userchitietphim/:maPhim' Component={UserChiTietPhim}/>
+
+          <HomeTemplate exact path='/rap' Component={UserRap}/>
 
           <HomeTemplate exact path='/datve/:maLichChieu' Component={UserDatVe}/>
 

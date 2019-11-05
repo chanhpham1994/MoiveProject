@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { layThongTinPhim, layThongTinPhimCapNhat, xoaPhim } from '../../../Redux/actions/QuanLyPhimAction';
 import { NavLink } from 'react-router-dom';
 import ModalPhim from '../../../Component/AdminComponent/ModalPhim';
+import LoadingComponent from '../../../Component/LoadingComponent/LoadingComponent';
 
 class ChiTietPhim extends Component {
 
@@ -82,10 +83,9 @@ class ChiTietPhim extends Component {
             <div>
                 {/* sau khi click xuát hiện màn hình chờ 3s */}
                 {this.state.isLoading ?
-
-                    <div className='loading-page'>
-
-                    </div>
+                    
+                    <LoadingComponent/>
+                    
                     :
                     <div>
                         <h4> Chi Tiết Phim : {this.props.match.params.maPhim}</h4>

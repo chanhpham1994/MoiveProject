@@ -98,14 +98,19 @@ export const lichSuDatVe = (taiKhoan) => {
         axios({
             url: settings.domain + '/QuanLyNguoiDung/ThongTinTaiKhoan',
             method: 'POST',
-            data: {...taiKhoan,maNhom: settings.groupID},
+            data: {taiKhoan: taiKhoan},
             headers:
             {
                 "Authorization": "Bearer " + localStorage.getItem(settings.token)
             }
         })
         .then(res=>{
-            console.log(res.data)
+            console.log('lichSuDatVe',res.data)
+            dispatch({
+                type: actionTypeNgDung.LICH_SU_DAT_VE,
+                lichSuDatVeND : res.data
+            })
+
         })
         .catch(err=>{
             console.log(err.response.data)

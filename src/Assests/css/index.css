@@ -277,25 +277,47 @@
     .user--header .user--header__navbar .user--header__menu a:hover {
       background-color: #111111;
       cursor: pointer; }
-  .user--header .user--header__navbar .user--header__detail {
-    padding: 0 50px; }
   .user--header .user--header__TTKH {
-    margin: 0;
-    list-style: none; }
+    margin: 0; }
     .user--header .user--header__TTKH li a {
       color: #6ab034;
-      font-size: 12px;
+      font-size: 20px;
       cursor: pointer; }
       .user--header .user--header__TTKH li a:hover {
         color: #6ab034; }
-    .user--header .user--header__TTKH .user--header__TTKH__menu {
-      top: 45px;
-      left: -22px;
+    .user--header .user--header__TTKH li .user--header__TTKH__menu {
+      position: fixed;
+      left: 88%;
+      top: 57px;
       color: #FFFFFF;
       background-color: #111111; }
-      .user--header .user--header__TTKH .user--header__TTKH__menu a:hover {
-        background-color: #111111;
-        cursor: pointer; }
+      .user--header .user--header__TTKH li .user--header__TTKH__menu a {
+        background-color: #111111; }
+        .user--header .user--header__TTKH li .user--header__TTKH__menu a:hover {
+          background-color: #111111;
+          cursor: pointer; }
+  .user--header .user--header__language {
+    position: absolute;
+    top: 19px;
+    right: 50%;
+    margin-right: 96px;
+    z-index: 55;
+    color: white;
+    cursor: pointer; }
+  .user--header .user--header__hotline {
+    position: absolute;
+    top: 15px;
+    left: 55%;
+    margin-right: 96px;
+    z-index: 55;
+    color: #FFFFFF;
+    font-size: 20px;
+    transition: all 1s; }
+    .user--header .user--header__hotline i {
+      font-size: 25px; }
+    .user--header .user--header__hotline:hover {
+      color: #6ab034;
+      cursor: pointer; }
   .user--header .user--header__logo {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -556,5 +578,62 @@
     color: #FFFFFF; }
     .user--information .user--information__content h4 {
       padding: 15px 0; }
+
+.user--heThongRap {
+  padding: 150px 0; }
+  .user--heThongRap .user--heThongRap__content {
+    border: 1px solid black; }
+    .user--heThongRap .user--heThongRap__content .user--heThongRap__dsachHeThong {
+      border-right: 1px solid gray; }
+      .user--heThongRap .user--heThongRap__content .user--heThongRap__dsachHeThong .logo {
+        text-align: center;
+        padding: 15px 0;
+        margin: 25px 0;
+        border-bottom: 0.5px solid #E5E9EC;
+        cursor: pointer; }
+    .user--heThongRap .user--heThongRap__content .user--heThongRap__dsachRap {
+      border-right: 1px solid gray;
+      overflow: scroll;
+      max-height: 658px; }
+      .user--heThongRap .user--heThongRap__content .user--heThongRap__dsachRap .rapChiTiet {
+        text-align: center;
+        padding: 15px 0;
+        margin: 25px 0;
+        border-bottom: 0.5px solid #E5E9EC;
+        cursor: pointer; }
+        .user--heThongRap .user--heThongRap__content .user--heThongRap__dsachRap .rapChiTiet .text {
+          color: #42af33;
+          font-weight: 700; }
+    .user--heThongRap .user--heThongRap__content .user--heThongRap__lichChieu {
+      overflow: scroll;
+      max-height: 658px; }
+
+.loading-page {
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .loading-page img {
+    width: 100px;
+    height: 100px;
+    animation-name: icon;
+    animation-duration: 4s; }
+
+@keyframes icon {
+  0% {
+    transform: rotate(-15deg);
+    opacity: 1; }
+  25% {
+    transform: rotate(15deg);
+    opacity: 0.8; }
+  50% {
+    transform: rotate(-15deg);
+    opacity: 0.6; }
+  75% {
+    transform: rotate(15deg);
+    opacity: 0.4; }
+  100% {
+    transform: rotate(-15deg);
+    opacity: 0.2; } }
 
 /*# sourceMappingURL=index.css.map */
