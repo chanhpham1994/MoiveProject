@@ -47,9 +47,9 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
         //DANG_NHAP:
         case actionTypeNgDung.DANG_NHAP:
 
-            state.thongTinKHDangNhap = action.thongTinNguoiDung;
+            //Thêm thuộc tính soDt đồng bộ với ModalNguoiDung khi cập nhật thông tin
+            state.thongTinKHDangNhap = {...action.thongTinNguoiDung,soDt:action.thongTinNguoiDung.soDT};
             
-
             return { ...state }
 
         //DANG_XUAT:
@@ -102,8 +102,12 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
 
             if (index2 !== -1) {
                 mangCapNhat[index2] = action.ngDungDaCapNhat;
+                
             }
+            //Cập nhật lại mảng người dùng trong admin
             state.mangNguoiDung = mangCapNhat;
+            //Cập nhật lại thông tin khách hàng ngoài user
+            state.thongTinKHDangNhap = {...action.ngDungDaCapNhat,soDT:action.ngDungDaCapNhat.soDt};
 
             return { ...state };
 
@@ -169,16 +173,6 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             return { ...state };
 
 
-
-        //LAY_THONG_TIN_LICH_CHIEU
-        // case actionTypeRap.LAY_THONG_TIN_LICH_CHIEU_PHIM:
-
-        //     state.thongTinLichChieu = action.thongTinLichChieu;
-
-        //     return { ...state }
-
-
-
         //LAY_THONG_TIN_RAP
         case actionTypePhim.LAY_THONG_TIN_RAP:
 
@@ -202,16 +196,14 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
 
             let mangGhe = state.danhSachGheDaDat;
 
-            let index5 = mangGhe.findIndex((ghe, index) => ghe.tenGhe === action.thongTinGhe.tenGhe)
+            let index4 = mangGhe.findIndex((ghe, index) => ghe.tenGhe === action.thongTinGhe.tenGhe)
 
-            if (index5 === -1) {
+            if (index4 === -1) {
                 mangGhe = [...state.danhSachGheDaDat, action.thongTinGhe]
                 state.tongTien += action.thongTinGhe.giaVe
             } else {
-
+                
             }
-
-            // mangGhe.filter((ghe,index) => index !== action.index)
 
             state.danhSachGheDaDat = mangGhe;
 
@@ -234,6 +226,7 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
         case actionTypeNgDung.LICH_SU_DAT_VE:
 
             state.lichSuDatVeND = action.lichSuDatVeND;
+            console.log("TCL: QuanLyPhimReducer -> action.lichSuDatVeND", action.lichSuDatVeND)
            
             return {...state}
 

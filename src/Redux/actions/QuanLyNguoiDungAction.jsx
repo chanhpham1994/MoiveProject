@@ -86,6 +86,19 @@ export const datVe = (thongTinDatVe) => {
         })
         .then(res=>{
             console.log(res.data)
+            swal.fire({
+                title: 'Đặt Vé Thành Công',
+                width: 600,
+                padding: '3em',
+                background: '#fff url(/images/trees.png)',
+                backdrop: `
+                  rgba(0,0,123,0.4)
+                  url("/images/nyan-cat.gif")
+                  center left
+                  no-repeat
+                `
+              })
+              
         })
         .catch(err=>{
             console.log(err.response.data)

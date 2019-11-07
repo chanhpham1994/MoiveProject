@@ -261,6 +261,7 @@
             top: 3px; }
 
 .user--header {
+  width: 100%;
   background-color: #111111;
   position: relative; }
   .user--header .user--header__navbar li a {
@@ -277,25 +278,25 @@
     .user--header .user--header__navbar .user--header__menu a:hover {
       background-color: #111111;
       cursor: pointer; }
-  .user--header .user--header__TTKH {
-    margin: 0; }
+  .user--header .user--header__TTKH li {
+    position: unset !important; }
     .user--header .user--header__TTKH li a {
       color: #6ab034;
       font-size: 20px;
       cursor: pointer; }
       .user--header .user--header__TTKH li a:hover {
         color: #6ab034; }
-    .user--header .user--header__TTKH li .user--header__TTKH__menu {
-      position: fixed;
-      left: 88%;
-      top: 57px;
-      color: #FFFFFF;
+  .user--header .user--header__TTKH .user--header__TTKH__menu {
+    right: 0%;
+    left: 87%;
+    top: 56px;
+    color: #FFFFFF;
+    background-color: #111111; }
+    .user--header .user--header__TTKH .user--header__TTKH__menu a {
       background-color: #111111; }
-      .user--header .user--header__TTKH li .user--header__TTKH__menu a {
-        background-color: #111111; }
-        .user--header .user--header__TTKH li .user--header__TTKH__menu a:hover {
-          background-color: #111111;
-          cursor: pointer; }
+      .user--header .user--header__TTKH .user--header__TTKH__menu a:hover {
+        background-color: #111111;
+        cursor: pointer; }
   .user--header .user--header__language {
     position: absolute;
     top: 19px;
@@ -388,7 +389,7 @@
     text-align: center;
     color: #6ab034; }
   .user--promotion img {
-    width: 540px;
+    width: 100%;
     height: 245px; }
   .user--promotion .slick-prev, .user--promotion .slick-next {
     display: none !important; }
@@ -548,7 +549,7 @@
     color: red;
     cursor: pointer; }
   .user--datve .user--datve__chonghe .user--datve__time {
-    font-size: 55px; }
+    font-size: 42px; }
   .user--datve .user--datve__chonghe .user--datve__tinhtien {
     border-top: 1px solid #6ab034;
     padding: 15px 0; }
@@ -612,7 +613,8 @@
   height: 1000px;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  background-color: #111111; }
   .loading-page img {
     width: 100px;
     height: 100px;

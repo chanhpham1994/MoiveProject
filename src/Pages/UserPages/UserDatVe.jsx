@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Countdown from 'react-countdown-now';
 import { connect } from 'react-redux';
 import { layDanhSachPhongVe } from '../../Redux/actions/QuanLyPhimAction';
 import { datGhe, huyDat, datVe } from '../../Redux/actions/QuanLyNguoiDungAction';
 import UserTimeUp from '../../Component/UserComponent/UserTimeUp';
 import LoadingComponent from '../../Component/LoadingComponent/LoadingComponent';
+
 
 class UserDatVe extends Component {
 
@@ -24,7 +24,9 @@ class UserDatVe extends Component {
                 ],
                 "taiKhoanNguoiDung": this.props.thongTinKHDangNhap.taiKhoan
             },
-            isLoading: true
+            isLoading: true,
+            minutes: 5,
+            seconds: 4,
         }
     }
 
@@ -36,33 +38,58 @@ class UserDatVe extends Component {
 
         this.props.layDanhSachPhongVe(maLichChieu);
 
+        this.myInterval = setInterval(() => {
+            const { seconds, minutes } = this.state
+
+            if (seconds > 0) {
+                this.setState(({ seconds }) => ({
+                    seconds: seconds - 1
+                }))
+            }
+            if (seconds === 0) {
+                if (minutes === 0) {
+                    clearInterval(this.myInterval)
+                } else {
+                    this.setState(({ minutes }) => ({
+                        minutes: minutes - 1,
+                        seconds: 59
+                    }))
+                }
+            }
+        }, 1000)
+
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState({
             thongTinPhim: { ...nextProps.danhSachPhongVe.thongTinPhim },
+            //Truyền thông tin người dùng đặt
             thongTinDatVe: {
                 "maLichChieu": this.props.match.params.maLichChieu,
-                "danhSachVe": [...nextProps.danhSachGheDaDat
-                    // {
-                    //     "maGhe": 0,
-                    //     "giaVe": 0
-                    // }
-                ],
+                "danhSachVe": [...nextProps.danhSachGheDaDat],
                 "taiKhoanNguoiDung": nextProps.thongTinKHDangNhap.taiKhoan
             }
         })
     }
 
+    componentWillUnmount() {
+        clearInterval(this.myInterval)
+    }
+
 
     // Set thời gian hiển thị
-    setTimeOut = setTimeout(()=>{
+    setTimeOut = setTimeout(() => {
         this.setState({
-            // timeUp: true,
             isLoading: false
         })
     }, 4000);
 
+    // Set thời gian còn lại của khách hàng
+    setTimeOut = setTimeout(() => {
+        this.setState({
+            timeUp: true,
+        })
+    }, 305000);
 
     // Hiển thị chi tiết phim UserTimeUp
     rednerChiTietPhim = () => {
@@ -109,7 +136,7 @@ class UserDatVe extends Component {
                     //indexOf tim kiem ghe dang dc chon
                     // ghế được chọn => màu xanh lá // chưa được chọn màu xám
                     <div className="col-1 pl-1 py-1" key={index}>
-                        <button className={danhSachGheDaDat.indexOf(ghe) !== -1 ? 'btn btn-success ghe--ngoi' : 'btn btn-secondary ghe--ngoi'} onClick={() => this.props.datGhe(ghe)}>
+                        <button className={danhSachGheDaDat.indexOf(ghe) !== -1 ? 'btn btn-success ghe--ngoi' : 'btn btn-secondary ghe--ngoi'} onClick={() => this.props.datGhe(ghe, index)}>
                             {/* IN RA DANH SACH GHE VIP */}
                             {ghe.loaiGhe === 'Thuong' ? ghe.tenGhe : ghe.loaiGhe}
                         </button>
@@ -139,23 +166,19 @@ class UserDatVe extends Component {
     }
 
 
-
-    //Render thoi gian con lai cua khach
-    renderTime = ({ minutes, seconds }) => {
-        return <span>{minutes}:{seconds}</span>;
-    }
-
     render() {
 
         console.log('thonTinDatVe', this.state.thongTinDatVe)
         console.log('danhSachGheDaDat', this.props.danhSachGheDaDat)
+
+        const { minutes, seconds } = this.state
 
         return (
             <div>
 
                 {this.state.isLoading ?
 
-                    <LoadingComponent/>
+                    <LoadingComponent />
 
                     :
 
@@ -193,22 +216,24 @@ class UserDatVe extends Component {
 
                                     <div className="user--datve__chonghe">
 
-                                        {/* //??????????? */}
-                                        <span >Thời Gian Còn lại :</span>
-                                        {/* <span className="user--datve__time">
-                                    <Countdown date={Date.now() + 300000} renderer={this.renderTime} />
-                                </span> */}
-
                                         <h3>Chọn Ghế</h3>
+
+                                        {/* Thời Gian Còn Lại Của người đặt */}
+                                        <span >Thời Gian Còn lại :</span>
+                                        <span className="user--datve__time">
+                                            0{minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+                                        </span>
+
+                                        
                                         <div className="user--datve__chuthich">
                                             <span>
                                                 <i className="fa fa-square text-success"></i>
                                                 Ghế Đang Chọn
-                            <i className="fa fa-square text-secondary"></i>
+                                            <i className="fa fa-square text-secondary"></i>
                                                 Ghế Trống
-                            <i className="fa fa-square text-danger"></i>
+                                            <i className="fa fa-square text-danger"></i>
                                                 Ghế Đã Bán
-                            </span>
+                                            </span>
                                         </div>
                                         <div className='row'>
                                             <div className='user--datve__ghe col-8 row'>
@@ -281,7 +306,7 @@ const mapStateToProps = (State) => {
 const mapDispatchToProps = (Dispatch) => {
     return {
         layDanhSachPhongVe: (maLichChieu) => { Dispatch(layDanhSachPhongVe(maLichChieu)) },
-        datGhe: (thongTinGhe) => { Dispatch(datGhe(thongTinGhe)) },
+        datGhe: (thongTinGhe, index) => { Dispatch(datGhe(thongTinGhe, index)) },
         huyDat: (index) => { Dispatch(huyDat(index)) },
         datVe: (thongTinDatVe) => { Dispatch(datVe(thongTinDatVe)) }
     }
