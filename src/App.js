@@ -18,8 +18,9 @@ import { HomeTemplate } from './Templates/HomeTemplate.';
 import HomePage from './Pages/UserPages/HomePage';
 import UserChiTietPhim from './Pages/UserPages/UserChiTietPhim';
 import UserDatVe from './Pages/UserPages/UserDatVe';
-import UserInformation from './Component/UserComponent/UserInformation';
+
 import UserRap from './Pages/UserPages/UserRap';
+import UserInformation from './Pages/UserPages/UserInformation';
 // import Auth from './Component/AdminComponent/Auth';
 
 

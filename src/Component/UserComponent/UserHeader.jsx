@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import UserPromotion from './UserPromotion';
 import { NavLink } from 'react-router-dom';
 import UserLogin from './UserLogin';
 import { connect } from 'react-redux';
@@ -13,29 +12,29 @@ class UserHeader extends Component {
 
         return (
             <header className='user--header'>
-
                 <nav className="navbar navbar-expand-lg">
                     <button className="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon" />
                     </button>
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
                         <ul className="user--header__navbar navbar-nav mr-auto">
+                            {/* DropDown */}
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Menu
                                 </a>
                                 <div className="dropdown-menu user--header__menu" aria-labelledby="navbarDropdown">
-                                    <a className="dropdown-item" >Lịch Chiếu</a>
+                                    <a href="#lichChieu" className="dropdown-item" >Lịch Chiếu</a>
                                     <NavLink to='/rap' className="dropdown-item" >Hệ Thống Rạp</NavLink>
                                     <a className="dropdown-item" >Khuyến Mãi / Sự Kiện</a>
                                     <a className="dropdown-item" >Tuyển Dụng</a>
                                     <a className="dropdown-item" >Rạp Đặc Biệt</a>
                                 </div>
                             </li>
+
                             <li className="nav-item active">
-                                <a className="nav-link">Lịch Chiếu</a>
+                                <a href="#lichChieu" className="nav-link">Lịch Chiếu</a>
                             </li>
                             <li className="nav-item">
                                 <NavLink to="/rap" className="nav-link">Mua Vé Theo Rạp</NavLink>
@@ -66,9 +65,7 @@ class UserHeader extends Component {
 
                     {/* RIGHT_NAVBAR */}
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
-                        <ul className= "user--header__TTKH  navbar-nav ml-auto">
-
+                        <ul className="user--header__TTKH  navbar-nav ml-auto">
                             <li className="nav-item active">
                                 <a className="nav-link">BHD STAR MEMBER<span className="sr-only">(current)</span></a>
                             </li>
