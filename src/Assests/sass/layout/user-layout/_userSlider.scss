@@ -1,6 +1,28 @@
 .user--slider{
     width: 100%;
     z-index: -1;
+    .user--slider__head{
+        display: flex;
+        justify-content: center;
+        padding-top: 70px;
+        .nav-pills{
+            .nav-item{
+                padding: 0 15px;
+                .nav-link{
+                    background-color: transparent;
+                    font-size: $fs-2;
+                    color:$color-white-0 ;
+                    border-radius: unset;
+                  
+                }
+                .nav-link.active{
+                    background-color: transparent !important; 
+                    color: $color-green-2 ; 
+                    border-bottom: 1px solid $color-green-2 ;
+                }
+            }
+        }
+    }
     .slick-slider{
         padding: 25px 50px;
         .slick-prev{

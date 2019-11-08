@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { dangNhap, dangKy } from '../../Redux/actions/QuanLyNguoiDungAction';
+import { settings } from '../../Common/Config/Setting';
 
 class UserLogin extends Component {
 
@@ -17,7 +18,7 @@ class UserLogin extends Component {
                 hoTen: '',
                 soDt: '',
                 email: '',
-                // maLoaiNguoiDung: 'KhachHang'
+                maLoaiNguoiDung: ''
             },
             errors: {
                 taiKhoan: '',
@@ -29,6 +30,7 @@ class UserLogin extends Component {
             },
         }
     }
+
 
     // ĐĂNG NHẬP
     handleChangeLogin = (event) => {

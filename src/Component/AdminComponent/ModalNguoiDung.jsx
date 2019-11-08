@@ -175,6 +175,8 @@ class ModalNguoiDung extends Component {
                                             </div>
 
                                             {/* Mã Loại Người Dùng */}
+
+                                            { this.state.nguoiDung.maLoaiNguoiDung === 'QuanTri' ?
                                             <div className="form-group col-7">
                                                 <label htmlFor="inputState">Mã Loại Người Dùng</label>
                                                 <select id="inputState" onChange={this.handleChange} name='maLoaiNguoiDung' value={this.state.nguoiDung.maLoaiNguoiDung} className="form-control" >
@@ -185,6 +187,9 @@ class ModalNguoiDung extends Component {
                                                 </select>
                                             </div>
 
+                                            :  ''
+                                            }
+                                            
                                         </div>
                                         <div className="modal-footer">
                                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Đóng</button>

@@ -2,9 +2,21 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import UserLogin from './UserLogin';
 import { connect } from 'react-redux';
-import { dangXuat } from '../../Redux/actions/QuanLyNguoiDungAction';
+import { dangXuat,daDangNhap } from '../../Redux/actions/QuanLyNguoiDungAction';
+import { settings } from '../../Common/Config/Setting'
 
 class UserHeader extends Component {
+
+    componentDidMount = () => {
+
+        //LẤY THÔNG TIN TỪ LOCALSTORAGE CỦA NGƯỜI DÙNG ĐÃ ĐĂNG NHẬP TỪ TRƯỚC
+
+        const thongTin = JSON.parse(localStorage.getItem(settings.userLogin));
+        if(thongTin !== ''){
+            this.props.daDangNhap(thongTin);
+        }
+     
+    }
 
     render() {
 
@@ -120,7 +132,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    dangXuat: () => { dispatch(dangXuat()) }
+    dangXuat: () => { dispatch(dangXuat()) },
+    daDangNhap: (thongTin) => {dispatch(daDangNhap(thongTin))}
+
 })
 
 

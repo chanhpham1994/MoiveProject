@@ -25,7 +25,7 @@ export const dangNhap = (thongTinNguoiDung) => {
                 )
                 dispatch({
                     type: actionTypeNgDung.DANG_NHAP,
-                    thongTinNguoiDung: res.data
+                    thongTinKHDangNhap: res.data
                 })
             })
             .catch(err => {
@@ -34,6 +34,16 @@ export const dangNhap = (thongTinNguoiDung) => {
                 );
                 console.log(err.response.data)
             })
+    }
+}
+
+export const daDangNhap = (thongTin) => {
+    return dispatch => {
+        
+        dispatch({
+            type: actionTypeNgDung.DA_DANG_NHAP,
+            thongTinKHDangNhap : thongTin
+        })
     }
 }
 
@@ -66,6 +76,9 @@ export const dangKy = (thongTinNguoiDung) => {
 
 export const dangXuat = () => {
     return dispatch => {
+        //Xóa local Storage
+        localStorage.clear();
+
         dispatch({
            type : actionTypeNgDung.DANG_XUAT
         })

@@ -48,8 +48,15 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
         case actionTypeNgDung.DANG_NHAP:
 
             //Thêm thuộc tính soDt đồng bộ với ModalNguoiDung khi cập nhật thông tin
-            state.thongTinKHDangNhap = {...action.thongTinNguoiDung,soDt:action.thongTinNguoiDung.soDT};
+            state.thongTinKHDangNhap = {...action.thongTinKHDangNhap,soDt:action.thongTinKHDangNhap.soDT};
             
+            return { ...state }
+
+        //DA_DANG_NHAP:
+        case actionTypeNgDung.DA_DANG_NHAP:
+      
+            state.thongTinKHDangNhap = action.thongTinKHDangNhap
+           
             return { ...state }
 
         //DANG_XUAT:

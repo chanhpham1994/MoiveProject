@@ -1,5 +1,6 @@
 export const actionTypeNgDung = {
     DANG_NHAP : 'DANG_NHAP',
+    DA_DANG_NHAP: 'DA_DANG_NHAP',
     DANG_XUAT : 'DANG_XUAT',
     DANG_KY : 'DANG_KY',
     DAT_GHE: 'DAT_GHE',
