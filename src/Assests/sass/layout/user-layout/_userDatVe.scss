@@ -44,6 +44,8 @@
             background-color: $color-blue-5;
             padding: 25px 15px;
             max-height: 580px;
+            max-width: 61%;
+            float: left;
             .vitri--manhinh{
                 text-align: center;
                 background-color: $color-black-0;
@@ -51,23 +53,35 @@
                 margin-bottom: 15px;
             }
             .ghe--ngoi{
-                width: 50px;
-                height: 50px;
+                width: 30px;
+                height: 30px;
+                margin: 5px;
+                font-size: 12px; 
+                padding: 0;
+                span{
+                  text-align: center;
+                }
             }
             
         }
-        .user--huydatve{
-            margin-left: 5px;
-            color: red;
-            cursor: pointer;
+        .user--dadat{
+            width: 39%;
+            float: left;
+            .user--huydatve{
+                margin-left: 5px;
+                color: red;
+                cursor: pointer;
+            }
+            .user--datve__tinhtien{
+                border-top: 1px solid $color-green-1;
+                padding: 15px 0;
+            }
         }
+        
         .user--datve__time{
             font-size: $fs-4;
         }
-        .user--datve__tinhtien{
-            border-top: 1px solid $color-green-1;
-            padding: 15px 0;
-        }
+     
     }
 }
 

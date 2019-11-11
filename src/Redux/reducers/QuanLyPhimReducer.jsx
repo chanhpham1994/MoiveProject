@@ -48,8 +48,15 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
         case actionTypeNgDung.DANG_NHAP:
 
             //Thêm thuộc tính soDt đồng bộ với ModalNguoiDung khi cập nhật thông tin
-            state.thongTinKHDangNhap = {...action.thongTinNguoiDung,soDt:action.thongTinNguoiDung.soDT};
+            state.thongTinKHDangNhap = {...action.thongTinKHDangNhap,soDt:action.thongTinKHDangNhap.soDT};
             
+            return { ...state }
+
+        //DA_DANG_NHAP:
+        case actionTypeNgDung.DA_DANG_NHAP:
+      
+            state.thongTinKHDangNhap = {...action.thongTinKHDangNhap,soDt:action.thongTinKHDangNhap.soDT};
+           
             return { ...state }
 
         //DANG_XUAT:
@@ -202,7 +209,8 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
                 mangGhe = [...state.danhSachGheDaDat, action.thongTinGhe]
                 state.tongTien += action.thongTinGhe.giaVe
             } else {
-                
+                mangGhe = mangGhe.filter(ghe=> ghe.tenGhe !== action.thongTinGhe.tenGhe)
+                state.tongTien -= action.thongTinGhe.giaVe
             }
 
             state.danhSachGheDaDat = mangGhe;

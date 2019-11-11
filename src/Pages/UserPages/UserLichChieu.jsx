@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { layDanhSachPhim } from '../../Redux/actions/QuanLyPhimAction';
 
-class UserSlider extends Component {
+class UserLichChieu extends Component {
 
     componentDidMount = () => {
 
@@ -84,7 +84,7 @@ class UserSlider extends Component {
         return (
             <div className="user--slider" style={{ backgroundImage: `url(${BackGroundIMG})` }}>
 
-                <div>
+                <div className="">
                     <div className="user--slider__head">
                         <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
@@ -142,7 +142,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserSlider)
-
+export default connect(mapStateToProps, mapDispatchToProps)(UserLichChieu)
 
 

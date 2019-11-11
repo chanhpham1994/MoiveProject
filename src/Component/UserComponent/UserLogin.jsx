@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { dangNhap, dangKy } from '../../Redux/actions/QuanLyNguoiDungAction';
+import { dangNhapUserPage, dangKy } from '../../Redux/actions/QuanLyNguoiDungAction';
 
 class UserLogin extends Component {
 
@@ -17,7 +17,7 @@ class UserLogin extends Component {
                 hoTen: '',
                 soDt: '',
                 email: '',
-                // maLoaiNguoiDung: 'KhachHang'
+                maLoaiNguoiDung: ''
             },
             errors: {
                 taiKhoan: '',
@@ -29,6 +29,7 @@ class UserLogin extends Component {
             },
         }
     }
+
 
     // ĐĂNG NHẬP
     handleChangeLogin = (event) => {
@@ -46,7 +47,7 @@ class UserLogin extends Component {
 
         event.preventDefault();
 
-        this.props.dangNhap(this.state.taiKhoanKH);
+        this.props.dangNhapUserPage(this.state.taiKhoanKH);
 
     }
 
@@ -232,7 +233,7 @@ class UserLogin extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    dangNhap: (thongTinNguoiDung) => { dispatch(dangNhap(thongTinNguoiDung)) },
+    dangNhapUserPage: (thongTinNguoiDung) => { dispatch(dangNhapUserPage(thongTinNguoiDung)) },
     dangKy: (thongTinNguoiDung) => { dispatch(dangKy(thongTinNguoiDung)) },
 })
 
