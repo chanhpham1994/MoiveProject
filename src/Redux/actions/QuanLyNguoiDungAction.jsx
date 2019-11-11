@@ -1,9 +1,9 @@
 import { actionTypeNgDung } from '../constants/QuanLyNguoiDungConstant';
-import { settings } from '../../Common/Config/Setting'
+import { settings } from '../../Common/Config/Setting';
 import axios from 'axios';
-import swal from 'sweetalert2'
+import swal from 'sweetalert2';
 
-export const dangNhap = (thongTinNguoiDung) => {
+export const dangNhapUserPage = (thongTinNguoiDung) => {
 
     return dispatch => {
         axios({
@@ -27,6 +27,40 @@ export const dangNhap = (thongTinNguoiDung) => {
                     type: actionTypeNgDung.DANG_NHAP,
                     thongTinKHDangNhap: res.data
                 })
+            })
+            .catch(err => {
+                swal.fire(
+                    'Thông báo đăng nhập', err.response.data, 'error'
+                );
+                console.log(err.response.data)
+            })
+    }
+}
+
+export const dangNhapAminPage = (thongTinNguoiDung,moveToAdminPage) => {
+    return dispatch => {
+        axios({
+            url: settings.domain + '/QuanLyNguoiDung/DangNhap',
+            method: 'POST',
+            data: thongTinNguoiDung
+        })
+            .then(res => {
+
+                localStorage.setItem(settings.userLogin, JSON.stringify(res.data));
+                localStorage.setItem(settings.token, res.data.accessToken);
+
+                console.log(res.data.accessToken)
+                console.log(res.data)
+
+                swal.fire(
+                    'Đăng Nhập Thành Công!',
+                    'success'
+                )
+                dispatch({
+                    type: actionTypeNgDung.DANG_NHAP,
+                    thongTinKHDangNhap: res.data
+                })
+                moveToAdminPage();
             })
             .catch(err => {
                 swal.fire(

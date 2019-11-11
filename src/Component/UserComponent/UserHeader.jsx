@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import UserLogin from './UserLogin';
 import { connect } from 'react-redux';
-import { dangXuat,daDangNhap } from '../../Redux/actions/QuanLyNguoiDungAction';
+import { dangXuat, daDangNhap } from '../../Redux/actions/QuanLyNguoiDungAction';
 import { settings } from '../../Common/Config/Setting'
 
 class UserHeader extends Component {
@@ -12,10 +12,10 @@ class UserHeader extends Component {
         //LẤY THÔNG TIN TỪ LOCALSTORAGE CỦA NGƯỜI DÙNG ĐÃ ĐĂNG NHẬP TỪ TRƯỚC
 
         const thongTin = JSON.parse(localStorage.getItem(settings.userLogin));
-        if(thongTin !== ''){
+        if (thongTin !== '') {
             this.props.daDangNhap(thongTin);
         }
-     
+
     }
 
     render() {
@@ -37,7 +37,7 @@ class UserHeader extends Component {
                                     Menu
                                 </a>
                                 <div className="dropdown-menu user--header__menu" aria-labelledby="navbarDropdown">
-                                    <a href="#lichChieu" className="dropdown-item" >Lịch Chiếu</a>
+                                    <a href="#lichChieu" className="dropdown-item">Lịch Chiếu</a>
                                     <NavLink to='/rap' className="dropdown-item" >Hệ Thống Rạp</NavLink>
                                     <a className="dropdown-item" >Khuyến Mãi / Sự Kiện</a>
                                     <a className="dropdown-item" >Tuyển Dụng</a>
@@ -46,7 +46,7 @@ class UserHeader extends Component {
                             </li>
 
                             <li className="nav-item active">
-                                <a href="#lichChieu" className="nav-link">Lịch Chiếu</a>
+                                <NavLink to='/lichChieu' className="nav-link" >Lịch Chiếu</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to="/rap" className="nav-link">Mua Vé Theo Rạp</NavLink>
@@ -133,7 +133,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     dangXuat: () => { dispatch(dangXuat()) },
-    daDangNhap: (thongTin) => {dispatch(daDangNhap(thongTin))}
+    daDangNhap: (thongTin) => { dispatch(daDangNhap(thongTin)) }
 
 })
 

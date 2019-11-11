@@ -550,24 +550,34 @@
   .user--datve .user--datve__chonghe .user--datve__ghe {
     background-color: #14252d;
     padding: 25px 15px;
-    max-height: 580px; }
+    max-height: 580px;
+    max-width: 61%;
+    float: left; }
     .user--datve .user--datve__chonghe .user--datve__ghe .vitri--manhinh {
       text-align: center;
       background-color: #333333;
       padding: 10px 0;
       margin-bottom: 15px; }
     .user--datve .user--datve__chonghe .user--datve__ghe .ghe--ngoi {
-      width: 50px;
-      height: 50px; }
-  .user--datve .user--datve__chonghe .user--huydatve {
-    margin-left: 5px;
-    color: red;
-    cursor: pointer; }
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+      font-size: 12px;
+      padding: 0; }
+      .user--datve .user--datve__chonghe .user--datve__ghe .ghe--ngoi span {
+        text-align: center; }
+  .user--datve .user--datve__chonghe .user--dadat {
+    width: 39%;
+    float: left; }
+    .user--datve .user--datve__chonghe .user--dadat .user--huydatve {
+      margin-left: 5px;
+      color: red;
+      cursor: pointer; }
+    .user--datve .user--datve__chonghe .user--dadat .user--datve__tinhtien {
+      border-top: 1px solid #6ab034;
+      padding: 15px 0; }
   .user--datve .user--datve__chonghe .user--datve__time {
     font-size: 42px; }
-  .user--datve .user--datve__chonghe .user--datve__tinhtien {
-    border-top: 1px solid #6ab034;
-    padding: 15px 0; }
 
 .user--timeup {
   background-color: #242424;

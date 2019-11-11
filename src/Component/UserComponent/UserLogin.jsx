@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { dangNhap, dangKy } from '../../Redux/actions/QuanLyNguoiDungAction';
-import { settings } from '../../Common/Config/Setting';
+import { dangNhapUserPage, dangKy } from '../../Redux/actions/QuanLyNguoiDungAction';
 
 class UserLogin extends Component {
 
@@ -48,7 +47,7 @@ class UserLogin extends Component {
 
         event.preventDefault();
 
-        this.props.dangNhap(this.state.taiKhoanKH);
+        this.props.dangNhapUserPage(this.state.taiKhoanKH);
 
     }
 
@@ -234,7 +233,7 @@ class UserLogin extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    dangNhap: (thongTinNguoiDung) => { dispatch(dangNhap(thongTinNguoiDung)) },
+    dangNhapUserPage: (thongTinNguoiDung) => { dispatch(dangNhapUserPage(thongTinNguoiDung)) },
     dangKy: (thongTinNguoiDung) => { dispatch(dangKy(thongTinNguoiDung)) },
 })
 

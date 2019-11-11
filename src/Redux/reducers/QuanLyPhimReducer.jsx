@@ -55,7 +55,7 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
         //DA_DANG_NHAP:
         case actionTypeNgDung.DA_DANG_NHAP:
       
-            state.thongTinKHDangNhap = action.thongTinKHDangNhap
+            state.thongTinKHDangNhap = {...action.thongTinKHDangNhap,soDt:action.thongTinKHDangNhap.soDT};
            
             return { ...state }
 
@@ -209,7 +209,8 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
                 mangGhe = [...state.danhSachGheDaDat, action.thongTinGhe]
                 state.tongTien += action.thongTinGhe.giaVe
             } else {
-                
+                mangGhe = mangGhe.filter(ghe=> ghe.tenGhe !== action.thongTinGhe.tenGhe)
+                state.tongTien -= action.thongTinGhe.giaVe
             }
 
             state.danhSachGheDaDat = mangGhe;

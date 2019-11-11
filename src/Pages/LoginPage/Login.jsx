@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { dangNhap } from '../../Redux/actions/QuanLyNguoiDungAction';
+import { dangNhapAminPage } from '../../Redux/actions/QuanLyNguoiDungAction';
 import { NavLink } from 'react-router-dom';
 import Background from '../../Assests/images/login--wallpaper.jpg';
 
@@ -32,8 +32,12 @@ class Login extends Component {
 
         event.preventDefault();
 
-        this.props.dangNhap(this.state.thongTinNguoiDung);
+        this.props.dangNhapAminPage(this.state.thongTinNguoiDung,this.moveToAdminPage);
 
+    }
+
+    moveToAdminPage = () => {
+        this.props.history.push('./admin');
     }
 
 
@@ -56,7 +60,7 @@ class Login extends Component {
                             <input className='form-control' type="text" name='taiKhoan' onChange={this.handleChange} placeholder='Tài Khoản' />
 
 
-                            <input className='form-control' type="text" name='matKhau' onChange={this.handleChange} placeholder='Mật Khẩu' />
+                            <input className='form-control' type="password" name='matKhau' onChange={this.handleChange} placeholder='Mật Khẩu' />
 
                             <button type='submit' className='btn'>Đăng Nhập</button>
 
@@ -79,7 +83,7 @@ class Login extends Component {
 
 const mapDispatch = (dispatch) => {
     return {
-        dangNhap: (thongTinNguoiDung) => { dispatch(dangNhap(thongTinNguoiDung)) }
+        dangNhapAminPage: (thongTinNguoiDung,moveToAdminPage) => { dispatch(dangNhapAminPage(thongTinNguoiDung,moveToAdminPage)) }
     }
 }
 

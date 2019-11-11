@@ -82,14 +82,14 @@ class UserDatVe extends Component {
         this.setState({
             isLoading: false
         })
-    }, 4000);
+    }, 1000);
 
     // Set thời gian còn lại của khách hàng
-    setTimeOut = setTimeout(() => {
-        this.setState({
-            timeUp: true,
-        })
-    }, 305000);
+    // setTimeOut = setTimeout(() => {
+    //     this.setState({
+    //         timeUp: true,
+    //     })
+    // }, 305000);
 
     // Hiển thị chi tiết phim UserTimeUp
     rednerChiTietPhim = () => {
@@ -121,13 +121,15 @@ class UserDatVe extends Component {
         let { danhSachGheDaDat } = this.props;
 
 
-        return danhSachPhongVe.danhSachGhe && danhSachPhongVe.danhSachGhe.slice(0, 86).map((ghe, index) => {
+        return danhSachPhongVe.danhSachGhe && danhSachPhongVe.danhSachGhe.map((ghe, index) => {
             if (ghe.daDat) {
                 return (
                     // daDat = true => maudo
-                    <div className="col-1 pl-1 py-1" key={index}>
-                        <button className='btn btn-danger ghe--ngoi' disabled={ghe.daDat} onClick={() => this.props.datGhe(ghe, index)}>{ghe.tenGhe}</button>
-                    </div>
+
+                    <button key={index} className='btn btn-danger ghe--ngoi' disabled={ghe.daDat} onClick={() => this.props.datGhe(ghe, index)}>
+                        <span>{ghe.tenGhe}</span>
+                    </button>
+
 
                 )
             } else {
@@ -135,12 +137,12 @@ class UserDatVe extends Component {
                 return (
                     //indexOf tim kiem ghe dang dc chon
                     // ghế được chọn => màu xanh lá // chưa được chọn màu xám
-                    <div className="col-1 pl-1 py-1" key={index}>
-                        <button className={danhSachGheDaDat.indexOf(ghe) !== -1 ? 'btn btn-success ghe--ngoi' : 'btn btn-secondary ghe--ngoi'} onClick={() => this.props.datGhe(ghe, index)}>
-                            {/* IN RA DANH SACH GHE VIP */}
-                            {ghe.loaiGhe === 'Thuong' ? ghe.tenGhe : ghe.loaiGhe}
-                        </button>
-                    </div>
+
+                    <button key={index} className={danhSachGheDaDat.indexOf(ghe) !== -1 ? 'btn btn-success ghe--ngoi' : 'btn btn-secondary ghe--ngoi'} onClick={() => this.props.datGhe(ghe, index)}>
+                        {/* IN RA DANH SACH GHE VIP */}
+                        <span>{ghe.loaiGhe === 'Thuong' ? ghe.tenGhe : ghe.loaiGhe}</span>
+                    </button>
+
 
                 )
             }
@@ -224,7 +226,7 @@ class UserDatVe extends Component {
                                             0{minutes}:{seconds < 10 ? `0${seconds}` : seconds}
                                         </span>
 
-                                        
+
                                         <div className="user--datve__chuthich">
                                             <span>
                                                 <i className="fa fa-square text-success"></i>
@@ -235,9 +237,9 @@ class UserDatVe extends Component {
                                                 Ghế Đã Bán
                                             </span>
                                         </div>
-                                        <div className='row'>
-                                            <div className='user--datve__ghe col-8 row'>
-                                                <div className="vitri--manhinh col-12">
+                                        <div className=''>
+                                            <div className='user--datve__ghe'>
+                                                <div className="vitri--manhinh">
                                                     <p>SCREEN</p>
                                                 </div>
 
@@ -245,7 +247,7 @@ class UserDatVe extends Component {
                                             </div>
 
 
-                                            <div className='col-4 pl-5'>
+                                            <div className='user--dadat pl-5'>
 
                                                 {/* RENDER THOI GIAN CON LAI  VS  DANH SACH GHE DA DAT */}
                                                 <h3>Giỏ Hàng Của Bạn</h3>
@@ -270,14 +272,15 @@ class UserDatVe extends Component {
 
                                                         <button className="btn btn-success" disabled={this.props.danhSachGheDaDat == ''} onClick={() => { this.props.datVe(this.state.thongTinDatVe) }} >Đặt Vé</button>
                                                 }
-
-
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div style={{ clear: 'both' }}>
+                                </div>
                             </div>
+
+
 
                             :
 
