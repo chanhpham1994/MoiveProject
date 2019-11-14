@@ -82,101 +82,111 @@ class ModalNguoiDung extends Component {
 
         const errorMessage = this.validateInput(name, value);
 
-        this.state.hoanThanh = errorMessage === '' ? true : false;
-
         this.setState({
             errors: { ...this.state.errors, [name]: errorMessage }
         })
 
-    }
+        //NẾU 1 TRONG NHỮNG INPUT KHÔNG CÓ THÔNG TIN => KHÔNG CHO NGƯỜI DÙNG CẬP NHẬT
+        this.state.hoanThanh = errorMessage === '' ? true : false;
 
-    renderErrorMess = (errorMessage) => {
-        if (errorMessage !== '') {
-            return <div className='alert alert-danger'>{errorMessage}</div>
-        }
-
-        return '';
-    }
-
-    handleSubmit = (event) => {
-
-        event.preventDefault();
-
-        this.props.capNhatThongTinNguoiDung(this.state.nguoiDung);
-
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            nguoiDung: { ...nextProps.nguoiDungCanSua }
-        })
+        // for (let [key, value] of Object.entries(this.state.errors)) {
+        //     console.log(`${key}: ${value}`);
+        //     if ( `${key} !== ''` ) {
+        //         this.setState({
+        //             hoanThanh: false 
+        //         })
+        //     }
+        // }
     }
 
 
-    render() {
-        return (
-            <div>
-                <div className="modal fade" id="modelId" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 
-                    <div className="modal-dialog" role="document" style={{ maxWidth: '1000px' }}>
+renderErrorMess = (errorMessage) => {
+    if (errorMessage !== '') {
+        return <div className='alert alert-danger'>{errorMessage}</div>
+    }
 
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">Cập Nhật Thông Tin Người Dùng</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
+    return '';
+}
 
-                            <div className="modal-body">
-                                <div className='admin--content__form'>
+handleSubmit = (event) => {
 
+    this.props.capNhatThongTinNguoiDung(this.state.nguoiDung);
 
-                                    <form onSubmit={this.handleSubmit} className='my-2'>
-                                        <div className='row'>
+}
 
-                                            {/* Tài Khoản */}
-                                            <div className="form-group col-4 ">
-                                                <label htmlFor="inputAddress">Tài khoản</label>
-                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='taiKhoan' value={this.state.nguoiDung.taiKhoan} id="inputAddress" placeholder="Tài khoản" disabled/>
-                                                {this.renderErrorMess(this.state.errors.taiKhoan)}
-                                            </div>
+componentWillReceiveProps(nextProps) {
+    this.setState({
+        nguoiDung: { ...nextProps.nguoiDungCanSua }
+    })
+}
 
 
-                                            {/* Mật Khẩu */}
-                                            <div className="form-group col-4 align-self-start">
-                                                <label htmlFor="password">Mật Khẩu</label>
-                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='matKhau' value={this.state.nguoiDung.matKhau} id="inputPassword4" placeholder="Mật Khẩu" />
-                                                {this.renderErrorMess(this.state.errors.matKhau)}
-                                            </div>
+render() {
+
+    return (
+        <div>
+            <div className="modal fade" id="modelId" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+
+                <div className="modal-dialog" role="document" style={{ maxWidth: '1000px' }}>
+
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">Cập Nhật Thông Tin Người Dùng</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <div className="modal-body">
+                            <div className='admin--content__form'>
 
 
-                                            {/* Họ Tên */}
-                                            <div className="form-group col-7">
-                                                <label htmlFor="inputAddress">Họ và Tên</label>
-                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='hoTen' value={this.state.nguoiDung.hoTen} id="inputAddress" placeholder="Họ và Tên" />
-                                                {this.renderErrorMess(this.state.errors.hoTen)}
-                                            </div>
+                                <form onSubmit={this.handleSubmit} className='my-2'>
+                                    <div className='row'>
+
+                                        {/* Tài Khoản */}
+                                        <div className="form-group col-4 ">
+                                            <label htmlFor="inputAddress1">Tài khoản</label>
+                                            <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='taiKhoan' value={this.state.nguoiDung.taiKhoan} id="inputAddress1" placeholder="Tài khoản" disabled />
+                                            {this.renderErrorMess(this.state.errors.taiKhoan)}
+                                        </div>
 
 
-                                            {/* Số điện thoại*/}
-                                            <div className="form-group col-7">
-                                                <label htmlFor="inputAddress">Số điện thoại</label>
-                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='soDt' value={this.state.nguoiDung.soDt} id="inputAddress" placeholder="Số điện thoại" />
-                                                {this.renderErrorMess(this.state.errors.soDt)}
-                                            </div>
+                                        {/* Mật Khẩu */}
+                                        <div className="form-group col-4 align-self-start">
+                                            <label htmlFor="password">Mật Khẩu</label>
+                                            <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='matKhau' value={this.state.nguoiDung.matKhau} id="inputPassword4" placeholder="Mật Khẩu" />
+                                            {this.renderErrorMess(this.state.errors.matKhau)}
+                                        </div>
 
 
-                                            {/* Email */}
-                                            <div className="form-group col-7">
-                                                <label htmlFor="inputEmail4">Email</label>
-                                                <input type="email" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='email' value={this.state.nguoiDung.email} id="inputEmail4" placeholder="Email" />
-                                                {this.renderErrorMess(this.state.errors.email)}
-                                            </div>
+                                        {/* Họ Tên */}
+                                        <div className="form-group col-7">
+                                            <label htmlFor="inputAddress2">Họ và Tên</label>
+                                            <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='hoTen' value={this.state.nguoiDung.hoTen} id="inputAddress2" placeholder="Họ và Tên" />
+                                            {this.renderErrorMess(this.state.errors.hoTen)}
+                                        </div>
 
-                                            {/* Mã Loại Người Dùng */}
 
-                                            { this.state.nguoiDung.maLoaiNguoiDung === 'QuanTri' ?
+                                        {/* Số điện thoại*/}
+                                        <div className="form-group col-7">
+                                            <label htmlFor="inputAddress3">Số điện thoại</label>
+                                            <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='soDt' value={this.state.nguoiDung.soDt} id="inputAddress3" placeholder="Số điện thoại" />
+                                            {this.renderErrorMess(this.state.errors.soDt)}
+                                        </div>
+
+
+                                        {/* Email */}
+                                        <div className="form-group col-7">
+                                            <label htmlFor="inputEmail4">Email</label>
+                                            <input type="email" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='email' value={this.state.nguoiDung.email} id="inputEmail4" placeholder="Email" />
+                                            {this.renderErrorMess(this.state.errors.email)}
+                                        </div>
+
+                                        {/* Mã Loại Người Dùng */}
+
+                                        {this.props.thongTinKHDangNhap.maLoaiNguoiDung === 'QuanTri' ?
                                             <div className="form-group col-7">
                                                 <label htmlFor="inputState">Mã Loại Người Dùng</label>
                                                 <select id="inputState" onChange={this.handleChange} name='maLoaiNguoiDung' value={this.state.nguoiDung.maLoaiNguoiDung} className="form-control" >
@@ -187,41 +197,38 @@ class ModalNguoiDung extends Component {
                                                 </select>
                                             </div>
 
-                                            :  ''
-                                            }
-                                            
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                            : ''
+                                        }
 
-                                            <button type="submit" className="btn btn-primary"disabled={!this.state.hoanThanh}>Cập Nhật</button>
-                                        </div>
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Đóng</button>
 
-                                    </form>
-                                </div>
+                                        <button type="submit" className="btn btn-primary" disabled={!this.state.hoanThanh}>Cập Nhật</button>
+                                    </div>
+
+                                </form>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
-
-
             </div>
-        )
-    }
+        </div>
+    )
+}
 }
 
 
 const mapStateToProps = (state) => {
     return {
-        nguoiDungCanSua: state.QuanLyPhimReducer.nguoiDungCanSua
+        nguoiDungCanSua: state.QuanLyPhimReducer.nguoiDungCanSua,
+        thongTinKHDangNhap: state.QuanLyPhimReducer.thongTinKHDangNhap
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        capNhatThongTinNguoiDung: (nguoiDung) => { dispatch(capNhatThongTinNguoiDung(nguoiDung)) }
+        capNhatThongTinNguoiDung: (nguoiDung) => { dispatch(capNhatThongTinNguoiDung(nguoiDung)) },
     }
 }
 

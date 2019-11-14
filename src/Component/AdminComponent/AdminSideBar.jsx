@@ -1,8 +1,27 @@
-import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { settings } from '../../Common/Config/Setting';
+import { daDangNhap } from '../../Redux/actions/QuanLyNguoiDungAction';
 
-export default class AdminSideBar extends Component {
+
+class AdminSideBar extends Component {
+
+  componentDidMount = () => {
+
+    //LẤY THÔNG TIN TỪ LOCALSTORAGE CỦA NGƯỜI DÙNG ĐÃ ĐĂNG NHẬP TỪ TRƯỚC
+
+    const thongTin = JSON.parse(localStorage.getItem(settings.userLogin));
+    if (thongTin !== '' && thongTin !== null) {
+      this.props.daDangNhap(thongTin);
+    }
+
+  }
+
   render() {
+
+    let { thongTinKHDangNhap } = this.props;
+
     return (
 
       <div className='sidebar'>
@@ -14,7 +33,7 @@ export default class AdminSideBar extends Component {
             </NavLink>
 
             <div className="card-body">
-              <h4 className="card-title">Xin Chào Bill</h4>
+              <h4 className="card-title text-center">Xin Chào {thongTinKHDangNhap.taiKhoan}</h4>
 
               <div className='login--info text-center'>
                 <button className='btn btn-success rounded-circle mr-2'>
@@ -79,7 +98,7 @@ export default class AdminSideBar extends Component {
               <ul>
                 <li>
                   <i className="fa fa-calendar-plus"></i>
-                  <NavLink to='/lichchieu'>  Thông Tin Lịch Chiếu  </NavLink>
+                  <a href=''>  Thông Tin Lịch Chiếu  </a>
                 </li>
 
               </ul>
@@ -95,12 +114,9 @@ export default class AdminSideBar extends Component {
                   <i className="fa fa-coins"></i>
                   <a >  Doanh Thu  </a>
                 </li>
-
               </ul>
             </div>
-
           </div>
-
         </div>
       </div>
 
@@ -109,4 +125,16 @@ export default class AdminSideBar extends Component {
 }
 
 
+const mapStateToProps = (state) => {
+  return {
+    thongTinKHDangNhap: state.QuanLyPhimReducer.thongTinKHDangNhap
+  }
+}
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    daDangNhap: (thongTin) => { dispatch(daDangNhap(thongTin)) },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminSideBar);

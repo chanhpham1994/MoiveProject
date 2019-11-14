@@ -33,6 +33,8 @@ class UserDatVe extends Component {
 
     componentDidMount = () => {
 
+        window.scrollTo(0, 0);
+
         //lấy giá trị tham số từ URL this.props.match.params.tenThamSO
         let { maLichChieu } = this.props.match.params;
 
@@ -58,7 +60,9 @@ class UserDatVe extends Component {
             }
         }, 1000)
 
+    
     }
+
 
     componentWillReceiveProps(nextProps) {
         this.setState({
@@ -82,14 +86,20 @@ class UserDatVe extends Component {
         this.setState({
             isLoading: false
         })
-    }, 1000);
+    }, 4000);
 
     // Set thời gian còn lại của khách hàng
-    // setTimeOut = setTimeout(() => {
-    //     this.setState({
-    //         timeUp: true,
-    //     })
-    // }, 305000);
+    setTimeOut = setTimeout(() => {
+        this.setState({
+            timeUp: true,
+        })
+    }, 305000);
+
+
+    //Chuyển Trang
+    moveToUserInfo = () => {
+        this.props.history.push('/userinfo');
+    }
 
     // Hiển thị chi tiết phim UserTimeUp
     rednerChiTietPhim = () => {
@@ -125,24 +135,30 @@ class UserDatVe extends Component {
             if (ghe.daDat) {
                 return (
                     // daDat = true => maudo
-
-                    <button key={index} className='btn btn-danger ghe--ngoi' disabled={ghe.daDat} onClick={() => this.props.datGhe(ghe, index)}>
+                    <button key={index} className='btn gheDaDat ghe--ngoi' disabled={ghe.daDat} onClick={() => this.props.datGhe(ghe, index)}>
                         <span>{ghe.tenGhe}</span>
                     </button>
-
-
                 )
             } else {
-
                 return (
                     //indexOf tim kiem ghe dang dc chon
                     // ghế được chọn => màu xanh lá // chưa được chọn màu xám
-
-                    <button key={index} className={danhSachGheDaDat.indexOf(ghe) !== -1 ? 'btn btn-success ghe--ngoi' : 'btn btn-secondary ghe--ngoi'} onClick={() => this.props.datGhe(ghe, index)}>
+                    <>
                         {/* IN RA DANH SACH GHE VIP */}
-                        <span>{ghe.loaiGhe === 'Thuong' ? ghe.tenGhe : ghe.loaiGhe}</span>
-                    </button>
+                        {ghe.loaiGhe === 'Thuong' ?
 
+                            <button key={index} className={danhSachGheDaDat.indexOf(ghe) !== -1 ? 'btn gheDangDat ghe--ngoi' : 'btn ghe--ngoi'} onClick={() => this.props.datGhe(ghe, index)}>
+                                <span className="">{ghe.tenGhe}</span>
+                            </button>
+
+                            :
+
+                            <button key={index} className={danhSachGheDaDat.indexOf(ghe) !== -1 ? 'btn gheDangDat ghe--ngoi gheVip' : 'btn ghe--ngoi gheVip'} onClick={() => this.props.datGhe(ghe, index)}>
+                                <span className="">{ghe.loaiGhe}</span>
+                            </button>
+                        }
+
+                    </>
 
                 )
             }
@@ -240,10 +256,12 @@ class UserDatVe extends Component {
                                         <div className=''>
                                             <div className='user--datve__ghe'>
                                                 <div className="vitri--manhinh">
-                                                    <p>SCREEN</p>
+                                                    <p>Mán Hình</p>
+                                                </div>
+                                                <div className="vitri--ghe">
+                                                    {this.renderGheNgoi()}
                                                 </div>
 
-                                                {this.renderGheNgoi()}
                                             </div>
 
 
@@ -251,6 +269,16 @@ class UserDatVe extends Component {
 
                                                 {/* RENDER THOI GIAN CON LAI  VS  DANH SACH GHE DA DAT */}
                                                 <h3>Giỏ Hàng Của Bạn</h3>
+
+                                                <div className="user--dadat__phuongThucTT">
+                                                    <h6>** Phương Thức Thanh Toán **</h6>
+                                                    <input type="radio" value="momo" name="pttt" />
+                                                    <span>MOMO</span>
+                                                    <input type="radio" value="Sacombank" name="pttt"  />
+                                                    <span>Sacombank</span>
+                                                    <input type="radio" value="VietinBank" name="pttt"  />
+                                                    <span>VietinBank</span>
+                                                </div>
 
 
                                                 {this.renderGheDaChon()}
@@ -270,7 +298,7 @@ class UserDatVe extends Component {
                                                         :
                                                         // Không cho người dùng đặt vé khi chưa chọn ghế
 
-                                                        <button className="btn btn-success" disabled={this.props.danhSachGheDaDat == ''} onClick={() => { this.props.datVe(this.state.thongTinDatVe) }} >Đặt Vé</button>
+                                                        <button className="btn btn-success" disabled={this.props.danhSachGheDaDat == ''} onClick={() => { this.props.datVe(this.state.thongTinDatVe,this.moveToUserInfo) }} >Đặt Vé</button>
                                                 }
                                             </div>
                                         </div>
@@ -279,8 +307,6 @@ class UserDatVe extends Component {
                                 <div style={{ clear: 'both' }}>
                                 </div>
                             </div>
-
-
 
                             :
 
@@ -311,7 +337,7 @@ const mapDispatchToProps = (Dispatch) => {
         layDanhSachPhongVe: (maLichChieu) => { Dispatch(layDanhSachPhongVe(maLichChieu)) },
         datGhe: (thongTinGhe, index) => { Dispatch(datGhe(thongTinGhe, index)) },
         huyDat: (index) => { Dispatch(huyDat(index)) },
-        datVe: (thongTinDatVe) => { Dispatch(datVe(thongTinDatVe)) }
+        datVe: (thongTinDatVe,moveToUserInfo) => { Dispatch(datVe(thongTinDatVe,moveToUserInfo)) }
     }
 }
 

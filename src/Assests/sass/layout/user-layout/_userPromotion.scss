@@ -12,13 +12,23 @@
         display: none !important;
     }
     .slick-dots{
+        padding-bottom: 5px;
         li{
             button{
                 &::before{
                     color: $color-green-1;
-                    font-size: 15px;
+                    font-size: $fs-0;
                 }
             }
+        }
+    }
+}
+
+@media screen and (max-width:550px) {
+    .user--promotion{
+        padding-top: 30px;
+        h3{
+            font-size: $fs-2;
         }
     }
 }

@@ -65,9 +65,11 @@ class TimKiemNguoiDung extends Component {
     handleSubmit = (event) => {
 
         event.preventDefault();
-
-        this.props.timKiemNguoiDung(this.state.tuKhoa)
-
+        //Trả về giá trị tìm kiếm theo yếu cầu của người dùng hoặc trả về danh sách
+        if(this.state.tuKhoa !== ''){
+            this.props.timKiemNguoiDung(this.state.tuKhoa)
+        }
+        this.props.layDanhSachNguoiDung();
     }
 
 

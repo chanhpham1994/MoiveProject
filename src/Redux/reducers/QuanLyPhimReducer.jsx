@@ -8,12 +8,12 @@ const initialState = {
     mangDanhSachPhim: [],
     thongTinChiTietPhim: [],
     nguoiDungCanSua: {
-        taiKhoan: 'minhchanh',
-        matKhau: '321321',
-        hoTen: 'minhchanh',
-        soDt: '32165497',
-        email: 'chanhphamnguyen@gmail.com',
-        maLoaiNguoiDung: 'QuanTri'
+        taiKhoan: '',
+        matKhau: '',
+        hoTen: '',
+        soDt: '',
+        email: '',
+        maLoaiNguoiDung: ''
     },
     phimCanSua: {
         maPhim: '1314',
@@ -68,11 +68,11 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
           
             return { ...state }
 
-        // LAY_DANH_SACH_NGUOI_DUNG
-        case actionTypeNgDung.LAY_DANH_SACH_NGUOI_DUNG:
+
+         // LAY_DANH_SACH_NGUOI_DUNG
+         case actionTypeNgDung.LAY_DANH_SACH_NGUOI_DUNG:
             state.mangNguoiDung = action.mangNguoiDung;
             return { ...state }
-
 
         // TIM_KIEM_NGUOI_DUNG
         case actionTypeNgDung.TIM_KIEM_NGUOI_DUNG:
@@ -99,24 +99,6 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             state.nguoiDungCanSua = action.NguoiDungCanSua;
 
             return { ...state }
-
-
-        //CAP_NHAT_THONG_TIN_NGUOI_DUNG
-        case actionTypeNgDung.CAP_NHAT_THONG_TIN_NGUOI_DUNG:
-            let mangCapNhat = [...state.mangNguoiDung];
-
-            let index2 = mangCapNhat.findIndex(ngDung => ngDung.taiKhoan === action.ngDungDaCapNhat.taiKhoan);
-
-            if (index2 !== -1) {
-                mangCapNhat[index2] = action.ngDungDaCapNhat;
-                
-            }
-            //Cập nhật lại mảng người dùng trong admin
-            state.mangNguoiDung = mangCapNhat;
-            //Cập nhật lại thông tin khách hàng ngoài user
-            state.thongTinKHDangNhap = {...action.ngDungDaCapNhat,soDT:action.ngDungDaCapNhat.soDt};
-
-            return { ...state };
 
 
         //LAY_DANH_SACH_PHIM
@@ -163,21 +145,6 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             console.log("TCL: QuanLyPhimReducer ->  state.phimCanSua", state.phimCanSua)
 
             return { ...state }
-
-
-        //CAP_NHAT_THONG_TIN_PHIM
-        case actionTypePhim.CAP_NHAT_THONG_TIN_PHIM:
-
-            let mangPhim = [...state.mangDanhSachPhim]
-
-            let index3 = mangCapNhat.findIndex(phim => phim.maPhim === action.phimCapNhat.maPhim);
-
-            if (index3 !== -1) {
-                mangPhim[index3] = action.phim;
-            }
-            state.mangDanhSachPhim = mangPhim;
-
-            return { ...state };
 
 
         //LAY_THONG_TIN_RAP
@@ -263,6 +230,13 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             
            return {...state}
 
+
+        //Reset STATE:
+        case actionTypeNgDung.RESET_STATE:
+            state.danhSachGheDaDat = [];
+            state.thongTinRap=[];
+            state.tongTien= 0;
+            return {...state}
     }
 
     return { ...state }

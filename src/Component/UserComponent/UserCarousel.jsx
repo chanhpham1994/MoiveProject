@@ -25,6 +25,9 @@ export default class UserCarousel extends Component {
                         <div className="carousel-item">
                             <img className="d-block w-100" src={require('../../Assests/images/KM6.jpg')} alt="Fourth slide" />
                         </div>
+                        <div className="carousel-item">
+                            <img className="d-block w-100" src={require('../../Assests/images/KM10.jpg')} alt="Fourth slide" />
+                        </div>
                     </div>
                     <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true" />

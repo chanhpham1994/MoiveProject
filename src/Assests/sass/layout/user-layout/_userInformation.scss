@@ -1,8 +1,7 @@
 .user--information{
     width: 100%;
     min-height: 800px;
-    
-   
+
     h3{
         color: $color-white-0; 
         padding: 15px 0;
@@ -17,6 +16,44 @@
         color: $color-white-0; 
         h4{
             padding: 15px 0;
+        }
+    }
+}
+
+@media screen and (min-width:551px) and (max-width:992px){
+    .user--information{
+        width: 100%;
+        min-height: 700px;
+
+        .user--information__pannel{
+            img{
+                margin-top: 40px;
+            }
+        }
+        .user--information__content{
+            color: $color-white-0; 
+            h4{
+                font-size: $fs-1 + 2;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:550px){
+    .user--information{
+        width: 100%;
+        min-height: 700px;
+
+        .user--information__pannel{
+            img{
+                margin-top: 40px;
+            }
+        }
+        .user--information__content{
+            color: $color-white-0; 
+            h4{
+                font-size: $fs-1 + 2;
+            }
         }
     }
 }

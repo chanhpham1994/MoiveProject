@@ -19,7 +19,7 @@ class UserSlider extends Component {
         return mangDanhSachPhim.slice(1, 12).map((phim, index) => {
             return (
                 <div className="pr-3" key={index}>
-                    <img className="card-img-top" src={phim.hinhAnh} height={350} alt='' />
+                    <img className="card-img-top" src={phim.hinhAnh} height={300} alt='' />
                     <div className="card-body">
 
                         <NavLink to={`/userchitietphim/${phim.maPhim}`} className='btn btn-success px-4' style={{ width: '100%' }}> <i className="fa fa-ticket-alt"></i> MUA VÉ</NavLink>
@@ -35,7 +35,7 @@ class UserSlider extends Component {
         return mangDanhSachPhim.slice(17, 25).map((phim, index) => {
             return (
                 <div className="pr-3" key={index}>
-                    <img className="card-img-top" src={phim.hinhAnh} height={350} alt='' />
+                    <img className="card-img-top" src={phim.hinhAnh} height={300} alt='' />
                     <div className="card-body">
 
                         <NavLink to={`/userchitietphim/${phim.maPhim}`} className='btn btn-success px-4' style={{ width: '100%' }}> <i className="fa fa-ticket-alt"></i> MUA VÉ</NavLink>
@@ -52,7 +52,7 @@ class UserSlider extends Component {
             slidesToShow: 6,
             slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 10000,
             responsive: [
                 {
                     breakpoint: 1124,
