@@ -12,6 +12,10 @@
                 margin: 25px 0;
                 border-bottom: 0.5px solid $color-gray-2;
                 cursor: pointer;
+                img{
+                    width: 50px;
+                    height: 50px;
+                }
             }
         }
         .user--heThongRap__dsachRap{
@@ -24,7 +28,7 @@
                 margin: 25px 0;
                 border-bottom: 0.5px solid $color-gray-2;
                 cursor: pointer;
-                .text{
+                .tenCumRap{
                     color: $color-green-2;
                     font-weight: $fw-bold-1;
                 }
@@ -35,5 +39,71 @@
             max-height: 658px;
         }
     }
-    
+}
+
+@media screen and (min-width:551px) and (max-width:992px){
+    .user--heThongRap{
+        padding: 50px 0;    
+        .user--heThongRap__content{
+            .user--heThongRap__dsachHeThong{
+                .logo{
+                    text-align: center;
+                    padding: 15px 0;
+                    img{
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+            .user--heThongRap__dsachRap{
+                .rapChiTiet{
+                    font-size: $fs-0;
+                    .tenCumRap{
+                        color: $color-green-2;
+                        font-weight: $fw-bold-1;
+                    }
+                }
+            }
+            .user--heThongRap__lichChieu{
+                font-size: $fs-0;
+                h4{
+                    font-size: $fs-1;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:550px){
+    .user--heThongRap{
+        padding: 50px 0;    
+        .user--heThongRap__content{
+            .user--heThongRap__dsachHeThong{
+                .logo{
+                    text-align: center;
+                    padding: 15px 0;
+                    img{
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+            .user--heThongRap__dsachRap{
+                .rapChiTiet{
+                    font-size: $fs-0;
+                    .tenCumRap{
+                        color: $color-green-2;
+                        font-weight: $fw-bold-1;
+                    }
+                }
+            }
+            .user--heThongRap__lichChieu{
+                font-size: $fs-0;
+                h4{
+                    font-size: $fs-1;
+                }
+            }
+        }
+    }
 }

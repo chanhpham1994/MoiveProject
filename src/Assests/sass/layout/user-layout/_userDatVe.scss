@@ -35,6 +35,7 @@
             padding: 15px 0;
             span{
                 i{
+
                     padding: 0 15px;
                     font-size: 20px;
                 }
@@ -47,26 +48,52 @@
             max-width: 61%;
             float: left;
             .vitri--manhinh{
-                text-align: center;
-                background-color: $color-black-0;
-                padding: 10px 0;
-                margin-bottom: 15px;
+            border-bottom: 40px solid #bcbba7;
+            border-left: 144px solid transparent;
+            border-right: 150px solid transparent;
+            height: 0;
+            width: 100%;
+            filter: drop-shadow(0 0 10px #FFFFFF);
+            color: white;
+            text-align: center;
             }
-            .ghe--ngoi{
-                width: 30px;
-                height: 30px;
-                margin: 5px;
-                font-size: 12px; 
-                padding: 0;
-                span{
-                  text-align: center;
+            .vitri--ghe{
+                margin: 15px 0;
+                .ghe--ngoi{
+                    width: 30px;
+                    height: 30px;
+                    margin: 5px;
+                    font-size: 12px; 
+                    padding: 0;
+                    color: $color-white-0;
+                    background-color: $color-gray-1;
+                }
+                .gheVip{
+                    background-color: $color-orange-0;
+                }
+                .gheDaDat {
+                    background-color: $color-red-0;
+                    cursor: no-drop !important;
+                }
+                .gheDangDat {
+                    background-color: $color-green-2;
+                    cursor: pointer;
                 }
             }
-            
         }
         .user--dadat{
             width: 39%;
             float: left;
+            .user--dadat__phuongThucTT{
+                input{
+                    cursor: pointer;
+                }
+                span{
+                    margin: 0 5px;
+                    font-size: 20px;
+                    
+                }
+            }
             .user--huydatve{
                 margin-left: 5px;
                 color: red;

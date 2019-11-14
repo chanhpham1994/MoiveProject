@@ -152,11 +152,6 @@ export const capNhatThongTinPhim = (phim) => {
                         'Vui Lòng Nhấn OK!',
                         'success'
                     )
-                    // dispatch({
-                    //     type: actionTypePhim.CAP_NHAT_THONG_TIN_PHIM,
-                    //     phimCapNhat: phim,
-                    // })
-                    // console.log('phim', res.data)
                 })
                 .catch(err => {
                     console.log(err.response.data)
@@ -195,10 +190,6 @@ export const capNhatThongTinPhim = (phim) => {
                                 'Vui Lòng Nhấn OK!',
                                 'success'
                             )
-                            // dispatch({
-                            //     type: actionTypePhim.CAP_NHAT_THONG_TIN_PHIM,
-                            //     phimCapNhat: phim,
-                            // })
                         })
                         .catch(err => {
                             console.log(err.response.data)

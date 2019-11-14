@@ -22,6 +22,8 @@ class ChiTietPhim extends Component {
         let { maPhim } = this.props.match.params;
 
         this.props.layThongTinPhim(maPhim);
+
+        window.scrollTo(0,0);
     }
 
 

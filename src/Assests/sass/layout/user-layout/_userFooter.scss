@@ -45,22 +45,21 @@
     }
 }
 
-@media screen and (min-width:992px) and (max-width:1220px){
+@media screen and (min-width:551px) and (max-width:1220px){
     .user--footer{
         .user--footer__line{
             img{
-                top:-12.5%;
+                top:-10%;
             }
         }
     }
 }
 
-
-@media screen and (max-width:992px){
+@media screen and (max-width:550px){
     .user--footer{
         .user--footer__line{
             img{
-                top:-14%;
+                top:-11%;
             }
         }
     }

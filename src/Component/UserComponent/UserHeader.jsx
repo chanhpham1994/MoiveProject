@@ -2,21 +2,23 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import UserLogin from './UserLogin';
 import { connect } from 'react-redux';
-import { dangXuat, daDangNhap } from '../../Redux/actions/QuanLyNguoiDungAction';
-import { settings } from '../../Common/Config/Setting'
+import {settings} from '../../Common/Config/Setting';
+import { dangXuat,daDangNhap } from '../../Redux/actions/QuanLyNguoiDungAction';
+import Snow from '../Helper/Snow';
 
 class UserHeader extends Component {
 
     componentDidMount = () => {
 
         //LẤY THÔNG TIN TỪ LOCALSTORAGE CỦA NGƯỜI DÙNG ĐÃ ĐĂNG NHẬP TỪ TRƯỚC
-
+        
         const thongTin = JSON.parse(localStorage.getItem(settings.userLogin));
-        if (thongTin !== '') {
+        if (thongTin !== '' && thongTin !== null) {
             this.props.daDangNhap(thongTin);
         }
 
     }
+
 
     render() {
 
@@ -24,6 +26,10 @@ class UserHeader extends Component {
 
         return (
             <header className='user--header'>
+
+                {/* SNOW */}
+                <Snow/>
+
                 <nav className="navbar navbar-expand-lg">
                     <button className="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon" />
@@ -37,7 +43,7 @@ class UserHeader extends Component {
                                     Menu
                                 </a>
                                 <div className="dropdown-menu user--header__menu" aria-labelledby="navbarDropdown">
-                                    <a href="#lichChieu" className="dropdown-item">Lịch Chiếu</a>
+                                    <NavLink to='/lichChieu' className="dropdown-item">Lịch Chiếu</NavLink>
                                     <NavLink to='/rap' className="dropdown-item" >Hệ Thống Rạp</NavLink>
                                     <a className="dropdown-item" >Khuyến Mãi / Sự Kiện</a>
                                     <a className="dropdown-item" >Tuyển Dụng</a>
@@ -56,7 +62,7 @@ class UserHeader extends Component {
 
                     {/* LANGUAGE */}
                     <div className="user--header__language">
-                        <a className="">VN | EN<span className="sr-only">(current)</span></a>
+                        <a className="">VN | EN</a>
                     </div>
 
                     {/* LOGO RAP */}
@@ -102,6 +108,10 @@ class UserHeader extends Component {
 
                                         <NavLink className="dropdown-item" to="/userinfo">Thông Tin Khách Hàng</NavLink>
 
+                                        { thongTinKHDangNhap.maLoaiNguoiDung === 'QuanTri' ?
+                                            <NavLink className="dropdown-item" to="/admin">Admin Page</NavLink> : ''
+                                        }
+
                                         <a className="dropdown-item text-danger" onClick={() => this.props.dangXuat()} >Đăng Xuất</a>
 
                                     </div>
@@ -133,8 +143,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     dangXuat: () => { dispatch(dangXuat()) },
-    daDangNhap: (thongTin) => { dispatch(daDangNhap(thongTin)) }
-
+    daDangNhap: (thongTin) => {dispatch(daDangNhap(thongTin))},
+    
 })
 
 

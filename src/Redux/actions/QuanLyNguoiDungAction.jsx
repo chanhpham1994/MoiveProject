@@ -120,7 +120,7 @@ export const dangXuat = () => {
 }
 
 
-export const datVe = (thongTinDatVe) => {
+export const datVe = (thongTinDatVe,moveToUserInfo) => {
     return dispatch => {
         axios({
             url: settings.domain + '/QuanLyDatVe/DatVe',
@@ -145,7 +145,10 @@ export const datVe = (thongTinDatVe) => {
                   no-repeat
                 `
               })
+            console.log('moveToUserInfo',moveToUserInfo);
               
+            //chuyển trang
+            moveToUserInfo();
         })
         .catch(err=>{
             console.log(err.response.data)
@@ -315,11 +318,6 @@ export const capNhatThongTinNguoiDung = (nguoiDung) => {
                     'Vui Lòng Nhấn OK!',
                     'success'
                 )
-                dispatch({
-                    type: actionTypeNgDung.CAP_NHAT_THONG_TIN_NGUOI_DUNG,
-                    ngDungDaCapNhat: nguoiDung,
-
-                })
                 console.log('nguoiDung', res.data)
             })
             .catch(err => {
@@ -347,6 +345,15 @@ export const huyDat = (index) => {
         dispatch({
             type: actionTypeNgDung.HUY_DAT,
             index: index,
+        })
+    }
+}
+
+
+export const resetState = () => {
+    return dispatch => {
+        dispatch({
+            type: actionTypeNgDung.RESET_STATE,
         })
     }
 }

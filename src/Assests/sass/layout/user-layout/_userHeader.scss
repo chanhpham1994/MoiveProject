@@ -1,10 +1,40 @@
 
-    .user--header{
-        width: 100%;
-        background-color: $color-black-2;
-        position: relative;
-        .user--header__navbar {
-            li{
+.user--header{
+    width: 100%;
+    background-color: $color-black-2;
+    position: relative;
+    .user--header__navbar {
+        li{
+            a{
+                color: $color-green-1;
+                font-size: 20px;
+                cursor: pointer;
+                &:hover{
+                    color: $color-green-1;
+                }
+            }
+        }
+        .user--header__menu{
+            top: 50px;
+            left: -18px;
+            color: $color-white-0;
+            background-color: $color-black-2;
+            a{
+                &:hover{
+                    background-color: $color-black-2;
+                    cursor: pointer;
+                }
+            }
+            .dropdown-item.active{
+                background-color: transparent;
+            }
+         }
+    }
+    
+        //Hiển Thị Thông Tin KH
+        .user--header__TTKH{
+            li{ 
+                position: unset !important;
                 a{
                     color: $color-green-1;
                     font-size: 20px;
@@ -12,141 +42,143 @@
                     &:hover{
                         color: $color-green-1;
                     }
-                }
+                }    
             }
-            .user--header__menu{
-                top: 50px;
-                left: -18px;
+            .user--header__TTKH__menu{
+                right: 0%;
+                left: 87%;
+                top: 56px;
                 color: $color-white-0;
                 background-color: $color-black-2;
                 a{
+                    background-color: $color-black-2;
                     &:hover{
                         background-color: $color-black-2;
                         cursor: pointer;
-                    }
-                }
-            }
-        }
-    
-        //Hiển Thị Thông Tin KH
-        .user--header__TTKH{
-                li{ 
-                    position: unset !important;
-                    a{
-                        color: $color-green-1;
-                        font-size: 20px;
-                        cursor: pointer;
-                        &:hover{
-                            color: $color-green-1;
-                        }
-                    }    
-                }
-                .user--header__TTKH__menu{
-                    right: 0%;
-                    left: 87%;
-                    top: 56px;
-                    color: $color-white-0;
-                    background-color: $color-black-2;
-                    a{
-                        background-color: $color-black-2;
-                        &:hover{
-                            background-color: $color-black-2;
-                            cursor: pointer;
-                        }
-                    }
-                }
+                     }
+                 }
+             }
      
-            }
+    }
         
+    .user--header__language{
+         position: absolute;
+         top: 19px;
+         right: 50%;
+         margin-right: 96px;
+         z-index: 55;
+         color: white;
+         cursor: pointer;
+    }
     
-        .user--header__language{
-            position: absolute;
-            top: 19px;
-            right: 50%;
-            margin-right: 96px;
-            z-index: 55;
-            color: white;
+      .user--header__hotline{
+        position: absolute;
+        top: 15px;
+        left: 55%;
+        margin-right: 96px;
+        z-index: 55;
+        color: $color-white-0;
+        font-size: 20px;
+        i{
+             font-size: 25px;
+        }
+        &:hover{
+            color: $color-green-1;
             cursor: pointer;
         }
-    
-        .user--header__hotline{
-            position: absolute;
-            top: 15px;
-            left: 55%;
-            margin-right: 96px;
-            z-index: 55;
-            color: $color-white-0;
-            font-size: 20px;
-            transition: all 1s;
-            i{
-                font-size: 25px;
-            }
-            &:hover{
-                color: $color-green-1;
-                cursor: pointer;
-            }
-        }
+    }
     
     
-        .user--header__logo{
-            position: absolute;
-            transform: translate(-50%,-50%);  
-            left:50%;
-            top:70%;
-            z-index: 2;
-            img{
-                width: 70px;
-                height: 70px;
-            }
-        }
-        
-        .user--header__line{
-            position: absolute;
-            transform: translate(-50%,-50%);  
-            left:50%;
-            top:124%;
-            z-index: 1;
-        }
-        .user--header__icon{
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            z-index: 999;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            img{
-                width: 100px;
-                height: 100px;
-               
-            }
-        }
-        .button--login{
-            margin-left: 18px;
+    .user--header__logo{
+        position: absolute;
+        transform: translate(-50%,-50%);  
+        left:50%;
+        top:70%;
+        z-index: 2;
+        img{
+            width: 70px;
+            height: 70px;
         }
     }
+        
+    .user--header__line{
+        position: absolute;
+        transform: translate(-50%,-50%);  
+        left:50%;
+        top:124%;
+        z-index: 1;
+    }
+    .user--header__icon{
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        z-index: 999;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img{
+            width: 100px;
+            height: 100px;   
+        }
+    }
+    .button--login{
+           margin-left: 18px;
+    }
+}
 
 
-
-@media screen and (min-width:992px) and (max-width:1220px){
-
-    .user--header{
+@media screen and (min-width:993px) and (max-width:1300px){
+        .user--header{
             .user--header__navbar {
-                    li{
-                        a{
-                            font-size: 13px;
-                        }
-                    }
-                .user--header__menu{
-                    top: 40px;
+                .user--header__detail{
+                   display: none;
                 }
             }
-    
-            .user--header__line{
-                top:126%;
+            .user--header__navbar {
+                li{
+                    a{
+                        font-size: $fs-1; 
+                    }
+                }
+                .user--header__menu{
+                    top: 45px;
+                }
             }
-            button{
-                margin-left: 0px;
+            //Hiển Thị Thông Tin KH
+            .user--header__TTKH{
+                    li{ 
+                        a{
+                            font-size: $fs-1; //12px
+                        }    
+                    }
+                    .user--header__TTKH__menu{
+                        top: 56px;
+                        color: $color-white-0;
+                        background-color: $color-black-2;
+                        a{
+                            padding: 5px 0;
+                        }
+                    }
+            }
+            
+            .user--header__logo{
+               img{
+                width: 60px;
+                height: 60px;
+               }
+            }
+            .user--header__language{
+                font-size: $fs-1;
+                right: 48%;
+            }
+            .user--header__hotline{
+                font-size: $fs-1;
+                top: 20px;
+                left: 55%;
+                margin-right: 0px;
+                i{
+                    font-size: $fs-1;
+                }
             }
             .user--header__icon{
                 img{
@@ -154,11 +186,88 @@
                     height: 60px;
                 }
             }
+            .button--login{
+                margin: 0px;
+                font-size: $fs-0;
+            }
         }
-
 }
 
-@media screen and (max-width:992px){
+@media screen and (min-width:551px) and (max-width:992px){
+
+    .user--header{
+        .user--header__navbar {
+            .user--header__detail{
+               display: none;
+            }
+        }
+        .user--header__navbar {
+            li{
+                a{
+                    font-size: $fs-1; 
+                }
+            }
+            .user--header__menu{
+               display: none;
+            }
+        }
+    
+        //Hiển Thị Thông Tin KH
+        .user--header__TTKH{
+                li{ 
+                    a{
+                        font-size: $fs-1; //12px
+                    }    
+                }
+                .user--header__TTKH__menu{
+                    top: 56px;
+                    color: $color-white-0;
+                    background-color: $color-black-2;
+                    a{
+                        padding: 5px 0;
+                    }
+                }
+        }
+        
+        .user--header__logo{
+           top: 50%;
+           img{
+            width: 40px;
+            height: 40px;
+           }
+        }
+        .user--header__language{
+            font-size: $fs-1;
+            right: 50%;
+          
+        }
+        .user--header__line{
+            display: none;
+        }
+        .user--header__hotline{
+            font-size: $fs-1;
+            top: 20px;
+            left: 60%;
+            margin-right: 0px;
+            i{
+                font-size: $fs-1;
+            }
+        }
+        .user--header__icon{
+            img{
+                width: 60px;
+                height: 60px;
+            }
+        }
+        .button--login{
+            margin: 0px;
+            font-size: $fs-0;
+            width: 20%;
+        }
+    }
+}
+
+@media screen and (max-width:550px){
 
         .user--header{
             .user--header__navbar {
@@ -166,6 +275,34 @@
                    display: none;
                 }
             }
+            .user--header__navbar {
+                li{
+                    a{
+                        font-size: $fs-0; 
+                    }
+                }
+                .user--header__menu{
+                   display: none;
+                }
+            }
+        
+            //Hiển Thị Thông Tin KH
+            .user--header__TTKH{
+                    li{ 
+                        a{
+                            font-size: $fs-0; //12px
+                        }    
+                    }
+                    .user--header__TTKH__menu{
+                        top: 56px;
+                        color: $color-white-0;
+                        background-color: $color-black-2;
+                        a{
+                            padding: 5px 0;
+                        }
+                    }
+            }
+            
             .user--header__logo{
                top: 50%;
                img{
@@ -173,8 +310,22 @@
                 height: 40px;
                }
             }
+            .user--header__language{
+                font-size: $fs-0;
+                right: 40%;
+              
+            }
             .user--header__line{
                 display: none;
+            }
+            .user--header__hotline{
+                font-size: $fs-0;
+                top: 20px;
+                left: 60%;
+                margin-right: 0px;
+                i{
+                    font-size: $fs-0;
+                }
             }
             .user--header__icon{
                 img{
@@ -182,9 +333,10 @@
                     height: 35px;
                 }
             }
-            button{
-                margin-left: 0px;
+            .button--login{
+                margin: 0px;
+                font-size: $fs-0;
+                width: 20%;
             }
         }
-    
 }

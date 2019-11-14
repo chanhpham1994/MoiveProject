@@ -33,12 +33,22 @@
             position: absolute;
             right: 1%;
         }
-      
     }
-    h4{
-        color: $color-green-1;
-        text-align: center;
-        padding-top: 45px;
+}
+
+
+@media screen and (max-width:550px){
+.user--slider{
+    .user--slider__head{
+        .nav-pills{
+            .nav-item{
+              .nav-link{
+                font-size: $fs-1;
+                    }
+                }
+            }
+        }
     }
+    
 
 }

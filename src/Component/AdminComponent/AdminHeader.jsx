@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 export default class AdminHeader extends Component {
 
@@ -13,7 +13,7 @@ export default class AdminHeader extends Component {
                         <i className="fa fa-arrow-left" data-toggle="tooltip" data-placement="bottom" title="Về Trang Phim"></i>
                     </a> */}
 
-                    <NavLink to='/admin' >
+                    <NavLink  to='/admin' >
                         ADMIN-PAGE
                     </NavLink>
 
@@ -25,7 +25,12 @@ export default class AdminHeader extends Component {
                             <input className="form-control mr-sm-2" type="search" placeholder="Từ Khóa" aria-label="Search" />
                             <button className="btn btn-light my-2 my-sm-0" type="submit"><i className="fa fa-search"></i></button>
                         </form>
+
+                    <NavLink className='ml-2' to='/'>
+                            --  Trang Chủ BHD --
+                    </NavLink>
                     </div>
+
 
 
                     <div className='header--navbar__icon'>

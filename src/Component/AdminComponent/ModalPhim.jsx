@@ -27,7 +27,7 @@ class ModalPhim extends Component {
                 ngayKhoiChieu: '',
                 danhGia: ''
             },
-
+            hoanThanh: false
         }
     }
 
@@ -110,6 +110,9 @@ class ModalPhim extends Component {
             errors: { ...this.state.errors, [name]: errorMessage }
         })
 
+        //NẾU 1 TRONG NHỮNG INPUT KHÔNG CÓ THÔNG TIN => KHÔNG CHO NGƯỜI DÙNG CẬP NHẬT
+        this.state.hoanThanh = this.state.errors === '' ? true : false;
+
     }
 
     renderErrorMess = (errorMessage) => {
@@ -122,9 +125,8 @@ class ModalPhim extends Component {
 
     handleSubmit = (event) => {
 
-        event.preventDefault();
+        this.props.capNhatThongTinPhim(this.state.phim);
 
-        this.props.capNhatThongTinPhim(this.state.phim)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -136,13 +138,13 @@ class ModalPhim extends Component {
 
     render() {
 
-        console.log('phim Can Sua' , this.props.phimCanSua)
+        console.log('phim Can Sua', this.props.phimCanSua)
 
         return (
             <div>
 
                 <div className="modal fade" id="modelPhim" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                    <div className="modal-dialog" role="document" style={{maxWidth:'1000px'}}>
+                    <div className="modal-dialog" role="document" style={{ maxWidth: '1000px' }}>
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title">Cập Nhật Thông Tin Phim</h5>
@@ -189,7 +191,7 @@ class ModalPhim extends Component {
                                             {/* Hình Ảnh */}
                                             <div className="form-group col-6">
                                                 <label htmlFor="inputEmail4">Hình Ảnh (*)</label>
-                                                <input type="file" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='hinhAnh' id="inputEmail4"  placeholder="Hình Ảnh" />
+                                                <input type="file" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='hinhAnh' id="inputEmail4" placeholder="Hình Ảnh" />
                                                 {this.renderErrorMess(this.state.errors.hinhAnh)}
                                             </div>
 
@@ -216,7 +218,7 @@ class ModalPhim extends Component {
                                                 {this.renderErrorMess(this.state.errors.moTa)}
                                             </div>
                                         </div>
-                                        <button type="submit" className="btn btn-primary">Cập Nhật</button>
+                                        <button type="submit" disabled={!this.state.hoanThanh} className="btn btn-primary">Cập Nhật</button>
                                     </form>
                                 </div>
 
@@ -241,7 +243,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        capNhatThongTinPhim : (phim) => {dispatch(capNhatThongTinPhim(phim))}
+        capNhatThongTinPhim: (phim) => { dispatch(capNhatThongTinPhim(phim)) }
     }
 }
 

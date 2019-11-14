@@ -18,7 +18,7 @@ class UserRap extends Component {
         return dsHeThongRap.map((HTRAP, index) => {
             return (
                 <div className="logo" key={index}>
-                    <img onClick={() => this.props.layThongTinRapTheoHeThong(HTRAP.maHeThongRap)} src={HTRAP.logo} width={50} height={50} alt="" />
+                    <img onClick={() => this.props.layThongTinRapTheoHeThong(HTRAP.maHeThongRap)} src={HTRAP.logo} alt="" />
                 </div>
             )
         })
@@ -31,8 +31,8 @@ class UserRap extends Component {
         return dsRapTheoHeThong.map((rap, index) => {
             return (
                 <div onClick={() => this.props.layDanhSachPhimTheoRap(rap.maCumRap)} className="rapChiTiet" key={index}>
-                    <p className="text">{rap.tenCumRap}</p>
-                    <p>Địa Chỉ : {rap.diaChi}</p>
+                    <p className="tenCumRap">{rap.tenCumRap}</p>
+                    <p className="diaChi">Địa Chỉ : {rap.diaChi}</p>
                 </div>
             )
         })
@@ -52,9 +52,8 @@ class UserRap extends Component {
                             return (
                                 <div>
                                     <NavLink to={`/datve/${lichChieu.maLichChieu}`}><p>{lichChieu.ngayChieuGioChieu}</p></NavLink>
-                                    <p>{lichChieu.maLichChieu}</p>
+                                    {/* <p>{lichChieu.maLichChieu}</p> */}
                                 </div>
-
                             )
                         })}
                     </p>
@@ -76,7 +75,7 @@ class UserRap extends Component {
                     <div className="row">
 
                         {/* Danh sách hệ thống rạp */}
-                        <div className="user--heThongRap__dsachHeThong col-1">
+                        <div className="user--heThongRap__dsachHeThong col-2 col-md-1">
 
                             {this.renderDSHeThongRap()}
 
@@ -84,7 +83,7 @@ class UserRap extends Component {
 
 
                         {/* Danh sách rạp trong hệ thống */}
-                        <div className="user--heThongRap__dsachRap col-3">
+                        <div className="user--heThongRap__dsachRap col-4 col-md-3">
 
                             {this.renderRapTheoHeThong()}
 
@@ -92,7 +91,7 @@ class UserRap extends Component {
 
 
                         {/* Danh sách phim trong rạp */}
-                        <div className="user--heThongRap__lichChieu col-8">
+                        <div className="user--heThongRap__lichChieu col-6 col-md-8">
 
                             {this.renderDanhSachPhim()}
                             

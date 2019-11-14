@@ -8,10 +8,10 @@ class UserInformation extends Component {
 
 
     renderLichSu = () => {
-        let {lichSuDatVeND} = this.props;
-        
-        return lichSuDatVeND.thongTinDatVe && lichSuDatVeND.thongTinDatVe.map((thongTin,index)=>{
-            return(
+        let { lichSuDatVeND } = this.props;
+
+        return lichSuDatVeND.thongTinDatVe && lichSuDatVeND.thongTinDatVe.map((thongTin, index) => {
+            return (
                 <div key={index}>
 
                     <p className="text-white">Tên Phim : {thongTin.tenPhim}</p>
@@ -20,7 +20,7 @@ class UserInformation extends Component {
                     <p className="text-white">Cụm Rạp : {thongTin.ghe.tenHeThongRap}</p>
                     <p className="text-white">Rạp : {thongTin.ghe.maCumRap}</p>
                     <p className="text-white">Tên Ghế : {thongTin.ghe.tenGhe}</p>
-                    
+
                 </div>
             )
         })
@@ -30,6 +30,7 @@ class UserInformation extends Component {
     render() {
 
         let { thongTinKHDangNhap } = this.props;
+        console.log("TCL: UserInformation -> render -> thongTinKHDangNhap", thongTinKHDangNhap)
 
         return (
             <div className="user--information" style={{ backgroundImage: `url(${BackgroundIMG})` }}>
@@ -41,7 +42,6 @@ class UserInformation extends Component {
                     </div>
 
                     <h3>Thông Tin Khách Hàng</h3>
-
 
                     <div>
                         <ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -78,7 +78,7 @@ class UserInformation extends Component {
                                     </div>
                                 </div>
 
-                                 {/* CẬP NHẬT THÔNG TIN */}
+                                {/* CẬP NHẬT THÔNG TIN */}
                                 <button className="btn btn-success" data-toggle="modal" data-target="#modelId" onClick={() => this.props.layThongTinNguoiDungSua(thongTinKHDangNhap)}>Cập Nhật Thông Tin</button>
                             </div>
 
@@ -86,7 +86,6 @@ class UserInformation extends Component {
                             <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <h3 >Lịch Sử Đặt Vé</h3>
                                 {this.renderLichSu()}
-
                             </div>
 
                             {/* Hỗ Trợ */}
@@ -97,7 +96,7 @@ class UserInformation extends Component {
                     </div>
 
                     {/* MODAL SUA THONG TIN KHACH HANG */}
-                    <ModalNguoiDung/>
+                    <ModalNguoiDung />
 
                 </div>
             </div>
@@ -109,14 +108,14 @@ class UserInformation extends Component {
 const mapStateToProps = (state) => {
     return {
         thongTinKHDangNhap: state.QuanLyPhimReducer.thongTinKHDangNhap,
-        lichSuDatVeND : state.QuanLyPhimReducer.lichSuDatVeND
+        lichSuDatVeND: state.QuanLyPhimReducer.lichSuDatVeND
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         layThongTinNguoiDungSua: (nguoiDung) => { dispatch(layThongTinNguoiDungSua(nguoiDung)) },
-        lichSuDatVe: (taiKhoan) => { dispatch(lichSuDatVe(taiKhoan)) }
+        lichSuDatVe: (taiKhoan) => { dispatch(lichSuDatVe(taiKhoan)) },
     }
 }
 
