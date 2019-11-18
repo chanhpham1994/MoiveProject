@@ -102,17 +102,38 @@ class ModalPhim extends Component {
 
     handleBlur = (event) => {
 
+        let flag = false;
+
         const { name, value } = event.target;
 
         const errorMessage = this.validateInput(name, value);
 
         this.setState({
             errors: { ...this.state.errors, [name]: errorMessage }
+        },() => {
+            //NẾU 1 TRONG NHỮNG INPUT KHÔNG CÓ THÔNG TIN => KHÔNG CHO NGƯỜI DÙNG CẬP NHẬT
+            //Do tính chất bất đồng bộ của state => xét điều kiện = callback func
+            // Nếu tất cả các giá trị trong state.errors = '' thì hoanThanh = true ngược lại = false
+            for( let error in this.state.errors){
+                if(this.state.errors[error]){
+                    flag = true
+                }
+                console.log(this.state.errors[error]);
+                console.log("TCL: ModalNguoiDung -> handleBlur -> flag", flag)
+            }
+            if(!flag){
+                this.setState({
+                    hoanThanh : true
+                    
+                }, () => {
+                    console.log("TCL: ModalNguoiDung -> handleBlur -> hoanThanh", this.state.hoanThanh) 
+                })
+            }else{
+                this.setState({
+                    hoanThanh : false
+                })
+            }
         })
-
-        //NẾU 1 TRONG NHỮNG INPUT KHÔNG CÓ THÔNG TIN => KHÔNG CHO NGƯỜI DÙNG CẬP NHẬT
-        this.state.hoanThanh = this.state.errors === '' ? true : false;
-
     }
 
     renderErrorMess = (errorMessage) => {

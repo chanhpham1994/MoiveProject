@@ -37,7 +37,7 @@ export const dangNhapUserPage = (thongTinNguoiDung) => {
     }
 }
 
-export const dangNhapAminPage = (thongTinNguoiDung,moveToAdminPage) => {
+export const dangNhapAminPage = (thongTinNguoiDung, moveToAdminPage) => {
     return dispatch => {
         axios({
             url: settings.domain + '/QuanLyNguoiDung/DangNhap',
@@ -73,13 +73,16 @@ export const dangNhapAminPage = (thongTinNguoiDung,moveToAdminPage) => {
 
 export const daDangNhap = (thongTin) => {
     return dispatch => {
-        
+
         dispatch({
             type: actionTypeNgDung.DA_DANG_NHAP,
-            thongTinKHDangNhap : thongTin
+            thongTinKHDangNhap: thongTin
         })
+
     }
 }
+
+
 
 
 export const dangKy = (thongTinNguoiDung) => {
@@ -88,7 +91,7 @@ export const dangKy = (thongTinNguoiDung) => {
         axios({
             url: settings.domain + '/QuanLyNguoiDung/DangKy',
             method: 'POST',
-            data: {...thongTinNguoiDung, maNhom: settings.groupID}
+            data: { ...thongTinNguoiDung, maNhom: settings.groupID }
         })
             .then(res => {
                 console.log(res.data)
@@ -108,76 +111,81 @@ export const dangKy = (thongTinNguoiDung) => {
 
 
 
-export const dangXuat = () => {
+export const dangXuat = (moveToHomePage) => {
     return dispatch => {
+
+        moveToHomePage();
+
         //Xóa local Storage
         localStorage.clear();
 
         dispatch({
-           type : actionTypeNgDung.DANG_XUAT
+            type: actionTypeNgDung.DANG_XUAT
         })
+
     }
 }
 
 
-export const datVe = (thongTinDatVe,moveToUserInfo) => {
+export const datVe = (thongTinDatVe, moveToUserInfo) => {
     return dispatch => {
         axios({
             url: settings.domain + '/QuanLyDatVe/DatVe',
-            method : 'POST',
+            method: 'POST',
             data: thongTinDatVe,
             headers:
             {
                 "Authorization": "Bearer " + localStorage.getItem(settings.token)
             }
         })
-        .then(res=>{
-            console.log(res.data)
-            swal.fire({
-                title: 'Đặt Vé Thành Công',
-                width: 600,
-                padding: '3em',
-                background: '#fff url(/images/trees.png)',
-                backdrop: `
+            .then(res => {
+                console.log(res.data)
+                swal.fire({
+                    title: 'Đặt Vé Thành Công',
+                    width: 600,
+                    padding: '3em',
+                    background: '#fff url(/images/trees.png)',
+                    backdrop: `
                   rgba(0,0,123,0.4)
                   url("/images/nyan-cat.gif")
                   center left
                   no-repeat
                 `
-              })
-            console.log('moveToUserInfo',moveToUserInfo);
-              
-            //chuyển trang
-            moveToUserInfo();
-        })
-        .catch(err=>{
-            console.log(err.response.data)
-        })
+                })
+                console.log('moveToUserInfo', moveToUserInfo);
+
+                //chuyển trang
+                moveToUserInfo();
+            })
+            .catch(err => {
+                console.log(err.response.data)
+            })
     }
 }
 
-export const lichSuDatVe = (taiKhoan) => {
+export const lichSuDatVe = (taiKhoan, maLoaiNguoiDung) => {
     return dispatch => {
         axios({
             url: settings.domain + '/QuanLyNguoiDung/ThongTinTaiKhoan',
             method: 'POST',
-            data: {taiKhoan: taiKhoan},
+            data: { taiKhoan: taiKhoan },
             headers:
             {
                 "Authorization": "Bearer " + localStorage.getItem(settings.token)
             }
         })
-        .then(res=>{
-            console.log('lichSuDatVe',res.data)
-            dispatch({
-                type: actionTypeNgDung.LICH_SU_DAT_VE,
-                lichSuDatVeND : res.data
+            .then(res => {
+                console.log('lichSuDatVe', res.data)
+                dispatch({
+                    type: actionTypeNgDung.LICH_SU_DAT_VE,
+                    lichSuDatVeND: res.data,
+                    // API ThongTinTaiKhoan trả về loaiNguoiDung = null => dùng kết quả trả về từ đăng nhập để thêm vào maLoaiNguoiDung
+                    maLoaiNguoiDung: maLoaiNguoiDung
+                })
             })
-
-        })
-        .catch(err=>{
-            console.log(err.response.data)
-        })
+            .catch(err => {
+                console.log(err.response.data)
+            })
     }
 }
 
@@ -206,7 +214,7 @@ export const themNguoiDung = (nguoiDung) => {
         axios({
             url: settings.domain + '/QuanLyNguoiDung/ThemNguoiDung',
             method: 'POST',
-            data: { ...nguoiDung, maNhom: settings.groupID , maLoaiNguoiDung: 'KhachHang' },
+            data: { ...nguoiDung, maNhom: settings.groupID, maLoaiNguoiDung: 'KhachHang' },
             headers:
             {
                 "Authorization": "Bearer " + localStorage.getItem(settings.token)
@@ -301,7 +309,7 @@ export const layThongTinNguoiDungSua = (nguoiDung) => {
 }
 
 export const capNhatThongTinNguoiDung = (nguoiDung) => {
-  
+
     return dispatch => {
         axios({
             url: settings.domain + '/QuanLyNguoiDung/CapNhatThongTinNguoiDung',
@@ -322,13 +330,18 @@ export const capNhatThongTinNguoiDung = (nguoiDung) => {
             })
             .catch(err => {
                 console.log(err.response.data)
+                swal.fire({
+                    type: 'error',
+                    title: 'Rất Tiếc!!',
+                    text: err.response.data,
+                })
             })
     }
 }
 
 
-export const datGhe = (thongTinGhe,index) => {
-    
+export const datGhe = (thongTinGhe, index) => {
+
     return dispatch => {
         dispatch({
             type: actionTypeNgDung.DAT_GHE,
@@ -340,7 +353,7 @@ export const datGhe = (thongTinGhe,index) => {
 
 
 export const huyDat = (index) => {
-    
+
     return dispatch => {
         dispatch({
             type: actionTypeNgDung.HUY_DAT,
