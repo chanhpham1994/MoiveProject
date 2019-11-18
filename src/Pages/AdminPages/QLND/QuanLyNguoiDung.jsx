@@ -66,28 +66,56 @@ class QuanLyNguoiDung extends Component {
 
     handleChange = (event) => {
 
+        let flag = false;
+
         const { name, value } = event.target;
 
         this.setState({
             nguoiDung: { ...this.state.nguoiDung, [name]: value }
-        },()=>{
-            console.log('ngdungcansua',this.state.nguoiDung)
         })
 
     }
 
     handleBlur = (event) => {
 
+        let flag1, flag2 = false;
+
         const { name, value } = event.target;
 
         const errorMessage = this.validateInput(name, value);
 
-        this.state.hoanThanh = errorMessage === '' ? true : false;
-
         this.setState({
             errors: { ...this.state.errors, [name]: errorMessage }
+        }, () => {
+            //NẾU 1 TRONG NHỮNG INPUT KHÔNG CÓ THÔNG TIN => KHÔNG CHO NGƯỜI DÙNG CẬP NHẬT
+            //Do tính chất bất đồng bộ của state => xét điều kiện = callback func
+            //Nếu tất cả các giá trị trong state.errors = '' thì hoanThanh = true ngược lại = false
+            for( let error in this.state.errors){
+                if(this.state.errors[error]){
+                    flag1 = true
+                }
+                console.log(this.state.errors[error]);
+                console.log("TCL: ModalNguoiDung -> handleBlur -> flag1", flag1)
+            }
+            for ( let ngDung in this.state.nguoiDung){
+                if(!this.state.nguoiDung[ngDung]){
+                    flag2 = true
+                }
+                console.log(this.state.nguoiDung[ngDung]);
+                console.log("TCL: QuanLyNguoiDung -> handleBlur -> flag2", flag2)
+            }
+            if(!flag1 && !flag2){
+                this.setState({
+                    hoanThanh : true
+                }, () => {
+                    console.log("TCL: ModalNguoiDung -> handleBlur -> hoanThanh", this.state.hoanThanh)
+                })
+            }else{
+                this.setState({
+                    hoanThanh : false
+                })
+            }
         })
-
     }
 
     renderErrorMess = (errorMessage) => {
@@ -164,7 +192,7 @@ class QuanLyNguoiDung extends Component {
                             {/* Mã Loại Người Dùng */}
                             <div className="form-group col-7">
                                 <label htmlFor="inputState">Mã Loại Người Dùng (*)</label>
-                                <select id="inputState" onChange={this.handleChange} name='maLoaiNguoiDung' value={this.state.nguoiDung.maLoaiNguoiDung} className="form-control" >
+                                <select id="inputState" onChange={this.handleChange} onBlur={this.handleBlur} name='maLoaiNguoiDung' value={this.state.nguoiDung.maLoaiNguoiDung} className="form-control" >
                                     <option >Chọn Loại Người Dùng</option>
                                     <option value='KhachHang'>Khách Hàng</option>
                                     <option value='QuanTri'>Quản Trị</option>

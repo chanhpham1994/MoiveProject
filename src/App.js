@@ -34,7 +34,7 @@ function App() {
 
           <HomeTemplate exact path='/' Component={HomePage} />
 
-          <HomeTemplate exact path='/userinfo' Component={UserInformation}/>
+          <HomeTemplate exact path='/userinfo'  Component={UserInformation}/>
 
           <HomeTemplate exact path='/userchitietphim/:maPhim' Component={UserChiTietPhim}/>
 
@@ -59,6 +59,8 @@ function App() {
 
           <AdminTemplate exact path='/lichchieu' Component={QuanLyLichChieu} />
 
+          {/* Điều hướng về lại homepage */}
+          <Redirect to='/'/>
 
         </Switch>
       </BrowserRouter>

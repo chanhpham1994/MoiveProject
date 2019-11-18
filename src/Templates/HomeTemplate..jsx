@@ -9,7 +9,7 @@ import UserPromotion from '../Component/UserComponent/UserPromotion';
 const UserLayout = ({ ...props }) => {
     return <Fragment>
 
-        <UserHeader />
+        <UserHeader/>
         {props.children}
         <UserPromotion/>
         <UserFooter />

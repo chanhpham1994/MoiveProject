@@ -26,7 +26,7 @@ export default class AdminHeader extends Component {
                             <button className="btn btn-light my-2 my-sm-0" type="submit"><i className="fa fa-search"></i></button>
                         </form>
 
-                    <NavLink className='ml-2' to='/'>
+                    <NavLink className='ml-2 text-success' to='/'>
                             --  Trang Chủ BHD --
                     </NavLink>
                     </div>

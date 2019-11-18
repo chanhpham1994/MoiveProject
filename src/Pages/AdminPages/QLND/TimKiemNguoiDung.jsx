@@ -66,7 +66,7 @@ class TimKiemNguoiDung extends Component {
 
         event.preventDefault();
         //Trả về giá trị tìm kiếm theo yếu cầu của người dùng hoặc trả về danh sách
-        if(this.state.tuKhoa !== ''){
+        if (this.state.tuKhoa !== '') {
             this.props.timKiemNguoiDung(this.state.tuKhoa)
         }
         this.props.layDanhSachNguoiDung();
@@ -89,8 +89,7 @@ class TimKiemNguoiDung extends Component {
 
         return (
             <div>
-                {/* MODAL SUA THONG TIN KHACH HANG */}
-                <ModalNguoiDung />
+
 
                 {/* TÌM KIẾM KHÁCH HÀNG */}
                 <div className='container'>
@@ -132,8 +131,8 @@ class TimKiemNguoiDung extends Component {
                     </tbody>
                 </table>
 
-
-
+                {/* MODAL SUA THONG TIN KHACH HANG */}
+                <ModalNguoiDung />
 
             </div>
         )

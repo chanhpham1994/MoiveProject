@@ -14,7 +14,7 @@ class ModalNguoiDung extends Component {
                 hoTen: '',
                 soDt: '',
                 email: '',
-                maLoaiNguoiDung: ''
+                maLoaiNguoiDung: 'KhachHang'
             },
             errors: {
                 taiKhoan: '',
@@ -71,12 +71,14 @@ class ModalNguoiDung extends Component {
         this.setState({
             nguoiDung: { ...this.state.nguoiDung, [name]: value }
         }, () => {
-            console.log(this.state.nguoiDung)
+            console.log('thongTinNgDungCanSua',this.state.nguoiDung)
         })
 
     }
 
     handleBlur = (event) => {
+
+        let flag1 = false, flag2 = false;
 
         const { name, value } = event.target;
 
@@ -84,138 +86,163 @@ class ModalNguoiDung extends Component {
 
         this.setState({
             errors: { ...this.state.errors, [name]: errorMessage }
+        },  () => {
+            //NẾU 1 TRONG NHỮNG INPUT KHÔNG CÓ THÔNG TIN => KHÔNG CHO NGƯỜI DÙNG CẬP NHẬT
+            //Do tính chất bất đồng bộ của state => xét điều kiện = callback func
+            //Nếu tất cả các giá trị trong state.errors = '' thì hoanThanh = true ngược lại = false
+            for( let error in this.state.errors){
+                if(this.state.errors[error]){
+                    flag1 = true
+                }
+                console.log(this.state.errors[error]);
+                console.log("TCL: ModalNguoiDung -> handleBlur -> flag1", flag1)
+            }
+            for ( let ngDung in this.state.nguoiDung){
+                if(!this.state.nguoiDung[ngDung]){
+                    flag2 = true
+                }
+                console.log(this.state.nguoiDung[ngDung]);
+                console.log("TCL: QuanLyNguoiDung -> handleBlur -> flag2", flag2)
+            }
+            if(!flag1 && !flag2){
+                this.setState({
+                    hoanThanh : true
+                }, () => {
+                    console.log("TCL: ModalNguoiDung -> handleBlur -> hoanThanh", this.state.hoanThanh)
+                })
+            }else{
+                this.setState({
+                    hoanThanh : false
+                })
+            }
         })
-
-        //NẾU 1 TRONG NHỮNG INPUT KHÔNG CÓ THÔNG TIN => KHÔNG CHO NGƯỜI DÙNG CẬP NHẬT
-        this.state.hoanThanh = errorMessage === '' ? true : false;
-
-        // for (let [key, value] of Object.entries(this.state.errors)) {
-        //     console.log(`${key}: ${value}`);
-        //     if ( `${key} !== ''` ) {
-        //         this.setState({
-        //             hoanThanh: false 
-        //         })
-        //     }
-        // }
     }
 
 
 
-renderErrorMess = (errorMessage) => {
-    if (errorMessage !== '') {
-        return <div className='alert alert-danger'>{errorMessage}</div>
+    renderErrorMess = (errorMessage) => {
+        if (errorMessage !== '') {
+            return <div className='alert alert-danger'>{errorMessage}</div>
+        }
+
+        return '';
     }
 
-    return '';
-}
+    handleSubmit = (event) => {
 
-handleSubmit = (event) => {
+        this.props.capNhatThongTinNguoiDung(this.state.nguoiDung);
 
-    this.props.capNhatThongTinNguoiDung(this.state.nguoiDung);
+    }
 
-}
-
-componentWillReceiveProps(nextProps) {
-    this.setState({
-        nguoiDung: { ...nextProps.nguoiDungCanSua }
-    })
-}
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            nguoiDung: { ...nextProps.nguoiDungCanSua }
+        })
+    }
 
 
-render() {
+    render() {
 
-    return (
-        <div>
-            <div className="modal fade" id="modelId" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        return (
+            <div>
+                <div className="modal fade" id="modelId" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 
-                <div className="modal-dialog" role="document" style={{ maxWidth: '1000px' }}>
+                    <div className="modal-dialog" role="document" style={{ maxWidth: '1000px' }}>
 
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">Cập Nhật Thông Tin Người Dùng</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Cập Nhật Thông Tin Người Dùng</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
 
-                        <div className="modal-body">
-                            <div className='admin--content__form'>
-
-
-                                <form onSubmit={this.handleSubmit} className='my-2'>
-                                    <div className='row'>
-
-                                        {/* Tài Khoản */}
-                                        <div className="form-group col-4 ">
-                                            <label htmlFor="inputAddress1">Tài khoản</label>
-                                            <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='taiKhoan' value={this.state.nguoiDung.taiKhoan} id="inputAddress1" placeholder="Tài khoản" disabled />
-                                            {this.renderErrorMess(this.state.errors.taiKhoan)}
-                                        </div>
+                            <div className="modal-body">
+                                <div className='admin--content__form'>
 
 
-                                        {/* Mật Khẩu */}
-                                        <div className="form-group col-4 align-self-start">
-                                            <label htmlFor="password">Mật Khẩu</label>
-                                            <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='matKhau' value={this.state.nguoiDung.matKhau} id="inputPassword4" placeholder="Mật Khẩu" />
-                                            {this.renderErrorMess(this.state.errors.matKhau)}
-                                        </div>
+                                    <form onSubmit={this.handleSubmit} className='my-2'>
+                                        <div className='row'>
 
-
-                                        {/* Họ Tên */}
-                                        <div className="form-group col-7">
-                                            <label htmlFor="inputAddress2">Họ và Tên</label>
-                                            <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='hoTen' value={this.state.nguoiDung.hoTen} id="inputAddress2" placeholder="Họ và Tên" />
-                                            {this.renderErrorMess(this.state.errors.hoTen)}
-                                        </div>
-
-
-                                        {/* Số điện thoại*/}
-                                        <div className="form-group col-7">
-                                            <label htmlFor="inputAddress3">Số điện thoại</label>
-                                            <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='soDt' value={this.state.nguoiDung.soDt} id="inputAddress3" placeholder="Số điện thoại" />
-                                            {this.renderErrorMess(this.state.errors.soDt)}
-                                        </div>
-
-
-                                        {/* Email */}
-                                        <div className="form-group col-7">
-                                            <label htmlFor="inputEmail4">Email</label>
-                                            <input type="email" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='email' value={this.state.nguoiDung.email} id="inputEmail4" placeholder="Email" />
-                                            {this.renderErrorMess(this.state.errors.email)}
-                                        </div>
-
-                                        {/* Mã Loại Người Dùng */}
-
-                                        {this.props.thongTinKHDangNhap.maLoaiNguoiDung === 'QuanTri' ?
-                                            <div className="form-group col-7">
-                                                <label htmlFor="inputState">Mã Loại Người Dùng</label>
-                                                <select id="inputState" onChange={this.handleChange} name='maLoaiNguoiDung' value={this.state.nguoiDung.maLoaiNguoiDung} className="form-control" >
-                                                    <option
-                                                    >Chọn Loại Người Dùng</option>
-                                                    <option value='KhachHang'>Khách Hàng</option>
-                                                    <option value='QuanTri'>Quản Trị</option>
-                                                </select>
+                                            {/* Tài Khoản */}
+                                            <div className="form-group col-4 ">
+                                                <label htmlFor="inputAddress1">Tài khoản</label>
+                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='taiKhoan' value={this.state.nguoiDung.taiKhoan} id="inputAddress1" placeholder="Tài khoản" disabled />
+                                                {this.renderErrorMess(this.state.errors.taiKhoan)}
                                             </div>
 
-                                            : ''
-                                        }
 
-                                    </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                            {/* Mật Khẩu */}
+                                            <div className="form-group col-4 align-self-start">
+                                                <label htmlFor="password">Mật Khẩu</label>
+                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='matKhau' value={this.state.nguoiDung.matKhau} id="inputPassword4" placeholder="Mật Khẩu" />
+                                                {this.renderErrorMess(this.state.errors.matKhau)}
+                                            </div>
 
-                                        <button type="submit" className="btn btn-primary" disabled={!this.state.hoanThanh}>Cập Nhật</button>
-                                    </div>
 
-                                </form>
+                                            {/* Họ Tên */}
+                                            <div className="form-group col-7">
+                                                <label htmlFor="inputAddress2">Họ và Tên</label>
+                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='hoTen' value={this.state.nguoiDung.hoTen} id="inputAddress2" placeholder="Họ và Tên" />
+                                                {this.renderErrorMess(this.state.errors.hoTen)}
+                                            </div>
+
+
+                                            {/* Số điện thoại*/}
+                                            <div className="form-group col-7">
+                                                <label htmlFor="inputAddress3">Số điện thoại</label>
+                                                <input type="text" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='soDt' value={this.state.nguoiDung.soDt} id="inputAddress3" placeholder="Số điện thoại" />
+                                                {this.renderErrorMess(this.state.errors.soDt)}
+                                            </div>
+
+
+                                            {/* Email */}
+                                            <div className="form-group col-7">
+                                                <label htmlFor="inputEmail4">Email</label>
+                                                <input type="email" className="form-control" onChange={this.handleChange} onBlur={this.handleBlur} name='email' value={this.state.nguoiDung.email} id="inputEmail4" placeholder="Email" />
+                                                {this.renderErrorMess(this.state.errors.email)}
+                                            </div>
+
+                                            {/* Mã Loại Người Dùng */}
+
+                                            {this.props.thongTinKHDangNhap.maLoaiNguoiDung === 'QuanTri' ?
+
+                                                <div className="form-group col-7">
+                                                    <label htmlFor="inputState">Mã Loại Người Dùng</label>
+                                                    <select id="inputState" onChange={this.handleChange} onBlur={this.handleBlur} name='maLoaiNguoiDung' value={this.state.nguoiDung.maLoaiNguoiDung} className="form-control" >
+                                                        <option  >Chọn Loại Người Dùng</option>
+                                                        <option value='KhachHang'>Khách Hàng</option>
+                                                        <option value='QuanTri'>Quản Trị</option>
+                                                    </select>
+                                                </div>
+
+                                                :
+                                                
+                                                <div className="form-group col-7">
+                                                    <label htmlFor="inputState">Mã Loại Người Dùng</label>
+                                                    <select id="inputState" onChange={this.handleChange} onBlur={this.handleBlur} name='maLoaiNguoiDung' value={this.state.nguoiDung.maLoaiNguoiDung} className="form-control" >
+                                                        <option  >Chọn Loại Người Dùng</option>
+                                                        <option value='KhachHang' >Khách Hàng</option>
+                                                    </select>
+                                                </div>
+                                            }
+
+                                        </div>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Đóng</button>
+
+                                            <button type="submit" className="btn btn-primary" disabled={!this.state.hoanThanh}>Cập Nhật</button>
+                                        </div>
+
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
-}
+        )
+    }
 }
 
 

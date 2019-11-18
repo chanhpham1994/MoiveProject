@@ -38,6 +38,7 @@ const initialState = {
     dsRapTheoHeThong: [],
     dsPhimTheoRap : []
 
+
 }
 
 export const QuanLyPhimReducer = (state = initialState, action) => {
@@ -55,7 +56,7 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
         //DA_DANG_NHAP:
         case actionTypeNgDung.DA_DANG_NHAP:
       
-            state.thongTinKHDangNhap = {...action.thongTinKHDangNhap,soDt:action.thongTinKHDangNhap.soDT};
+            state.thongTinKHDangNhap = {...action.thongTinKHDangNhap,soDt: action.thongTinKHDangNhap.soDT};
            
             return { ...state }
 
@@ -97,6 +98,10 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
         case actionTypeNgDung.LAY_THONG_TIN_NGUOI_DUNG_SUA:
 
             state.nguoiDungCanSua = action.NguoiDungCanSua;
+
+            //xóa thongTin
+            delete state.nguoiDungCanSua.loaiNguoiDung;
+            delete state.nguoiDungCanSua.thongTinDatVe;
 
             return { ...state }
 
@@ -200,8 +205,7 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
         //LICH_SU_DAT_VE
         case actionTypeNgDung.LICH_SU_DAT_VE:
 
-            state.lichSuDatVeND = action.lichSuDatVeND;
-            console.log("TCL: QuanLyPhimReducer -> action.lichSuDatVeND", action.lichSuDatVeND)
+            state.lichSuDatVeND = {...action.lichSuDatVeND, soDt: action.lichSuDatVeND.soDT,maLoaiNguoiDung: action.maLoaiNguoiDung};
            
             return {...state}
 

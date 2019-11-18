@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router";
 import { NavLink } from 'react-router-dom';
 import UserLogin from './UserLogin';
 import { connect } from 'react-redux';
@@ -16,7 +17,14 @@ class UserHeader extends Component {
         if (thongTin !== '' && thongTin !== null) {
             this.props.daDangNhap(thongTin);
         }
+    }
 
+    //Sau khi đăng xuất quay trở lại trang homepage
+    //this.props.history.push won't work in nested components.
+    //import { withRouter } from "react-router";
+    moveToHomePage = () => {
+        //Replace: thay thế component cũ bằng component mới, không thể back lại được
+        this.props.history.replace('/');
     }
 
 
@@ -106,13 +114,13 @@ class UserHeader extends Component {
 
                                     <div className="dropdown-menu user--header__TTKH__menu" aria-labelledby="navbarDropdown">
 
-                                        <NavLink className="dropdown-item" to="/userinfo">Thông Tin Khách Hàng</NavLink>
+                                        <NavLink className="dropdown-item" to="/userinfo" >Thông Tin Khách Hàng</NavLink>
 
                                         { thongTinKHDangNhap.maLoaiNguoiDung === 'QuanTri' ?
                                             <NavLink className="dropdown-item" to="/admin">Admin Page</NavLink> : ''
                                         }
 
-                                        <a className="dropdown-item text-danger" onClick={() => this.props.dangXuat()} >Đăng Xuất</a>
+                                        <a className="dropdown-item text-danger" onClick={() => this.props.dangXuat(this.moveToHomePage)} >Đăng Xuất</a>
 
                                     </div>
                                 </li>
@@ -142,10 +150,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    dangXuat: () => { dispatch(dangXuat()) },
+    dangXuat: (moveToHomePage) => { dispatch(dangXuat(moveToHomePage)) },
     daDangNhap: (thongTin) => {dispatch(daDangNhap(thongTin))},
-    
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserHeader)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserHeader))
