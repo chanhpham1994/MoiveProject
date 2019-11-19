@@ -5,7 +5,6 @@ import UserLogin from './UserLogin';
 import { connect } from 'react-redux';
 import {settings} from '../../Common/Config/Setting';
 import { dangXuat,daDangNhap } from '../../Redux/actions/QuanLyNguoiDungAction';
-import Snow from '../Helper/Snow';
 
 class UserHeader extends Component {
 
@@ -34,9 +33,6 @@ class UserHeader extends Component {
 
         return (
             <header className='user--header'>
-
-                {/* SNOW */}
-                <Snow/>
 
                 <nav className="navbar navbar-expand-lg">
                     <button className="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
