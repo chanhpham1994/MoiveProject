@@ -44,50 +44,6 @@
                 margin-top: 20px;
             }
         }
-
-        .canvas-card{
-            background-color: $color-white-0;
-            border-radius: 10px;
-            .card-box{
-                padding-bottom: 35px;
-                h5{
-                    color:  $color-gray-0;
-                }
-                .card-box__icon{
-                    color:  $color-gray-1;
-                }
-            }
-            .chart{
-                clear: both;
-                margin-top: 20px;
-                .widget-chart-box{
-                    float: left;
-                    #myCanvas{
-                        position: relative;
-                    }
-                 .myCanvas--number{
-                        width: 44px;
-                        height: 26px;
-                        position: absolute;
-                        vertical-align: middle;
-                        margin-top: 38px;
-                        margin-left: -115px;
-                        border: 0px;
-                        background: none;
-                        font: bold 16px Arial;
-                        text-align: center;
-                        color: rgb(240, 80, 80);
-                        padding: 0px;
-                        -webkit-appearance: none;
-                    }
-                }
-                .widget-detail-right{
-                   h4{
-                    padding-top: 15px;
-                   }
-                }
-            }
-        }
     }
 
     //AMIN__TOP_FILM
@@ -103,7 +59,7 @@
                 margin-top: -20px;
                 img{
                     position: absolute;
-                    width: 490px;
+                    width: 480px;
                     height: 290px;
                     border-radius: 6px;
                     box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
@@ -198,6 +154,52 @@
                         position: absolute;
                         right: 5px;
                         top: 3px
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and(min-width:1367px) and (max-width:1680px){
+    .admin--content{
+        //AMIN__TOP_FILM
+        .main--page__film{
+            margin-top: 55px;
+            .top--film{
+                background-color: $color-white-0;
+                padding: 30px;
+                border-radius: 10px;
+                height: 450px;
+                .top--film__image{
+                    margin-top: 0px;
+                    img{
+                        width: 420px;
+                        height: 200px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and(min-width:500px) and (max-width:1366px){
+    .admin--content{
+        //AMIN__TOP_FILM
+        .main--page__film{
+            margin-top: 55px;
+            .top--film{
+                background-color: $color-white-0;
+                padding: 30px;
+                border-radius: 10px;
+                height: 450px;
+                .top--film__image{
+                    margin-top: 0px;
+                    img{
+                        width: 320px;
+                        height: 190px;
                     }
                 }
             }

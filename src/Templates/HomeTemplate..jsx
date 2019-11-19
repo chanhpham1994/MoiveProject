@@ -4,11 +4,12 @@ import { Route } from 'react-router-dom';
 import UserHeader from '../Component/UserComponent/UserHeader';
 import UserFooter from '../Component/UserComponent/UserFooter';
 import UserPromotion from '../Component/UserComponent/UserPromotion';
+import Snow from '../Component/Helper/Snow';
 
 
 const UserLayout = ({ ...props }) => {
     return <Fragment>
-
+        <Snow/>
         <UserHeader/>
         {props.children}
         <UserPromotion/>

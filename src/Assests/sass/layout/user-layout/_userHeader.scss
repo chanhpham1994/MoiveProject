@@ -1,4 +1,3 @@
-
 .user--header{
     width: 100%;
     background-color: $color-black-2;
@@ -75,7 +74,7 @@
         position: absolute;
         top: 15px;
         left: 55%;
-        margin-right: 96px;
+        margin-right: -96px;
         z-index: 55;
         color: $color-white-0;
         font-size: 20px;
@@ -127,7 +126,7 @@
 }
 
 
-@media screen and (min-width:993px) and (max-width:1300px){
+@media screen and (min-width:1301px) and (max-width:1788px){
         .user--header{
             .user--header__navbar {
                 .user--header__detail{
@@ -152,11 +151,12 @@
                         }    
                     }
                     .user--header__TTKH__menu{
-                        top: 56px;
+                        top: 52px;
+                        left: 85%;
                         color: $color-white-0;
                         background-color: $color-black-2;
                         a{
-                            padding: 5px 0;
+                            padding: 5px 25px;
                         }
                     }
             }
@@ -193,7 +193,7 @@
         }
 }
 
-@media screen and (min-width:551px) and (max-width:992px){
+@media screen and (min-width:992px) and (max-width:1300px){
 
     .user--header{
         .user--header__navbar {
@@ -216,15 +216,17 @@
         .user--header__TTKH{
                 li{ 
                     a{
-                        font-size: $fs-1; //12px
+                        font-size: $fs-1 - 1; //12px
                     }    
                 }
                 .user--header__TTKH__menu{
                     top: 56px;
                     color: $color-white-0;
                     background-color: $color-black-2;
+                    left: 82%;
+                    top: 50px;
                     a{
-                        padding: 5px 0;
+                        padding: 5px 20px;
                     }
                 }
         }
@@ -237,20 +239,19 @@
            }
         }
         .user--header__language{
-            font-size: $fs-1;
-            right: 50%;
-          
+            font-size: $fs-0;
+            right: 47%;
         }
         .user--header__line{
             display: none;
         }
         .user--header__hotline{
-            font-size: $fs-1;
+            font-size: $fs-0;
             top: 20px;
-            left: 60%;
+            left: 54%;
             margin-right: 0px;
             i{
-                font-size: $fs-1;
+                font-size: $fs-0;
             }
         }
         .user--header__icon{
@@ -267,7 +268,7 @@
     }
 }
 
-@media screen and (max-width:550px){
+@media screen and (min-width:300px) and (max-width:991px){
 
         .user--header{
             .user--header__navbar {
@@ -311,9 +312,7 @@
                }
             }
             .user--header__language{
-                font-size: $fs-0;
-                right: 40%;
-              
+                display: none;
             }
             .user--header__line{
                 display: none;

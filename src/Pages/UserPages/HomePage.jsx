@@ -9,7 +9,7 @@ class HomePage extends Component {
     componentDidMount = () => {
         
         //reset state
-        this.props.resetState();
+        // this.props.resetState();
     }
 
 

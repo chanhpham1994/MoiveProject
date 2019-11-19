@@ -4,7 +4,6 @@
     color:   $color-gray-0;
     .sidebar--content{
         .sidebar--content__admin{
-            
             img{
                 margin-top:25px;
                 border: 5px solid $color-gray-0;
@@ -15,7 +14,7 @@
             margin-top: 20px;
             
             span{
-                font-size: 18px;
+                font-size: $fs-1;
                 margin: 10px;
             }
             ul{
@@ -27,6 +26,25 @@
                         margin: 10px;
                         color:#3e3e3e;
                         text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and(min-width:500px) and (max-width:1778px){
+    .sidebar{
+        .sidebar--content{
+            .sidebar--menu{
+                span{
+                    font-size: $fs-0;
+                }
+                ul{
+                    list-style-type: none;
+                    li{
+                        font-size: $fs-0;
                     }
                 }
             }

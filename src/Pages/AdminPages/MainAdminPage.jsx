@@ -2,25 +2,6 @@ import React, { Component } from 'react';
 
 export default class MainAdminPage extends Component {
 
-    componentDidMount = () => {
-
-        var canvas = document.getElementById('myCanvas');
-        var context = canvas.getContext('2d');
-        // var centerX = canvas.width / 2;
-        var centerY = canvas.height / 2;
-        var radius = 45;
-
-        context.beginPath();
-        context.arc(55, centerY, radius, 1.5, 2 * Math.PI, false);
-        context.fillStyle = 'transparent';
-        context.fill();
-        context.lineWidth = 5;
-        context.strokeStyle = 'red';
-        context.stroke();
-
-    }
-
-
     render() {
 
         return (
@@ -55,9 +36,10 @@ export default class MainAdminPage extends Component {
                             </div>
                         </div>
 
-                        {/* CANVAS CIRCLE */}
+                      
+                        {/* PROGRESS BAR */}
                         <div className='col-md-3 p-2'>
-                            <div className='canvas-card p-4'>
+                            <div className='progress-card p-4'>
 
                                 <div className='card-box'>
                                     <h5 className='float-left'>Phân Tích</h5>
@@ -65,17 +47,15 @@ export default class MainAdminPage extends Component {
                                 </div>
 
                                 <div className='chart'>
-                                    <div className='widget-chart-box'>
-
-                                        <canvas id="myCanvas" width={150} height={100} ></canvas>
-
-                                        <input className='myCanvas--number' data-plugin="knob" data-width={80} data-height={80} data-fgcolor="#f05050 " data-bgcolor="#F9B9B9" defaultValue={58} data-skin="tron" data-angleoffset={180} data-readonly="true" data-thickness=".15" readOnly="readonly" />
-
-                                    </div>
 
                                     <div className='widget-detail-right text-right'>
                                         <h4>2404</h4>
                                         <p>Doanh Thu Trong Ngày</p>
+                                    </div>
+                                    <div className='widget-chart-box'>
+                                        <div className="progress">
+                                            <div className="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style={{ width: '55%' }} aria-valuenow={85} aria-valuemin={0} aria-valuemax={100} />
+                                        </div>
                                     </div>
 
                                 </div>
