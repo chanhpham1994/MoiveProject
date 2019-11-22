@@ -140,14 +140,12 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             phimCanSua.hinhAnh = null;
             phimCanSua.ngayKhoiChieu = '';
 
-
             //xóa lịch chiếu
             delete phimCanSua.lichChieu;
 
-
             state.phimCanSua = phimCanSua;
 
-            console.log("TCL: QuanLyPhimReducer ->  state.phimCanSua", state.phimCanSua)
+            // console.log("TCL: QuanLyPhimReducer ->  state.phimCanSua", state.phimCanSua)
 
             return { ...state }
 
@@ -157,7 +155,7 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
 
             //lấy danh sách mảng chứa rạp theo ngayChieuGioChieu
             let mangRap = state.thongTinChiTietPhim.lichChieu.filter(rap => rap.ngayChieuGioChieu === action.ngayChieuGioChieu);
-            console.log("TCL: QuanLyPhimReducer -> mangRap", mangRap)
+            // console.log("TCL: QuanLyPhimReducer -> mangRap", mangRap)
 
             state.thongTinRap = mangRap;
 
@@ -230,7 +228,7 @@ export const QuanLyPhimReducer = (state = initialState, action) => {
             let index7 = state.dsRapTheoHeThong.findIndex(rap => rap.maCumRap === action.maCumRap )
             
             state.dsPhimTheoRap = state.dsRapTheoHeThong[index7].danhSachPhim;
-            console.log("TCL: QuanLyPhimReducer -> state.dsPhimTheoRap", state.dsPhimTheoRap)
+            // console.log("TCL: QuanLyPhimReducer -> state.dsPhimTheoRap", state.dsPhimTheoRap)
             
            return {...state}
 

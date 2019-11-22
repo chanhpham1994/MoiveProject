@@ -54,7 +54,7 @@ export default class MainAdminPage extends Component {
                                     </div>
                                     <div className='widget-chart-box'>
                                         <div className="progress">
-                                            <div className="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style={{ width: '55%' }} aria-valuenow={85} aria-valuemin={0} aria-valuemax={100} />
+                                            <div className="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" style={{ width: '55%' }} aria-valuenow={85} aria-valuemin={0} aria-valuemax={100} />
                                         </div>
                                     </div>
 

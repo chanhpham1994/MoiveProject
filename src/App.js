@@ -22,7 +22,6 @@ import UserDatVe from './Pages/UserPages/UserDatVe';
 import UserRap from './Pages/UserPages/UserRap';
 import UserInformation from './Pages/UserPages/UserInformation';
 import UserLichChieu from './Pages/UserPages/UserLichChieu';
-// import Auth from './Component/AdminComponent/Auth';
 
 
 function App() {
@@ -34,20 +33,21 @@ function App() {
 
           <HomeTemplate exact path='/' Component={HomePage} />
 
-          <HomeTemplate exact path='/userinfo'  Component={UserInformation}/>
+          <HomeTemplate exact path='/userinfo' Component={UserInformation} />
 
-          <HomeTemplate exact path='/userchitietphim/:maPhim' Component={UserChiTietPhim}/>
+          <HomeTemplate exact path='/userchitietphim/:maPhim' Component={UserChiTietPhim} />
 
-          <HomeTemplate exact path='/lichChieu' Component={UserLichChieu}/>
+          <HomeTemplate exact path='/lichChieu' Component={UserLichChieu} />
 
-          <HomeTemplate exact path='/rap' Component={UserRap}/>
+          <HomeTemplate exact path='/rap' Component={UserRap} />
 
-          <HomeTemplate exact path='/datve/:maLichChieu' Component={UserDatVe}/>
+          <HomeTemplate exact path='/datve/:maLichChieu' Component={UserDatVe} />
 
 
           <Route exact path='/login' component={Login} />
+      
+          <AdminTemplate path='/admin' Component={MainAdminPage} />
 
-          <AdminTemplate exact path='/admin' Component={MainAdminPage} />
           <AdminTemplate exact path='/thongTinAD' Component={ThonTinAdmin} />
 
           <AdminTemplate exact path='/quanlyND' Component={QuanLyNguoiDung} />
@@ -60,7 +60,7 @@ function App() {
           <AdminTemplate exact path='/lichchieu' Component={QuanLyLichChieu} />
 
           {/* Điều hướng về lại homepage */}
-          <Redirect to='/'/>
+          <Redirect to='/' />
 
         </Switch>
       </BrowserRouter>
