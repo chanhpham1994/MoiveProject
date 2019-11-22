@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 import { settings } from '../../Common/Config/Setting';
-import { daDangNhap } from '../../Redux/actions/QuanLyNguoiDungAction';
+import { daDangNhap,dangXuat } from '../../Redux/actions/QuanLyNguoiDungAction';
 
 
 class AdminSideBar extends Component {
@@ -16,6 +17,10 @@ class AdminSideBar extends Component {
       this.props.daDangNhap(thongTin);
     }
 
+  }
+
+  moveToLoginPage = () => {
+    this.props.history.replace('/login');
   }
 
   render() {
@@ -43,7 +48,7 @@ class AdminSideBar extends Component {
                   </NavLink>
 
                 </button>
-                <button className='btn btn-danger rounded-circle'>
+                <button onClick={()=>this.props.dangXuat(this.moveToLoginPage)} className='btn btn-danger rounded-circle'>
                   <NavLink to='/login'> <i className="fa fa-power-off text-white"></i></NavLink>
                 </button>
               </div>
@@ -134,7 +139,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     daDangNhap: (thongTin) => { dispatch(daDangNhap(thongTin)) },
+    dangXuat:  (moveToLoginPage) => { dispatch(dangXuat(moveToLoginPage))}
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminSideBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminSideBar));

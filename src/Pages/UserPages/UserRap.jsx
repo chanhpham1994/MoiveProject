@@ -94,7 +94,7 @@ class UserRap extends Component {
                         <div className="user--heThongRap__lichChieu col-6 col-md-8">
 
                             {this.renderDanhSachPhim()}
-                            
+
                         </div>
 
                     </div>
