@@ -42,10 +42,10 @@ class ChiTietPhim extends Component {
         return (
             <div className='ml-3'>
                 <div className='row'>
-                    <div className='col-2'>
+                    <div className='col-3'>
                         <img src={thongTinChiTietPhim.hinhAnh} width={250} height={300} alt="" />
                     </div>
-                    <div className='col-8'>
+                    <div className='col-9'>
                         <p>Mã Phim : {thongTinChiTietPhim.maPhim}</p>
                         <p>Tên Phim : {thongTinChiTietPhim.tenPhim}</p>
                         <p>Bí Danh : {thongTinChiTietPhim.biDanh}</p>
