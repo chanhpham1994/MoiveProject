@@ -41,15 +41,15 @@ class UserInformation extends Component {
 
                     <p className="text-white">Tên Phim : {thongTin.tenPhim}</p>
                     <p className="text-white">Ngày Đặt : {thongTin.ngayDat}</p>
-                    <p className="text-white">Thời Lượng Phim :{thongTin.thoiLuongPhim}</p>
-                    <p className="text-white">Cụm Rạp : {thongTin.ghe.tenHeThongRap}</p>
-                    <p className="text-white">Rạp : {thongTin.ghe.maCumRap}</p>
-                    <p className="text-white">Tên Ghế : {thongTin.ghe.tenGhe}</p>
-
+                    <p className="text-white">Thời Lượng Phim :{thongTin.thoiLuongPhim} phút</p>
+                    <p className="text-white">Cụm Rạp : {thongTin.danhSachGhe[0].tenHeThongRap}</p>
+                    <p className="text-white">Rạp : {thongTin.danhSachGhe[0].maCumRap}</p>
+                    <p className="text-white">Tên Ghế : {thongTin.danhSachGhe[0].tenGhe}</p>
                 </div>
             )
         })
     }
+    
 
     render() {
 
